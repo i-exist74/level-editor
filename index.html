@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+
+        <title>level editing test</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav id="main-menu">
+            <div class="dropdown">
+                <button class="dropdown__button">File</button>
+                <div class="dropdown__content">
+                    <button class="dropdown__option" value="openImportModal">Import</button>
+                    <button class="dropdown__option" value="openExportModal">Export</button>
+                </div>
+            </div>
+        </nav>
+
+        <section id="side-ui">
+            <h3>Display Settings</h3>
+            <div>
+                <input type="checkbox" id="toggle-grid-input" checked />
+                <label for="toggle-grid-input">Show grid</label>
+            </div>
+            <div>
+                <label for="zoom-input">Zoom</label>
+                <input type="range" id="zoom-input" step="1" />
+            </div>
+
+            <br />
+
+            <h3>Edit</h3>
+            <div>
+                Work layer:
+                <span id="work-layer-select">
+                    <input type="radio" id="workLayer-1" name="workLayer" value="0" checked />
+                    <label for="workLayer-1">Layer 1</label>
+                    <input type="radio" id="workLayer-2" name="workLayer" value="1" />
+                    <label for="workLayer-2">Layer 2</label>
+                    <input type="radio" id="workLayer-3" name="workLayer" value="2" />
+                    <label for="workLayer-3">Layer 3</label>
+                </span>
+            </div>
+            <div>
+                Selection type:
+                <span id="selection-type-select">
+                    <input type="radio" id="selectionType-paint" name="selectionType" value="paint" checked />
+                    <label for="selectionType-paint">Paint</label>
+                    <input type="radio" id="selectionType-rect" name="selectionType" value="rect" />
+                    <label for="selectionType-rect">Rect fill</label>
+                </span>
+            </div>
+            <div>
+                Action:
+                <span id="edit-action-select">
+                    <input type="radio" id="editAction-write" name="editAction" value="write" checked />
+                    <label for="editAction-write">Write</label>
+                    <input type="radio" id="editAction-remove" name="editAction" value="remove" />
+                    <label for="editAction-remove">Remove</label>
+                    <input type="radio" id="editAction-toggle" name="editAction" value="toggle" />
+                    <label for="editAction-toggle">Toggle</label>
+                    <input type="radio" id="editAction-clear" name="editAction" value="clear" />
+                    <label for="editAction-clear">Clear All</label>
+                </span>
+            </div>
+            <div>
+                Tool:
+                <div id="edit-tool-select">
+                    <div>
+                        <input type="radio" id="editTool-wall" name="editTool" value="wall" checked />
+                        <label for="editTool-wall">Wall</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-floor" name="editTool" value="floor" />
+                        <label for="editTool-floor">Floor</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-slope" name="editTool" value="slope" />
+                        <label for="editTool-slope">Slope</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-crack" name="editTool" value="crack" />
+                        <label for="editTool-crack">Crack</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-horizontalPole" name="editTool" value="horizontalPole" />
+                        <label for="editTool-horizontalPole">Horizontal Pole</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-verticalPole" name="editTool" value="verticalPole" />
+                        <label for="editTool-verticalPole">Vertical Pole</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-hive" name="editTool" value="hive" />
+                        <label for="editTool-hive">Hive</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-forbidFlyChains" name="editTool" value="forbidFlyChains" />
+                        <label for="editTool-forbidFlyChains">Forbid Fly Chains</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-wormGrass" name="editTool" value="wormGrass" />
+                        <label for="editTool-wormGrass">Worm Grass</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-waterfall" name="editTool" value="waterfall" />
+                        <label for="editTool-waterfall">Waterfall</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-rock" name="editTool" value="rock" />
+                        <label for="editTool-rock">Rock</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-spear" name="editTool" value="spear" />
+                        <label for="editTool-spear">Spear</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-shortcutEntrance" name="editTool" value="shortcutEntrance" />
+                        <label for="editTool-shortcutEntrance">Shortcut Entrance</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-shortcutPath" name="editTool" value="shortcutPath" />
+                        <label for="editTool-shortcutPath">Shortcut Path</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-playerEntrance" name="editTool" value="playerEntrance" />
+                        <label for="editTool-playerEntrance">Player Entrance</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-dragonDen" name="editTool" value="dragonDen" />
+                        <label for="editTool-dragonDen">Creature Den</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-scavengerHole" name="editTool" value="scavengerHole" />
+                        <label for="editTool-scavengerHole">Scavenger Hole</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-whackAMoleHole" name="editTool" value="whackAMoleHole" />
+                        <label for="editTool-whackAMoleHole">Whack-A-Mole Hole</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="editTool-garbageWormHole" name="editTool" value="garbageWormHole" />
+                        <label for="editTool-garbageWormHole">Garbage Worm Hole</label>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <h3>Controls</h3>
+            <ul>
+                <li>Zoom: Mouse scroll</li>
+                <li>Move camera: Shift + drag</li>
+            </ul>
+        </section>
+
+        <section id="bottom-ui">
+            hi are you a toaster? i think you are a toaster
+        </section>
+
+        <dialog class="modal" id="import-modal">
+            <div class="modal__container">
+                <button class="modal__close-button"></button>
+
+                <h1>Import Project</h1>
+                <p>Import a level editor project by navigating to the .txt file or pasting its contents.</p>
+
+                <div>
+                    <label for="project-file-input">Import file:</label>
+                    <input type="file" id="project-file-input" accept=".txt" />
+                    <button id="import-project-button">Load project</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog class="modal" id="export-modal">
+            <div class="modal__container" autofocus>
+                <button class="modal__close-button"></button>
+
+                <h1>Export Project</h1>
+                <p>Drink water immediately upon reading this.</p>
+                <textarea></textarea>
+                <button id="export-project-button">Export project</button>
+            </div>
+        </dialog>
+
+        <div id="graphical-display">
+
+        </div>
+
+        <script type="module" src="modules/main.mjs"></script>
+    </body>
+</html>

@@ -1,0 +1,162 @@
+* {
+    box-sizing: border-box;
+    font-family: Calibri;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+input {
+    vertical-align: middle;
+}
+
+/* Page Layout */
+body {
+    overflow: hidden;
+
+    display: grid;
+    grid-template:
+        "main-menu main-menu" 2rem
+        "side-ui graphical-display" 1fr
+        "side-ui bottom-ui" min-content /
+        max-content 1fr;
+
+    background-color: rgb(35, 42, 100);
+}
+
+ul {
+    padding-left: 1em;
+}
+
+#main-menu {
+    background-color: #1b1b1b;
+
+    grid-area: main-menu;
+    place-self: stretch;
+
+    display: flex;
+    align-items: center;
+    padding: 0 0.5em 0 0.5em;
+    color: white;
+}
+
+#side-ui {
+    grid-area: side-ui;
+    background-color: rgb(28, 34, 79);
+
+    padding: 1em 4em 1em 1em;
+    color: white;
+}
+
+#bottom-ui {
+    grid-area: bottom-ui;
+    background-color: black;
+
+    color: white;
+}
+
+#graphical-display {
+    grid-area: graphical-display;
+    background-color: #AAA;
+    position: relative;
+    user-select: none;
+}
+
+/* Dropdown behavior */
+.dropdown {
+    user-select: none;
+}
+
+.dropdown__button {
+    padding: 0 0.8em 0 0.8em;
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+.dropdown__button:hover,
+.dropdown:focus-within .dropdown__button {
+    background-color: #444;
+    outline: 1px solid #BBB;
+}
+.dropdown:focus-within .dropdown__content {
+    display: flex;
+}
+
+.dropdown__content {
+    display: none;
+    position: absolute;
+    
+    min-width: 10em;
+
+    flex-flow: column nowrap;
+    align-items: stretch;
+    gap: 2px;
+    padding: 0.2em 0 0.2em 0;
+    background-color: #444;
+    outline: 1px solid #BBB;
+}
+.dropdown__content button {
+    background-color: transparent;
+    border: none;
+
+    text-align: start;
+    text-indent: 2em;
+    color: white;
+}
+.dropdown__content button:hover {
+    background-color: #666;
+}
+
+/* Modal behavior */
+.modal {
+    background-color: transparent;
+    border: none;
+    width: max(300px, 30%);
+    margin: auto;
+}
+.modal__container {
+    padding: 1.5em 0.8em;
+    background-color: white;
+    border-radius: 10px;
+}
+.modal::backdrop {
+    background-color: #0006;
+}
+.modal h1 {
+    text-align: center;
+}
+.modal p {
+    margin: 0.5em 0 0.5em 0;
+}
+
+.modal__close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    border: none;
+    border-radius: 6px;
+    background-color: black;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+.modal__close-button::before,
+.modal__close-button::after {
+    content: '';
+    position: absolute;
+    width: 75%;
+    height: 12%;
+    background-color: white;
+}
+.modal__close-button::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.modal__close-button::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
