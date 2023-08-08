@@ -64,5 +64,9 @@ export default {
     },
     exportProjectData() {
         return levelData.exportProjectData();
+    },
+
+    getLevelData() {
+        return levelData;
     }
 };

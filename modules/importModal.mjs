@@ -8,7 +8,7 @@ const loadButton = document.getElementById("import-project-button");
 
 loadButton.addEventListener("click", e => {
     const file = inputEl.files[0];
-    if (!file || file.type !== "text/plain") {
+    if (!file) {
         alert("Invalid file");
         return;
     }

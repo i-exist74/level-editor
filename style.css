@@ -66,6 +66,15 @@ ul {
     user-select: none;
 }
 
+#render-modal {
+    width: min-content;
+}
+
+#render-output-canvas {
+    width: 700px;
+    outline: 1px solid black;
+}
+
 /* Dropdown behavior */
 .dropdown {
     user-select: none;

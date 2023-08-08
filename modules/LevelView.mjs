@@ -18,7 +18,7 @@ export default class LevelView {
     pan;
 
     // Selection/editing
-    #selection = null;
+    #selection = {};
     #initiatedRectSelection = false;
     #workLayer = 0;
     #selectionType = "none";
@@ -53,7 +53,7 @@ export default class LevelView {
         this.levelData.on("init", () => {
             this.#resetCamera();
 
-            this.#selection = null;
+            this.#selection = {};
             this.#repaintAll();
         });
         this.levelData.on("edit", (x1, y1, x2, y2) => {
@@ -297,30 +297,42 @@ export default class LevelView {
         this.#ctx.restore();
         this.#ctx.clearRect(0, 0, this.width, this.height);
 
-        if (!this.#showGrid) return;
-
-        let { start, end } = this.#onscreenLevelBoundaries;
-        start = this.#constrainToLevelBounds(start);
-        end = this.#constrainToLevelBounds(end);
-
         this.#ctx.save();
         this.#applyCameraTransformation(this.#ctx);
 
-        // Draw grid
-        this.#ctx.lineWidth = 0.04;
-        this.#ctx.strokeStyle = "#BBB";
-        for (let x = start.x; x <= end.x; x++) {
-            this.#ctx.beginPath();
-            this.#ctx.moveTo(x, start.y);
-            this.#ctx.lineTo(x, end.y);
-            this.#ctx.stroke();
+        // Draw grid if toggled on
+        if (this.#showGrid) {
+            let { start, end } = this.#onscreenLevelBoundaries;
+            start = this.#constrainToLevelBounds(start);
+            end = this.#constrainToLevelBounds(end);
+
+            this.#ctx.lineWidth = 0.04;
+            this.#ctx.strokeStyle = "#BBB";
+            for (let x = start.x; x <= end.x; x++) {
+                this.#ctx.beginPath();
+                this.#ctx.moveTo(x, start.y);
+                this.#ctx.lineTo(x, end.y);
+                this.#ctx.stroke();
+            }
+            for (let y = start.y; y <= end.y; y++) {
+                this.#ctx.beginPath();
+                this.#ctx.moveTo(start.x, y);
+                this.#ctx.lineTo(end.x, y);
+                this.#ctx.stroke();
+            }
         }
-        for (let y = start.y; y <= end.y; y++) {
-            this.#ctx.beginPath();
-            this.#ctx.moveTo(start.x, y);
-            this.#ctx.lineTo(end.x, y);
-            this.#ctx.stroke();
-        }
+
+        // Draw outer and inner borders
+        this.#ctx.lineWidth = 0.08;
+
+        this.#ctx.strokeStyle = "#222";
+        this.#ctx.strokeRect(0, 0, this.levelData.levelWidth, this.levelData.levelHeight);
+
+        this.#ctx.strokeStyle = "#FFF";
+        this.#ctx.strokeRect(
+            this.levelData.bufferLeft, this.levelData.bufferTop,
+            this.levelData.levelWidth - this.levelData.bufferLeft - this.levelData.bufferRight,
+            this.levelData.levelHeight - this.levelData.bufferTop - this.levelData.bufferBottom);
     }
 
     /* UI display */

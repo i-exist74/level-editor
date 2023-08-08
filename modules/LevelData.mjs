@@ -7,12 +7,12 @@ https://docs.google.com/document/d/1zcxeQGibkZORstwGQUovhQk71k00B69oYwkqFpGyOqs/
 */
 
 /* Geometry data */
-const BLOCK_TYPE_MASK                  = 0b0000000000000111;
-const SHORTCUT_OBJECT_MASK             = 0b0000000000111000;
-const STACKABLES_START_BIT = 6;
-const EXCLUSIVE_TO_WALL_MASK           = 0b0000001111000000;
-const EXCLUSIVE_TO_WALL_AND_SLOPE_MASK = 0b0011110000000000;
-const MUST_BE_ON_WALL_MASK             = 0b1100000000000000;
+const BLOCK_TYPE_MASK                  = 0b00000000000001111;
+const SHORTCUT_OBJECT_MASK             = 0b00000000001111000;
+const STACKABLES_START_BIT = 7;
+const EXCLUSIVE_TO_WALL_MASK           = 0b00000011110000000;
+const EXCLUSIVE_TO_WALL_AND_SLOPE_MASK = 0b00111100000000000;
+const MUST_BE_ON_WALL_MASK             = 0b11000000000000000;
 
 export const Geometry = {
     BLOCK_TYPE_MASK: BLOCK_TYPE_MASK,
@@ -25,23 +25,23 @@ export const Geometry = {
     slopeSE: 0b110,
     slopeSW: 0b111,
     slope: 0b100,
-    shortcutPath: 0b001 << 3,
-    shortcutEntrance: 0b010 << 3,
-    playerEntrance: 0b011 << 3,
-    dragonDen: 0b100 << 3,
-    whackAMoleHole: 0b101 << 3,
-    scavengerHole: 0b110 << 3,
+    shortcutEntrance: 0b0001000,
+    shortcutPath:     0b0010000,
+    playerEntrance:   0b0100000,
+    dragonDen:        0b0110000,
+    whackAMoleHole:   0b1000000,
+    scavengerHole:    0b1010000,
 
-    horizontalPole: 1 << 6,
-    verticalPole: 1 << 7,
-    forbidFlyChains: 1 << 8,
-    waterfall: 1 << 9,
-    hive: 1 << 10,
-    wormGrass: 1 << 11,
-    rock: 1 << 12,
-    spear: 1 << 13,
-    crack: 1 << 14,
-    garbageWormHole: 1 << 15,
+    horizontalPole: 1 << (STACKABLES_START_BIT + 0),
+    verticalPole: 1 << (STACKABLES_START_BIT + 1),
+    forbidFlyChains: 1 << (STACKABLES_START_BIT + 2),
+    waterfall: 1 << (STACKABLES_START_BIT + 3),
+    hive: 1 << (STACKABLES_START_BIT + 4),
+    wormGrass: 1 << (STACKABLES_START_BIT + 5),
+    rock: 1 << (STACKABLES_START_BIT + 6),
+    spear: 1 << (STACKABLES_START_BIT + 7),
+    crack: 1 << (STACKABLES_START_BIT + 8),
+    garbageWormHole: 1 << (STACKABLES_START_BIT + 9),
 };
 
 
@@ -56,6 +56,7 @@ const convertProjectData = {
             4: Geometry.slopeSE,
             5: Geometry.slopeSW,
             6: Geometry.floor,
+            7: 0, // Shortcut entrance block type. Our editor only reads the shortcut entrance stackable and does not use this
         },
         stackables: {
             1: Geometry.horizontalPole,
@@ -85,6 +86,7 @@ const convertProjectData = {
             [Geometry.slopeSE]: 4,
             [Geometry.slopeSW]: 5,
             [Geometry.floor]: 6,
+            [Geometry.shortcutEntrance]: 7
         },
         stackables: {
              [Geometry.horizontalPole]: 1,
@@ -143,9 +145,14 @@ export class LevelData extends EventEmitter {
     #geometry;
     #tileData;
     #defaultMaterial;
+    cameraPositions;
 
     levelWidth;
     levelHeight;
+    bufferLeft;
+    bufferTop;
+    bufferRight;
+    bufferBottom;
     layers;
 
     constructor() {
@@ -196,12 +203,13 @@ export class LevelData extends EventEmitter {
         }
         // Parse JSON
         this.#originalProjectData = lines.map(str => JSON.parse(str));
-        let [geometry, tiles, effects, light, , levelSettings, camera, water, props] = this.#originalProjectData;
+        let [geometry, tiles, effects, light, , levelSettings, cameras, water, props] = this.#originalProjectData;
 
         // Set level dimensions
         this.levelWidth = levelSettings.size.x;
         this.levelHeight = levelSettings.size.y;
         this.layers = geometry[0][0].length;
+        [this.bufferLeft, this.bufferTop, this.bufferRight, this.bufferBottom] = levelSettings.extraTiles;
 
         // Set geometry matrix
         this.#geometry = [];
@@ -218,6 +226,9 @@ export class LevelData extends EventEmitter {
         // Tiles & default material
         this.#tileData = tiles.tlMatrix;
         this.#defaultMaterial = tiles.defaultMaterial;
+
+        // Cameras
+        this.cameraPositions = cameras.cameras;
 
         // cleanup
         this.#originalProjectData[0] = null;
@@ -248,7 +259,10 @@ export class LevelData extends EventEmitter {
 
         // Tiles & default material
         data[1].tlMatrix = this.#tileData;
-        data[1].defaultMaterial = this.#defaultMaterial
+        data[1].defaultMaterial = this.#defaultMaterial;
+
+        // Cameras
+        data[6].cameras = this.cameraPositions;
 
         // Stringify and reformat merged data to create leditor project file
         let stringifiedData = [];
@@ -282,7 +296,7 @@ export class LevelData extends EventEmitter {
     /* Get level data */
 
     geometryAt(x, y, l) {
-        return this.#geometry[x][y][l];
+        return this.#geometry[x]?.[y]?.[l] ?? 0;
     }
 
     // todo
@@ -354,11 +368,17 @@ export class LevelData extends EventEmitter {
                 geometry = slopeToPlace;
             } else return;
         }
-        if (geometry & BLOCK_TYPE_MASK) {
-            this.#geometry[x][y][l] &= ~BLOCK_TYPE_MASK;
-        } else if (l > 0 && geometry !== Geometry.horizontalPole && geometry !== Geometry.verticalPole) {
+
+        let isBlock = geometry & BLOCK_TYPE_MASK;
+        let isShortcutObject = geometry & SHORTCUT_OBJECT_MASK;
+        if (l > 0 && (isShortcutObject || (!isBlock && geometry !== Geometry.horizontalPole && geometry !== Geometry.verticalPole))) {
             return;
-        } else if (geometry & SHORTCUT_OBJECT_MASK) {
+        }
+
+        if (isBlock) {
+            this.#geometry[x][y][l] &= ~BLOCK_TYPE_MASK;
+        }
+        if (isShortcutObject) {
             this.#geometry[x][y][l] &= ~SHORTCUT_OBJECT_MASK;
         }
         this.#geometry[x][y][l] |= geometry;
@@ -376,25 +396,27 @@ export class LevelData extends EventEmitter {
             }
         }
 
-        if (geometry & BLOCK_TYPE_MASK) {
-            if ((this.#geometry[x][y][l] & BLOCK_TYPE_MASK) !== geometry) {
-                this.#geometry[x][y][l] &= ~BLOCK_TYPE_MASK;
-            }
-        } else if (geometry & SHORTCUT_OBJECT_MASK) {
-            let geometryAlreadyPresent = (this.#geometry[x][y][l] & SHORTCUT_OBJECT_MASK) === geometry;
-            if (l > 0) {
-                if (geometryAlreadyPresent) {
-                    this.#geometry[x][y][l] &= ~SHORTCUT_OBJECT_MASK;
-                }
-                return;
-            }
-            if (!geometryAlreadyPresent) {
-                this.#geometry[x][y][l] &= ~SHORTCUT_OBJECT_MASK;
-            }
-        } else if (l > 0 && geometry !== Geometry.horizontalPole && geometry !== Geometry.verticalPole) {
+        let isBlock = geometry & BLOCK_TYPE_MASK;
+        let isShortcutObject = geometry & SHORTCUT_OBJECT_MASK;
+
+        if (l > 0 &&
+            !isBlock && !isShortcutObject && geometry !== Geometry.horizontalPole && geometry !== Geometry.verticalPole) {
             this.#geometry[x][y][l] &= ~geometry;
             return;
         }
+
+        if (isBlock) {
+            if ((this.#geometry[x][y][l] & BLOCK_TYPE_MASK) !== geometry) {
+                this.#geometry[x][y][l] &= ~BLOCK_TYPE_MASK;
+            }
+        } 
+        if (isShortcutObject) {
+            if ((this.#geometry[x][y][l] & SHORTCUT_OBJECT_MASK) !== geometry) {
+                if (l > 0) return;
+
+                this.#geometry[x][y][l] &= ~SHORTCUT_OBJECT_MASK;
+            }
+        } 
 
         this.#geometry[x][y][l] ^= geometry;
     }

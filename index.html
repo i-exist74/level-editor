@@ -16,6 +16,12 @@
                     <button class="dropdown__option" value="openExportModal">Export</button>
                 </div>
             </div>
+            <div class="dropdown">
+                <button class="dropdown__button">Render</button>
+                <div class="dropdown__content">
+                    <button class="dropdown__option" value="openRenderModal">Render</button>
+                </div>
+            </div>
         </nav>
 
         <section id="side-ui">
@@ -186,9 +192,22 @@
             </div>
         </dialog>
 
-        <div id="graphical-display">
+        <dialog class="modal" id="render-modal">
+            <div class="modal__container" autofocus>
+                <button class="modal__close-button"></button>
 
-        </div>
+                <h1>Render Project</h1>
+                <p>This currently does not do anything that could be considered useful in any way</p>
+
+                <div>
+                    <button id="render-project-button">Render</button>
+                </div>
+
+                <canvas id="render-output-canvas"></canvas>
+            </div>
+        </dialog>
+
+        <div id="graphical-display"></div>
 
         <script type="module" src="modules/main.mjs"></script>
     </body>
