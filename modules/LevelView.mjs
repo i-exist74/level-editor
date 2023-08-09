@@ -64,6 +64,7 @@ export default class LevelView {
         this.maxZoom = maxZoom;
         this.#defaultZoom = zoom;
         this.#resetCamera();
+        this.#repaintAll();
         
         this.#container.addEventListener("mousedown", e => this.#onMouseDown(e));
         this.#container.addEventListener("mousemove", e => this.#onMouseMove(e));

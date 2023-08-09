@@ -1,5 +1,7 @@
 import EventEmitter from "./EventEmitter.mjs";
 
+const blank1x1 = await fetch("leveltemplates/blank1x1.txt").then(res => res.text());
+
 /** LevelData - interface for storing and editing levels
 
 leditorProject.txt format as follows:
@@ -157,10 +159,7 @@ export class LevelData extends EventEmitter {
 
     constructor() {
         super();
-
-        fetch("blanklevel.txt")
-            .then(res => res.text())
-            .then(text => this.importProjectData(text));
+        this.importProjectData(blank1x1);
     }
 
 
