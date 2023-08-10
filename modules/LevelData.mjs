@@ -11,10 +11,12 @@ https://docs.google.com/document/d/1zcxeQGibkZORstwGQUovhQk71k00B69oYwkqFpGyOqs/
 /* Geometry data */
 const BLOCK_TYPE_MASK                  = 0b00000000000001111;
 const SHORTCUT_OBJECT_MASK             = 0b00000000001111000;
+const MUST_BE_FIRST_LAYER_MASK         = 0b11111111001111000;
 const STACKABLES_START_BIT = 7;
 const EXCLUSIVE_TO_WALL_MASK           = 0b00000011110000000;
 const EXCLUSIVE_TO_WALL_AND_SLOPE_MASK = 0b00111100000000000;
 const MUST_BE_ON_WALL_MASK             = 0b11000000000000000;
+
 
 export const Geometry = {
     BLOCK_TYPE_MASK: BLOCK_TYPE_MASK,
@@ -291,6 +293,17 @@ export class LevelData extends EventEmitter {
         return stringifiedData.join("\r");
     }
 
+    /* Level dimensions checks */
+    isInBounds({ x, y }) {
+        return x >= 0 && x < this.levelWidth &&
+            y >= 0 && y < this.levelHeight;
+    }
+
+    constrainToBounds({ x, y }) {
+        x = Math.min(Math.max(x, 0), this.levelWidth);
+        y = Math.min(Math.max(y, 0), this.levelHeight);
+        return { x, y };
+    }
 
     /* Get level data */
 
@@ -330,10 +343,6 @@ export class LevelData extends EventEmitter {
     }
 
     #resolveSlopePlacement(x, y, l) {
-        if ((this.#geometry[x][y][l] & BLOCK_TYPE_MASK) === Geometry.wall) {
-            return false;
-        }
-
         let left = x === 0 || (this.#geometry[x - 1][y][l] & BLOCK_TYPE_MASK) === Geometry.wall;
         let bottom = y === this.levelHeight - 1 || (this.#geometry[x][y + 1][l] & BLOCK_TYPE_MASK) === Geometry.wall;
 
@@ -361,6 +370,11 @@ export class LevelData extends EventEmitter {
     }
 
     #writeGeometry(x, y, l, geometry) {
+        if (l > 0) {
+            this.#geometry[x][y][l] &= ~MUST_BE_FIRST_LAYER_MASK;
+            if (geometry & MUST_BE_FIRST_LAYER_MASK) return;
+        }
+
         if (geometry === Geometry.slope) {
             let slopeToPlace = this.#resolveSlopePlacement(x, y, l);
             if (slopeToPlace) {
@@ -368,21 +382,20 @@ export class LevelData extends EventEmitter {
             } else return;
         }
 
-        let isBlock = geometry & BLOCK_TYPE_MASK;
-        let isShortcutObject = geometry & SHORTCUT_OBJECT_MASK;
-        if (l > 0 && (isShortcutObject || (!isBlock && geometry !== Geometry.horizontalPole && geometry !== Geometry.verticalPole))) {
-            return;
-        }
-
-        if (isBlock) {
+        if (geometry & BLOCK_TYPE_MASK) {
             this.#geometry[x][y][l] &= ~BLOCK_TYPE_MASK;
         }
-        if (isShortcutObject) {
+        if (geometry & SHORTCUT_OBJECT_MASK) {
             this.#geometry[x][y][l] &= ~SHORTCUT_OBJECT_MASK;
         }
         this.#geometry[x][y][l] |= geometry;
     }
     #toggleGeometry(x, y, l, geometry) {
+        if (l > 0) {
+            this.#geometry[x][y][l] &= ~MUST_BE_FIRST_LAYER_MASK;
+            if (geometry & MUST_BE_FIRST_LAYER_MASK) return;
+        }
+
         if (geometry === Geometry.slope) {
             if (!(this.#geometry[x][y][l] & Geometry.slope)) {
                 let slopeToPlace = this.#resolveSlopePlacement(x, y, l);
@@ -395,24 +408,13 @@ export class LevelData extends EventEmitter {
             }
         }
 
-        let isBlock = geometry & BLOCK_TYPE_MASK;
-        let isShortcutObject = geometry & SHORTCUT_OBJECT_MASK;
-
-        if (l > 0 &&
-            !isBlock && !isShortcutObject && geometry !== Geometry.horizontalPole && geometry !== Geometry.verticalPole) {
-            this.#geometry[x][y][l] &= ~geometry;
-            return;
-        }
-
-        if (isBlock) {
+        if (geometry & BLOCK_TYPE_MASK) {
             if ((this.#geometry[x][y][l] & BLOCK_TYPE_MASK) !== geometry) {
                 this.#geometry[x][y][l] &= ~BLOCK_TYPE_MASK;
             }
         } 
-        if (isShortcutObject) {
+        if (geometry & SHORTCUT_OBJECT_MASK) {
             if ((this.#geometry[x][y][l] & SHORTCUT_OBJECT_MASK) !== geometry) {
-                if (l > 0) return;
-
                 this.#geometry[x][y][l] &= ~SHORTCUT_OBJECT_MASK;
             }
         } 
@@ -420,6 +422,11 @@ export class LevelData extends EventEmitter {
         this.#geometry[x][y][l] ^= geometry;
     }
     #removeGeometry(x, y, l, geometry) {
+        if (l > 0) {
+            this.#geometry[x][y][l] &= ~MUST_BE_FIRST_LAYER_MASK;
+            if (geometry & MUST_BE_FIRST_LAYER_MASK) return;
+        }
+
         if (geometry === Geometry.slope) {
             if (this.#geometry[x][y][l] & Geometry.slope) {
                 this.#geometry[x][y][l] &= ~BLOCK_TYPE_MASK;

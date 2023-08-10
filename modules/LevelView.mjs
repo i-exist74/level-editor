@@ -103,6 +103,20 @@ export default class LevelView {
         ctx.scale(zoom, zoom);
     }
 
+    // Convert screen coord to level coord by applying inverse of camera transformation
+    #screenToLevelTransform(screenX, screenY) {
+        return {
+            x: (screenX - this.pan.x) * this.#invZoom,
+            y: (screenY - this.pan.y) * this.#invZoom
+        };
+    }
+
+    // Convert screen coord to level coord & round down to integer
+    #screenToLevelCoords(screenX, screenY) {
+        let { x, y } = this.#screenToLevelTransform(screenX, screenY);
+        return { x: Math.floor(x), y: Math.floor(y) };
+    }
+
     /* Level display */
     #repaintLevel() {
         this.#ctx = this.#levelCanvas.getContext("2d");
@@ -111,8 +125,8 @@ export default class LevelView {
 
         // Draw level
         let { start, end } = this.#onscreenLevelBoundaries;
-        start = this.#constrainToLevelBounds(start);
-        end = this.#constrainToLevelBounds(end);
+        start = this.levelData.constrainToBounds(start);
+        end = this.levelData.constrainToBounds(end);
 
         this.#ctx.save();
         this.#applyCameraTransformation(this.#ctx);
@@ -304,8 +318,8 @@ export default class LevelView {
         // Draw grid if toggled on
         if (this.#showGrid) {
             let { start, end } = this.#onscreenLevelBoundaries;
-            start = this.#constrainToLevelBounds(start);
-            end = this.#constrainToLevelBounds(end);
+            start = this.levelData.constrainToBounds(start);
+            end = this.levelData.constrainToBounds(end);
 
             this.#ctx.lineWidth = 0.04;
             this.#ctx.strokeStyle = "#BBB";
@@ -359,43 +373,12 @@ export default class LevelView {
     }
 
 
-    /* Level coordinates */
-
-    // Convert screen coord to level coord by applying inverse of screen transformation
-    #screenToLevelTransform(screenX, screenY) {
-        return {
-            x: (screenX - this.pan.x) * this.#invZoom,
-            y: (screenY - this.pan.y) * this.#invZoom
-        };
-    }
-
-    // Convert screen coord to level coord & round down to integer
-    #screenToLevelCoords(screenX, screenY) {
-        let { x, y } = this.#screenToLevelTransform(screenX, screenY);
-
-        return { x: Math.floor(x), y: Math.floor(y) };
-    }
-
-    // Constrain level coords to bounds
-    #constrainToLevelBounds({ x, y }) {
-        x = Math.min(Math.max(x, 0), this.levelData.levelWidth);
-        y = Math.min(Math.max(y, 0), this.levelData.levelHeight);
-        return { x, y };
-    }
-
-    // Check if tile is in level bounds
-    #isInBounds({ x, y }) {
-        return x >= 0 && x < this.levelData.levelWidth &&
-            y >= 0 && y < this.levelData.levelHeight;
-    }
-
-
     /* UI */
     #onMouseDown(e) {
         if (e.shiftKey) return;
 
         const tile = this.#screenToLevelCoords(e.offsetX, e.offsetY);
-        if (!this.#isInBounds(tile)) return;
+        if (!this.levelData.isInBounds(tile)) return;
 
         // Handle selection
         if (this.#selectionType === "rect") {
@@ -419,7 +402,7 @@ export default class LevelView {
         if (e.shiftKey) return;
 
         const tile = this.#screenToLevelCoords(e.offsetX, e.offsetY);
-        if (!this.#isInBounds(tile)) return;
+        if (!this.levelData.isInBounds(tile)) return;
         if (this.#selection && this.#selection.x1 === tile.x && this.#selection.y1 === tile.y) return;
 
         if (this.#selectionType === "rect" && this.#initiatedRectSelection) {
