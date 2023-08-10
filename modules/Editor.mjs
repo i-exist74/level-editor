@@ -49,12 +49,12 @@ document.getElementById("selection-type-select").addEventListener("change", e =>
 });
 
 levelView.tool.action = "write";
-levelView.tool.name = "wall";
+levelView.tool.geometry = "wall";
 document.getElementById("edit-action-select").addEventListener("change", e => {
     levelView.tool.action = e.target.value;
 });
 document.getElementById("edit-tool-select").addEventListener("change", e => {
-    levelView.tool.name = e.target.value;
+    levelView.tool.geometry = e.target.value;
 });
 
 

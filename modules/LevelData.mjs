@@ -12,6 +12,7 @@ https://docs.google.com/document/d/1zcxeQGibkZORstwGQUovhQk71k00B69oYwkqFpGyOqs/
 const BLOCK_TYPE_MASK                  = 0b00000000000001111;
 const SHORTCUT_OBJECT_MASK             = 0b00000000001111000;
 const MUST_BE_FIRST_LAYER_MASK         = 0b11111111001111000;
+const MUST_BE_WITHIN_BOUNDS_MASK       = 0b10111101001111000;
 const STACKABLES_START_BIT = 7;
 const EXCLUSIVE_TO_WALL_MASK           = 0b00000011110000000;
 const EXCLUSIVE_TO_WALL_AND_SLOPE_MASK = 0b00111100000000000;
@@ -294,12 +295,23 @@ export class LevelData extends EventEmitter {
     }
 
     /* Level dimensions checks */
-    isInBounds({ x, y }) {
+    isInBounds(x, y) {
+        if (y === void 0) [x, y] = [x.x, x.y];
+
         return x >= 0 && x < this.levelWidth &&
             y >= 0 && y < this.levelHeight;
     }
 
-    constrainToBounds({ x, y }) {
+    isInBufferBounds(x, y) {
+        if (y === void 0) [x, y] = [x.x, x.y];
+
+        return x >= this.bufferLeft && x < this.levelWidth - this.bufferRight &&
+            y >= this.bufferTop && y < this.levelHeight - this.bufferBottom;
+    }
+
+    constrainToBounds(x, y) {
+        if (y === void 0) [x, y] = [x.x, x.y];
+
         x = Math.min(Math.max(x, 0), this.levelWidth);
         y = Math.min(Math.max(y, 0), this.levelHeight);
         return { x, y };
@@ -340,6 +352,15 @@ export class LevelData extends EventEmitter {
                 this.#geometry[x][y][l] &= ~EXCLUSIVE_TO_WALL_AND_SLOPE_MASK;
             }
         }
+
+        // Resolve first-layer-exclusive objects
+        if (l > 0) {
+            this.#geometry[x][y][l] &= ~MUST_BE_FIRST_LAYER_MASK;
+        }
+        // Resolve within bounds-exclusive objects
+        if (!this.isInBufferBounds(x, y)) {
+            this.#geometry[x][y][l] &= ~MUST_BE_WITHIN_BOUNDS_MASK;
+        }
     }
 
     #resolveSlopePlacement(x, y, l) {
@@ -370,11 +391,6 @@ export class LevelData extends EventEmitter {
     }
 
     #writeGeometry(x, y, l, geometry) {
-        if (l > 0) {
-            this.#geometry[x][y][l] &= ~MUST_BE_FIRST_LAYER_MASK;
-            if (geometry & MUST_BE_FIRST_LAYER_MASK) return;
-        }
-
         if (geometry === Geometry.slope) {
             let slopeToPlace = this.#resolveSlopePlacement(x, y, l);
             if (slopeToPlace) {
@@ -391,11 +407,6 @@ export class LevelData extends EventEmitter {
         this.#geometry[x][y][l] |= geometry;
     }
     #toggleGeometry(x, y, l, geometry) {
-        if (l > 0) {
-            this.#geometry[x][y][l] &= ~MUST_BE_FIRST_LAYER_MASK;
-            if (geometry & MUST_BE_FIRST_LAYER_MASK) return;
-        }
-
         if (geometry === Geometry.slope) {
             if (!(this.#geometry[x][y][l] & Geometry.slope)) {
                 let slopeToPlace = this.#resolveSlopePlacement(x, y, l);
@@ -422,11 +433,6 @@ export class LevelData extends EventEmitter {
         this.#geometry[x][y][l] ^= geometry;
     }
     #removeGeometry(x, y, l, geometry) {
-        if (l > 0) {
-            this.#geometry[x][y][l] &= ~MUST_BE_FIRST_LAYER_MASK;
-            if (geometry & MUST_BE_FIRST_LAYER_MASK) return;
-        }
-
         if (geometry === Geometry.slope) {
             if (this.#geometry[x][y][l] & Geometry.slope) {
                 this.#geometry[x][y][l] &= ~BLOCK_TYPE_MASK;
@@ -452,24 +458,29 @@ export class LevelData extends EventEmitter {
     }
 
     // Perform a read or write operation (geometry) on a given part of the level
-    performAction({ action, name }, fromX, fromY, toX, toY, l) {
-        let method = (
-            action === "write" ? this.#writeGeometry :
-            action === "toggle" ? this.#toggleGeometry :
-            action === "remove" ? this.#removeGeometry :
-            this.#clearGeometry
-        ).bind(this);
-
+    performAction({ action, geometry }, fromX, fromY, toX, toY, l) {
         for (let x = fromX; x <= toX; x++) {
             for (let y = fromY; y <= toY; y++) {
-                // Unique behavior for clear all geometry (name parameter is unused)
                 if (action === "clear") {
-                    method(x, y, l);
+                    this.#clearGeometry(x, y, l);
                     continue;
                 }
 
-                // Perform action using specified geometry
-                method(x, y, l, Geometry[name]);
+                let method =
+                    action === "write" ? this.#writeGeometry :
+                    action === "toggle" ? this.#toggleGeometry :
+                    action === "remove" ? this.#removeGeometry :
+                    undefined;
+                let geo = Geometry[geometry];
+
+                // Perform action if it is legal for the specified geometry and position
+                let illegalFirstLayerExclusive = (geo & MUST_BE_FIRST_LAYER_MASK) && l > 0;
+                let illegalOutOfBounds = (geo & MUST_BE_WITHIN_BOUNDS_MASK) && !this.isInBufferBounds(x, y);
+                if (!illegalFirstLayerExclusive && !illegalOutOfBounds) {
+                    method.call(this, x, y, l, geo);
+                }
+
+                // Resolve exclusivities at specified position
                 this.#resolveGeometryExclusivities(x, y, l);
             }
         }

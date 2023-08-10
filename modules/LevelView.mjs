@@ -22,7 +22,7 @@ export default class LevelView {
     #initiatedRectSelection = false;
     #workLayer = 0;
     #selectionType = "none";
-    tool = { name: "wall", action: "write" };
+    tool = { geometry: "wall", action: "write" };
 
     // Display
     #showGrid = true;
