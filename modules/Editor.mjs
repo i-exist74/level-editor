@@ -48,13 +48,13 @@ document.getElementById("selection-type-select").addEventListener("change", e =>
     levelView.setSelectionType(e.target.value);
 });
 
-levelView.tool.action = "write";
-levelView.tool.geometry = "wall";
+levelView.setEditAction("write");
+levelView.setGeometryTool("wall");
 document.getElementById("edit-action-select").addEventListener("change", e => {
-    levelView.tool.action = e.target.value;
+    levelView.setEditAction(e.target.value);
 });
 document.getElementById("edit-tool-select").addEventListener("change", e => {
-    levelView.tool.geometry = e.target.value;
+    levelView.setGeometryTool(e.target.value);
 });
 
 

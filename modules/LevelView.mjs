@@ -22,7 +22,7 @@ export default class LevelView {
     #initiatedRectSelection = false;
     #workLayer = 0;
     #selectionType = "none";
-    tool = { geometry: "wall", action: "write" };
+    #tool = { geometry: "wall", action: "write" };
 
     // Display
     #showGrid = true;
@@ -75,7 +75,7 @@ export default class LevelView {
     #repaintAll() {
         this.#repaintLevel();
         this.#repaintGrid();
-        this.#repaintUi();
+        this.#repaintUI();
     }
 
     // Calculate #onscreenLevelBoundaries
@@ -351,7 +351,7 @@ export default class LevelView {
     }
 
     /* UI display */
-    #repaintUi() {
+    #repaintUI() {
         this.#ctx = this.#uiCanvas.getContext("2d");
         this.#ctx.restore();
         this.#ctx.clearRect(0, 0, this.width, this.height);
@@ -360,15 +360,26 @@ export default class LevelView {
             this.#ctx.save();
             this.#applyCameraTransformation(this.#ctx);
 
-            this.#ctx.lineWidth = 0.04;
-            this.#ctx.strokeStyle = "#F00";
 
             let x1 = Math.min(this.#selection.x1, this.#selection.x2);
             let x2 = Math.max(this.#selection.x1, this.#selection.x2);
             let y1 = Math.min(this.#selection.y1, this.#selection.y2);
             let y2 = Math.max(this.#selection.y1, this.#selection.y2);
 
+            // Draw rectangle selection
+            this.#ctx.lineWidth = 0.04;
+            this.#ctx.strokeStyle = "#F00";
             this.#ctx.strokeRect(x1, y1, x2 - x1 + 1, y2 - y1 + 1);
+
+            // Draw text coordinates
+            this.#ctx.fillStyle = "#F00";
+            this.#ctx.font = `${this.#invZoom * 12}px Arial`;
+
+            let text = `(${x1}, ${y1})`;
+            if (this.#selectionType === "rect") {
+                text += ` w: ${x2 - x1 + 1} h: ${y2 - y1 + 1}`;
+            }
+            this.#ctx.fillText(text, x2 + 1 + this.#invZoom * 4, y2 + 1);
         }
     }
 
@@ -396,7 +407,7 @@ export default class LevelView {
             this.#performEditAction();
         }
 
-        this.#repaintUi();
+        this.#repaintUI();
     }
     #onMouseMove(e) {
         if (e.shiftKey) return;
@@ -418,7 +429,7 @@ export default class LevelView {
                 this.#performEditAction();
             }
         }
-        this.#repaintUi();
+        this.#repaintUI();
     }
 
     /* Editing interface */
@@ -431,6 +442,16 @@ export default class LevelView {
     // Set selection behavior - "paint" | "rect" | "none"
     setSelectionType(type) {
         this.#selectionType = type;
+        this.#repaintUI();
+    }
+
+    // Set edit action
+    setEditAction(action) {
+        this.#tool.action = action;
+    }
+    // Set geometry tool
+    setGeometryTool(geometry) {
+        this.#tool.geometry = geometry;
     }
 
     // Perform edit with current selection
@@ -439,7 +460,7 @@ export default class LevelView {
         if (x1 > x2) [x1, x2] = [x2, x1];
         if (y1 > y2) [y1, y2] = [y2, y1];
 
-        this.levelData.performAction(this.tool, x1, y1, x2, y2, this.#workLayer);
+        this.levelData.performAction(this.#tool, x1, y1, x2, y2, this.#workLayer);
     }
 
 
