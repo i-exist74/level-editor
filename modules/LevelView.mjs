@@ -68,6 +68,7 @@ export default class LevelView {
         
         this.#container.addEventListener("mousedown", e => this.#onMouseDown(e));
         this.#container.addEventListener("mousemove", e => this.#onMouseMove(e));
+        this.#container.addEventListener("wheel", e => this.#onMouseWheel(e));
         this.#container.oncontextmenu = () => false;
     }
 
@@ -395,7 +396,7 @@ export default class LevelView {
         if (this.#selectionType === "rect") {
             // Rect selection behavior
             if (this.#initiatedRectSelection) {
-                this.#performEditAction();
+                this.#performEditAction(e.altKey);
                 this.#initiatedRectSelection = false;
             } else {
                 this.#initiatedRectSelection = true;
@@ -404,13 +405,17 @@ export default class LevelView {
         } else if (this.#selectionType === "paint") {
             // Paint selection behavior
             this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
-            this.#performEditAction();
+            this.#performEditAction(e.altKey);
         }
 
         this.#repaintUI();
     }
     #onMouseMove(e) {
-        if (e.shiftKey) return;
+        if (e.shiftKey && (e.buttons & 1)) {
+            // Shift + drag: adjust pan
+            this.adjustPan(e.movementX, e.movementY);
+            return;
+        }
 
         const tile = this.#screenToLevelCoords(e.offsetX, e.offsetY);
         if (!this.levelData.isInBounds(tile)) return;
@@ -426,10 +431,13 @@ export default class LevelView {
 
             if (this.#selectionType === "paint" && e.buttons > 0) {
                 // Paint if mouse pressed
-                this.#performEditAction();
+                this.#performEditAction(e.altKey);
             }
         }
         this.#repaintUI();
+    }
+    #onMouseWheel(e) {
+        this.adjustZoom(-e.deltaY * 0.008, e.offsetX, e.offsetY);
     }
 
     /* Editing interface */
@@ -455,12 +463,15 @@ export default class LevelView {
     }
 
     // Perform edit with current selection
-    #performEditAction() {
+    #performEditAction(forceRemove) {
         let { x1, y1, x2, y2 } = this.#selection;
         if (x1 > x2) [x1, x2] = [x2, x1];
         if (y1 > y2) [y1, y2] = [y2, y1];
 
-        this.levelData.performAction(this.#tool, x1, y1, x2, y2, this.#workLayer);
+        this.levelData.performAction({
+            action: forceRemove ? "remove" : this.#tool.action,
+            geometry: this.#tool.geometry
+        }, x1, y1, x2, y2, this.#workLayer);
     }
 
 

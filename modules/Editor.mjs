@@ -8,28 +8,6 @@ const levelView = new LevelView(outputContainer, levelData, { minZoom: 4, maxZoo
 
 /* Camera & display settings */
 
-// Zoom - range input
-const zoomInput = document.getElementById("zoom-input");
-zoomInput.min = levelView.minZoom;
-zoomInput.max = levelView.maxZoom;
-zoomInput.value = levelView.zoom;
-zoomInput.addEventListener("input", () => {
-    levelView.setZoom(+zoomInput.value);
-});
-
-// Zoom - mouse scroll
-outputContainer.addEventListener("wheel", e => {
-    levelView.adjustZoom(-e.deltaY * 0.008, e.offsetX, e.offsetY);
-    zoomInput.value = levelView.zoom;
-});
-
-// Pan - shift & mouse drag
-outputContainer.addEventListener("mousemove", e => {
-    if (e.shiftKey && (e.buttons & 1)) {
-        levelView.adjustPan(e.movementX, e.movementY);
-    }
-});
-
 // Toggle grid - checkbox
 const toggleGridCheckbox = document.getElementById("toggle-grid-input");
 toggleGridCheckbox.addEventListener("change", () => {
@@ -38,16 +16,20 @@ toggleGridCheckbox.addEventListener("change", () => {
 
 
 /* Editing */
+
+// Work layer
 levelView.setWorkLayer(0);
 document.getElementById("work-layer-select").addEventListener("change", e => {
     levelView.setWorkLayer(e.target.value);
 });
 
+// Selection type
 levelView.setSelectionType("paint");
 document.getElementById("selection-type-select").addEventListener("change", e => {
     levelView.setSelectionType(e.target.value);
 });
 
+// Edit action
 levelView.setEditAction("write");
 levelView.setGeometryTool("wall");
 document.getElementById("edit-action-select").addEventListener("change", e => {
