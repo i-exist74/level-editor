@@ -9,28 +9,33 @@ https://docs.google.com/document/d/1zcxeQGibkZORstwGQUovhQk71k00B69oYwkqFpGyOqs/
 */
 
 /* Geometry data */
-const BLOCK_TYPE_MASK                  = 0b00000000000001111;
-const SHORTCUT_OBJECT_MASK             = 0b00000000001111000;
-const MUST_BE_FIRST_LAYER_MASK         = 0b11111111001111000;
-const MUST_BE_WITHIN_BOUNDS_MASK       = 0b10111101001111000;
-const STACKABLES_START_BIT = 7;
-const EXCLUSIVE_TO_WALL_MASK           = 0b00000011110000000;
-const EXCLUSIVE_TO_WALL_AND_SLOPE_MASK = 0b00111100000000000;
-const MUST_BE_ON_WALL_MASK             = 0b11000000000000000;
+const BLOCK_TYPE_MASK                  = 0b000000000000011111;
+const SHORTCUT_OBJECT_MASK             = 0b000000000011110000;
+const MUST_BE_FIRST_LAYER_MASK         = 0b111111110011110000;
+const MUST_BE_WITHIN_BOUNDS_MASK       = 0b101111010011110000;
+const STACKABLES_START_BIT = 8;
+const EXCLUSIVE_TO_WALL_MASK           = 0b000000111100000000;
+const EXCLUSIVE_TO_WALL_AND_SLOPE_MASK = 0b001111000000000000;
+const MUST_BE_ON_WALL_MASK             = 0b110000000000000000;
 
 
 export const Geometry = {
     BLOCK_TYPE_MASK: BLOCK_TYPE_MASK,
     SHORTCUT_OBJECT_MASK: SHORTCUT_OBJECT_MASK,
 
+    // AND Geometry.wall to check for wall or glassWall
     wall: 0b001,
     floor: 0b010,
-    slopeNE: 0b100,
-    slopeNW: 0b101,
-    slopeSE: 0b110,
-    slopeSW: 0b111,
-    slope: 0b100,
-    shortcutEntrance: 0b0001000,
+    glassWall: 0b011,
+
+    // AND Geometry.slope to check for any variation of slope
+    slopeNE: 0b1000,
+    slopeNW: 0b1010,
+    slopeSE: 0b1100,
+    slopeSW: 0b1110,
+    slope: 0b1000,
+
+    shortcutEntrance: 0b0001000, // shortcutEntrance is part of both BLOCK_TYPE and SHORTCUT_OBJECT categories
     shortcutPath:     0b0010000,
     playerEntrance:   0b0100000,
     dragonDen:        0b0110000,
@@ -62,6 +67,7 @@ const convertProjectData = {
             5: Geometry.slopeSW,
             6: Geometry.floor,
             7: 0, // Shortcut entrance block type. Our editor only reads the shortcut entrance stackable and does not use this
+            9: Geometry.glassWall
         },
         stackables: {
             1: Geometry.horizontalPole,
@@ -91,7 +97,8 @@ const convertProjectData = {
             [Geometry.slopeSE]: 4,
             [Geometry.slopeSW]: 5,
             [Geometry.floor]: 6,
-            [Geometry.shortcutEntrance]: 7
+            [Geometry.shortcutEntrance]: 7,
+            [Geometry.glassWall]: 9
         },
         stackables: {
              [Geometry.horizontalPole]: 1,
@@ -319,8 +326,9 @@ export class LevelData extends EventEmitter {
 
     /* Get level data */
 
+    // Return geometry at current position, or glassWall if out of bounds
     geometryAt(x, y, l) {
-        return this.#geometry[x]?.[y]?.[l] ?? 0;
+        return this.#geometry[x]?.[y]?.[l] ?? Geometry.glassWall;
     }
 
     // todo
@@ -364,20 +372,20 @@ export class LevelData extends EventEmitter {
     }
 
     #resolveSlopePlacement(x, y, l) {
-        let left = x === 0 || (this.#geometry[x - 1][y][l] & BLOCK_TYPE_MASK) === Geometry.wall;
-        let bottom = y === this.levelHeight - 1 || (this.#geometry[x][y + 1][l] & BLOCK_TYPE_MASK) === Geometry.wall;
+        let left = this.geometryAt(x - 1, y, l) & Geometry.wall;
+        let bottom = this.geometryAt(x, y + 1, l) & Geometry.wall;
 
         if (left && bottom) {
             return Geometry.slopeNE;
         }
 
-        let right = x === this.levelWidth - 1 || (this.#geometry[x + 1][y][l] & BLOCK_TYPE_MASK) === Geometry.wall;
+        let right = this.geometryAt(x + 1, y, l) & Geometry.wall;
 
         if (bottom && right) {
             return Geometry.slopeNW;
         }
 
-        let top = y === 0 || (this.#geometry[x][y - 1][l] & BLOCK_TYPE_MASK) === Geometry.wall;
+        let top = this.geometryAt(x, y - 1, l) & Geometry.wall;
 
         if (right && top) {
             return Geometry.slopeSW;
