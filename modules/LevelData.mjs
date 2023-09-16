@@ -35,12 +35,12 @@ export const Geometry = {
     slopeSW: 0b1110,
     slope: 0b1000,
 
-    shortcutEntrance: 0b0001000, // shortcutEntrance is part of both BLOCK_TYPE and SHORTCUT_OBJECT categories
-    shortcutPath:     0b0010000,
-    playerEntrance:   0b0100000,
-    dragonDen:        0b0110000,
-    whackAMoleHole:   0b1000000,
-    scavengerHole:    0b1010000,
+    shortcutEntrance: 0b00010000, // shortcutEntrance is part of both BLOCK_TYPE and SHORTCUT_OBJECT categories
+    shortcutPath:     0b00100000,
+    playerEntrance:   0b01000000,
+    dragonDen:        0b01100000,
+    whackAMoleHole:   0b10000000,
+    scavengerHole:    0b10100000,
 
     horizontalPole: 1 << (STACKABLES_START_BIT + 0),
     verticalPole: 1 << (STACKABLES_START_BIT + 1),
@@ -301,7 +301,7 @@ export class LevelData extends EventEmitter {
         return stringifiedData.join("\r");
     }
 
-    /* Level dimensions checks */
+    /* Level dimension checks */
     isInBounds(x, y) {
         if (y === void 0) [x, y] = [x.x, x.y];
 
@@ -323,6 +323,51 @@ export class LevelData extends EventEmitter {
         y = Math.min(Math.max(y, 0), this.levelHeight);
         return { x, y };
     }
+
+    /* Change level dimensions */
+    changeWidth(newWidth, rightBorder = true) {
+        if (rightBorder) {
+            this.#geometry.length = newWidth;
+
+            if (newWidth > this.levelWidth) {
+                // To increase the width, add empty rows to the end
+                for (let x = this.levelWidth; x < newWidth; x++) {
+                    this.#geometry[x] = new Array(this.levelHeight);
+                    for (let y = 0; y < this.levelHeight; y++) {
+                        this.#geometry[x][y] = new Array(this.layers).fill(0);
+                    }
+                }
+            }
+            this.levelWidth = newWidth;
+
+            return;
+        }
+
+        const origColumns = this.#geometry.slice();
+
+        if (newWidth > this.levelWidth) {
+            return;
+        }
+        // Shift all columns over the desired number of slots
+        for (let x = 0; x < newWidth; x++) {
+            this.#geometry[x] = origColumns[x - newWidth + this.levelWidth];
+            if (!this.#geometry[x]) {
+                this.#geometry[x] = new Array(this.levelHeight);
+                for (let y = 0; y < this.levelHeight; y++) {
+                    this.#geometry[x][y] = new Array(this.layers).fill(0);
+                }
+            }
+        }
+
+        this.#geometry.length = newWidth;
+        this.levelWidth = newWidth;
+    }
+    changeHeight(newHeight, bottomBorder = true) {
+        for (let x = 0; x < this.levelWidth; x++) {
+
+        }
+    }
+
 
     /* Get level data */
 
