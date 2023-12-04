@@ -1,6 +1,7 @@
 const importModal = document.getElementById("import-modal");
 const exportModal = document.getElementById("export-modal");
 const renderModal = document.getElementById("render-modal");
+const editDimensionsModal = document.getElementById("edit-dimensions-modal");
 
 const menuButtons = document.querySelectorAll("#main-menu .dropdown__option");
 menuButtons.forEach(btn => {
@@ -13,6 +14,9 @@ menuButtons.forEach(btn => {
             break;
         case "openRenderModal":
             btn.addEventListener("click", e => renderModal.showModal());
+            break;
+        case "openEditDimensionsModal":
+            btn.addEventListener("click", e => editDimensionsModal.showModal());
     }
 });
 

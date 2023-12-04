@@ -325,12 +325,15 @@ export class LevelData extends EventEmitter {
     }
 
     /* Change level dimensions */
+    // This code SUCKS and it's TERRIBLE and I HATE IT and [transmission terminated]
     changeWidth(newWidth, rightBorder = true) {
         if (rightBorder) {
+            // If moving the right border:
+
             this.#geometry.length = newWidth;
 
             if (newWidth > this.levelWidth) {
-                // To increase the width, add empty rows to the end
+                // Fill in the added space with empty rows
                 for (let x = this.levelWidth; x < newWidth; x++) {
                     this.#geometry[x] = new Array(this.levelHeight);
                     for (let y = 0; y < this.levelHeight; y++) {
@@ -343,22 +346,28 @@ export class LevelData extends EventEmitter {
             return;
         }
 
-        const origColumns = this.#geometry.slice();
+        // If moving the left border:
 
         if (newWidth > this.levelWidth) {
-            return;
-        }
-        // Shift all columns over the desired number of slots
-        for (let x = 0; x < newWidth; x++) {
-            this.#geometry[x] = origColumns[x - newWidth + this.levelWidth];
-            if (!this.#geometry[x]) {
-                this.#geometry[x] = new Array(this.levelHeight);
-                for (let y = 0; y < this.levelHeight; y++) {
-                    this.#geometry[x][y] = new Array(this.layers).fill(0);
+            // Shift entries to the right, and fill in the left with empty rows
+            for (let x = newWidth - 1; x >= 0; x--) {
+                if (x >= newWidth - this.levelWidth) {
+                    this.#geometry[x] = this.#geometry[x + this.levelWidth - newWidth];
+                } else {
+                    this.#geometry[x] = new Array(this.levelHeight);
+                    for (let y = 0; y < this.levelHeight; y++) {
+                        this.#geometry[x][y] = new Array(this.layers).fill(0);
+                    }
                 }
             }
+            this.levelWidth = newWidth;
+            return;
         }
 
+        // Shift entries to the left
+        for (let x = 0; x < newWidth; x++) {
+            this.#geometry[x] = this.#geometry[x + this.levelWidth - newWidth];
+        }
         this.#geometry.length = newWidth;
         this.levelWidth = newWidth;
     }

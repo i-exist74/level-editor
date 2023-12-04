@@ -1,27 +1,32 @@
+/**
+ * Original non-webGL attempt & info about the format of the rendered level png file in renderModa.mjs.
+ */
+import { Geometry } from "./LevelData.mjs";
+
 const vertexShaderSource = `#version 300 es
     in vec4 a_position;
 
     uniform mat4 u_worldMatrix;
     uniform mat4 u_projectionMatrix;
 
-    out float layer;
+    out float z;
 
     void main() {
         vec4 worldPosition = u_worldMatrix * a_position;
 
         gl_Position = u_projectionMatrix * worldPosition;
 
-        layer = worldPosition.z;
+        z = worldPosition.z;
     }
 `;
 const fragmentShaderSource = `#version 300 es
     precision highp float;
 
-    in float layer;
+    in float z;
     out vec4 outColor;
 
     void main() {
-        outColor = vec4((121.0 + layer) / 255.0, 0, 0, 1);
+        outColor = vec4((121.0 + z) / 255.0, 0, 0, 1);
     }
 `;
 
@@ -212,15 +217,16 @@ function initialize(canvas) {
     gl.linkProgram(program);
 }
 
+/**
+ * @param {import("LevelData.mjs").LevelData} levelData
+ */
 function render(levelData) {
-    // Create vertex array object
+    // Create VAO for a 1x1 rectangle centered around the origin
     const vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
 
-    // Setup buffers for attributes
     const a_positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, a_positionBuffer);
-    
     const positions = new Float32Array([
         -0.5, -0.5, -0.5,
         -0.5, 0.5, -0.5,
@@ -231,16 +237,16 @@ function render(levelData) {
     ]);
     gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
 
-    // Setup attributes
     const a_positionLoc = gl.getAttribLocation(program, "a_position");
     gl.enableVertexAttribArray(a_positionLoc);
     gl.vertexAttribPointer(a_positionLoc, 3, gl.FLOAT, false, 0, 0);
 
+
     // Get uniform locations
     const u_worldMatrixLoc = gl.getUniformLocation(program, "u_worldMatrix");
     const u_projectionMatrixLoc = gl.getUniformLocation(program, "u_projectionMatrix");
-
-    // Clear the canvas
+    
+    // Set up the canvas
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
@@ -254,26 +260,31 @@ function render(levelData) {
     projectionMatrix = m4.scale(projectionMatrix, 1 / 700, 1 / 400, 1 / 15);
     gl.uniformMatrix4fv(u_projectionMatrixLoc, false, projectionMatrix);
 
-    // One rectangle
-    let matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+    for (let x = 0; x < levelData.levelWidth; x++) {
+        for (let y = 0; y < levelData.levelHeight; y++) {
+            let geom = levelData.geometryAt(x, y)
 
-    // Convert to pixels
-    matrix = m4.scale(matrix, 20, 20, 1);
+            let matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
 
-    // Position
-    matrix = m4.translate(matrix, 0, 0, 0);
+            // Convert to pixels
+            matrix = m4.scale(matrix, 20, 20, 1);
 
-    // After rotating around center, convert coords and depth to level coords
-    matrix = m4.scale(matrix, 1, 1, 10);
-    matrix = m4.translate(matrix, 0.5, 0.5, 0.5);
+            // Position in level coords
+            matrix = m4.translate(matrix, x, y, Math.floor(Math.random() * 30));
 
-    // Rotation around center of grid space (for floor, ceiling, wall tiles)
-    matrix = m4.xRotate(matrix, 0);
-    matrix = m4.yRotate(matrix, 0);
-    //matrix = m4.zRotate(matrix, 0);
-    
-    gl.uniformMatrix4fv(u_worldMatrixLoc, false, matrix);
-    gl.drawArrays(gl.TRIANGLES, 0, 6);
+            // Convert to level coords
+            matrix = m4.scale(matrix, 1, 1, 10);
+            matrix = m4.translate(matrix, 0.5, 0.5, 0.5);
+
+            // Rotation around center of grid space (for floor, ceiling, wall tiles)
+            matrix = m4.xRotate(matrix, 0);
+            matrix = m4.yRotate(matrix, 0);
+            matrix = m4.zRotate(matrix, 0);
+
+            gl.uniformMatrix4fv(u_worldMatrixLoc, false, matrix);
+            gl.drawArrays(gl.TRIANGLES, 0, 6);
+        }
+    }
 }
 
 

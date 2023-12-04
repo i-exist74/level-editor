@@ -17,6 +17,12 @@
                 </div>
             </div>
             <div class="dropdown">
+                <button class="dropdown__button">Edit</button>
+                <div class="dropdown__content">
+                    <button class="dropdown__option" value="openEditDimensionsModal">[TODO] Level Dimensions</button>
+                </div>
+            </div>
+            <div class="dropdown">
                 <button class="dropdown__button">Render</button>
                 <div class="dropdown__content">
                     <button class="dropdown__option" value="openRenderModal">Render</button>
@@ -160,7 +166,7 @@
         </section>
 
         <section id="bottom-ui">
-            
+            <!-- shhh go away -->
         </section>
 
         <dialog class="modal" id="import-modal">
@@ -189,13 +195,28 @@
             </div>
         </dialog>
 
+        <dialog class="modal" id="edit-dimensions-modal">
+            <div class="modal__container" autofocus>
+                <button class="modal__close-button"></button>
+
+                <h1>Edit Dimensions</h1>
+                this does not do anything!!!!! though if you already have a project file with changed level dimensions you can import it
+                <p>Note: Reducing the level size will permanently delete affected parts of the level, unless I decide to make an undo system but uhhh no</p>
+                <label for="level-width-input">Width:</label>
+                <input type="number" id="level-width-input" min="1" value="72" max="1080" />
+                <label for="level-height-input">Height:</label>
+                <input type="number" id="level-height-input" min="1" value="43" max="1075" />
+            </div>
+        </dialog>
+
         <dialog class="modal" id="render-modal">
             <div class="modal__container" autofocus>
                 <button class="modal__close-button"></button>
 
                 <h1>Render Project</h1>
-                <p>The result of a few hours of directionless experimentation.
-                This currently does not do anything that could be considered useful in any way.</p>
+                <p>
+                    no
+                </p>
 
                 <div>
                     <button id="render-project-button">Render</button>
