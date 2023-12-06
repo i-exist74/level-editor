@@ -166,7 +166,7 @@ export default class LevelView {
         this.#ctx.textBaseline = "middle";
         this.#ctx.font = `1px monospace`;
 
-        const color = ["hsla(0, 0%, 0%, 75%)", "hsla(120deg, 80%, 30%, 50%)", "hsla(180deg, 50%, 30%, 60%)"][l];
+        const color = ["#000000B0", "#008800A0", "#880000A0"][l];
         this.#ctx.fillStyle = color;
 
         // Block type

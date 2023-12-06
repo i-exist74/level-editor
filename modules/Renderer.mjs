@@ -35,6 +35,12 @@ const fragmentShaderSource = `#version 300 es
 let gl;
 let program;
 
+// todo: refactor, do stuff with this uniforms var & stuff, while i'm in a mindset in which i'm actually capable of doing anything productive
+const uniforms = {
+    worldMatrix: -1,
+    projectionMatrix: -1
+};
+
 var m4 = {
 
     perspective: function (fieldOfViewInRadians, aspect, near, far) {
@@ -188,7 +194,7 @@ var m4 = {
 
 };
 
-function initialize(canvas) {
+function initializeGL(canvas) {
     gl = canvas.getContext("webgl2");
 
     // resize canvas and GL viewport
@@ -215,12 +221,14 @@ function initialize(canvas) {
     gl.attachShader(program, vertShader);
     gl.attachShader(program, fragShader);
     gl.linkProgram(program);
+
+    gl.enable(gl.DEPTH_TEST);
 }
 
 /**
  * @param {import("LevelData.mjs").LevelData} levelData
  */
-function render(levelData) {
+function render(levelData, cameraIndex) {
     // Create VAO for a 1x1 rectangle centered around the origin
     const vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
@@ -242,15 +250,13 @@ function render(levelData) {
     gl.vertexAttribPointer(a_positionLoc, 3, gl.FLOAT, false, 0, 0);
 
 
-    // Get uniform locations
+    // matrix uniforms
     const u_worldMatrixLoc = gl.getUniformLocation(program, "u_worldMatrix");
     const u_projectionMatrixLoc = gl.getUniformLocation(program, "u_projectionMatrix");
     
     // Set up the canvas
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
-    gl.enable(gl.DEPTH_TEST);
 
     // Use our perspective 3d program to draw rectangles
     gl.useProgram(program);
@@ -259,7 +265,7 @@ function render(levelData) {
     let projectionMatrix = m4.translation(-1, -1, -1);
     projectionMatrix = m4.scale(projectionMatrix, 1 / 700, 1 / 400, 1 / 15);
     gl.uniformMatrix4fv(u_projectionMatrixLoc, false, projectionMatrix);
-
+    
     for (let x = 0; x < levelData.levelWidth; x++) {
         for (let y = 0; y < levelData.levelHeight; y++) {
             let geom = levelData.geometryAt(x, y)
@@ -289,6 +295,6 @@ function render(levelData) {
 
 
 export default {
-    init: initialize,
+    init: initializeGL,
     render: render
 };
