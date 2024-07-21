@@ -64,9 +64,6 @@ ul {
     position: relative;
     user-select: none;
 }
-#graphical-display * {
-    position: absolute;
-}
 
 #render-modal {
     width: min-content;
