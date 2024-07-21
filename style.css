@@ -70,7 +70,7 @@ ul {
 }
 
 #render-output-canvas {
-    width: 700px;
+    width: min(700px, 50vw);
     outline: 1px solid black;
 }
 
