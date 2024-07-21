@@ -21,7 +21,7 @@ body {
         "main-menu main-menu" 2rem
         "side-ui graphical-display" 1fr
         "side-ui bottom-ui" min-content /
-        minmax(30%, max-content) 1fr;
+        fit-content(30%) 1fr;
 
     background-color: rgb(35, 42, 100);
 }
