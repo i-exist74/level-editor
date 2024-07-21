@@ -39,7 +39,7 @@ export default class LevelView {
         this.#container = container;
         this.#container.append(this.#levelCanvas, this.#gridCanvas, this.#uiCanvas);
 
-        [this.#levelCanvas, this.#gridCanvas, this.#uiCanvas].forEach(canvas => {
+        [this.#uiCanvas,this.#levelCanvas, this.#gridCanvas].forEach(canvas => {
             canvas.style.position = "absolute";
             canvas.style.width = canvas.style.height = "100%";
             canvas.width = canvas.clientWidth;
