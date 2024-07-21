@@ -47,6 +47,7 @@ ul {
     background-color: rgb(28, 34, 79);
 
     padding: 1em 4em 1em 1em;
+    overflow: auto;
     color: white;
 }
 
