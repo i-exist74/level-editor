@@ -16,8 +16,6 @@ input {
 
 /* Page Layout */
 body {
-    overflow: hidden;
-
     display: grid;
     grid-template:
         "main-menu main-menu" 2rem
