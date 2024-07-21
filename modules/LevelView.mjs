@@ -44,7 +44,7 @@ export default class LevelView {
             canvas.style.width = canvas.style.height = "100%";
             canvas.width = canvas.clientWidth;
             canvas.height = canvas.clientHeight;
-            alert(`${canvas.width}, ${canvas.height}`);
+            alert(`${canvas.clientWidth} ${canvas.width}, ${canvas.clientHeight} ${canvas.height}`);
         });
 
         this.width = this.#levelCanvas.width;
