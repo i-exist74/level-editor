@@ -44,6 +44,7 @@ export default class LevelView {
             canvas.width = canvas.clientWidth;
             canvas.height = canvas.clientHeight;
             canvas.style.position = "absolute";
+            alert(`${canvas.style.clientWidth}, ${canvas.style.clientHeight}, ${canvas.width}, ${canvas.height}`);
         });
 
         this.width = this.#levelCanvas.width;
