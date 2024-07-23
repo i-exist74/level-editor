@@ -435,7 +435,7 @@ export default class LevelView {
 
         const tile = this.#screenToLevelCoords(e.offsetX, e.offsetY);
         if (!this.levelData.isInBounds(tile)) return;
-        if (this.#selection && this.#selection.x1 === tile.x && this.#selection.y1 === tile.y) return;
+        if (this.#selection && this.#selection.x2 === tile.x && this.#selection.y2 === tile.y) return;
 
         if (this.#selectionType === "rect" && this.#initiatedRectSelection) {
             // Move point 2 of targeted rect
