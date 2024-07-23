@@ -77,8 +77,8 @@ export default class LevelView {
         this.#resetCamera();
         this.#repaintAll();
         
-        this.#container.addEventListener("mousedown", e => this.#onMouseDown(e));
-        this.#container.addEventListener("mousemove", e => this.#onMouseMove(e));
+        this.#container.addEventListener("pointerdown", e => this.#onMouseDown(e));
+        this.#container.addEventListener("pointermove", e => this.#onMouseMove(e));
         this.#container.addEventListener("wheel", e => this.#onMouseWheel(e));
         this.#container.oncontextmenu = () => false;
     }
