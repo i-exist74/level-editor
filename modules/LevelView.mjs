@@ -50,6 +50,7 @@ export default class LevelView {
                 canvas.height = canvas.clientHeight;
                 this.width = canvas.width;
                 this.height = canvas.height;
+                this.#repaintAll();
             });
         });
         observer.observe(this.#levelCanvas);
