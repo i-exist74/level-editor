@@ -410,6 +410,8 @@ export default class LevelView {
         if (this.#selectionType === "rect") {
             // Rect selection behavior
             if (this.#initiatedRectSelection) {
+                this.#selection.x2 = tile.x;
+                this.#selection.y2 = tile.y;
                 this.#performEditAction(e.altKey);
                 this.#initiatedRectSelection = false;
             } else {
@@ -436,9 +438,9 @@ export default class LevelView {
         if (this.#selection && this.#selection.x1 === tile.x && this.#selection.y1 === tile.y) return;
 
         if (this.#selectionType === "rect" && this.#initiatedRectSelection) {
-            // Move targeted rect
-            this.#selection.x1 = tile.x;
-            this.#selection.y1 = tile.y;
+            // Move point 2 of targeted rect
+            this.#selection.x2 = tile.x;
+            this.#selection.y2 = tile.y;
         } else {
             // Target mouse position when idle
             this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
