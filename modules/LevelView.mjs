@@ -227,7 +227,7 @@ export default class LevelView {
             this.#ctx.fillText("C", x + 0.5, y + 0.5);
         }
         if (geo & Geometry.garbageWormHole) {
-            this.#ctx.fillStyle = "#3CB04C";
+            this.#ctx.fillStyle = "rgb(60, 132, 76)";
             this.#ctx.fillText("G", x + 0.5, y + 0.5);
         }
         if (geo & Geometry.horizontalPole) {
@@ -239,13 +239,13 @@ export default class LevelView {
             this.#ctx.fillRect(x + 0.4, y, 0.2, 1);
         }
         if (geo & Geometry.rock) {
-            this.#ctx.fillStyle = "#222";
+            this.#ctx.fillStyle = "rgb(32, 32, 32)";
             this.#ctx.beginPath();
             this.#ctx.ellipse(x + 0.5, y + 0.75, 1 * 0.25, 1 * 0.25, 0, 0, Math.PI * 2);
             this.#ctx.fill();
         }
         if (geo & Geometry.spear) {
-            this.#ctx.strokeStyle = "#222";
+            this.#ctx.strokeStyle = "rgb(32, 32, 32)";
             this.#ctx.lineWidth = 0.05;
             this.#ctx.beginPath();
             this.#ctx.moveTo(x, y + 1);
@@ -266,7 +266,7 @@ export default class LevelView {
         }
         if (geo & Geometry.wormGrass) {
             let r = 0.1;
-            this.#ctx.fillStyle = "#B22222";
+            this.#ctx.fillStyle = "rgb(178, 32, 32)";
             for (let curX = (x + 1 / 6); curX <= (x + 5 / 6); curX += 1 / 3) {
                 this.#ctx.beginPath();
                 this.#ctx.rect(curX - r, y + r, r * 2, 1 - r);
@@ -275,7 +275,7 @@ export default class LevelView {
             }
         }
         if (geo & Geometry.waterfall) {
-            this.#ctx.fillStyle = "#4169E1";
+            this.#ctx.fillStyle = "rgb(65, 101, 225)";
             this.#ctx.fillText("W", x + 0.5, y + 0.5);
         }
         if (geo & Geometry.forbidFlyChains) {
@@ -299,9 +299,9 @@ export default class LevelView {
             case Geometry.playerEntrance:
                 strokeStyle = "white";
             case Geometry.dragonDen:
-                strokeStyle ||= "#3CB04C";
+                strokeStyle ||= "rgb(60, 176, 76)";
             case Geometry.scavengerHole:
-                strokeStyle ||= "#795C34";
+                strokeStyle ||= "rgb(121, 92, 52)";
 
                 this.#ctx.beginPath();
                 this.#ctx.ellipse(x + 0.5, y + 0.5, 0.4, 0.4, 0, 0, Math.PI * 2);
@@ -311,7 +311,7 @@ export default class LevelView {
                 break;
 
             case Geometry.whackAMoleHole:
-                this.#ctx.fillStyle = "#FFA500";
+                this.#ctx.fillStyle = "rgb(255, 165, 0)";
                 this.#ctx.beginPath();
                 this.#ctx.moveTo(x + 0.5, y);
                 this.#ctx.lineTo(x + 1, y + 0.5);
