@@ -63,6 +63,7 @@ ul {
     background-color: #AAA;
     position: relative;
     user-select: none;
+    touch-action: none;
 }
 
 #render-modal {
