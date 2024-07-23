@@ -16,6 +16,9 @@ export default class LevelView {
     zoom; // effective zoom value (rounded to int)
     #rawZoom; // un-rounded zoom value is stored
     pan;
+    
+    // For detecting two pointer zoom/drag gestures
+    #activePointerIds = [];
 
     // Selection/editing
     #selection = {};
@@ -77,8 +80,8 @@ export default class LevelView {
         this.#resetCamera();
         this.#repaintAll();
         
-        this.#container.addEventListener("pointerdown", e => this.#onMouseDown(e));
-        this.#container.addEventListener("pointermove", e => this.#onMouseMove(e));
+        this.#container.addEventListener("pointerdown", e => this.#onPointerDown(e));
+        this.#container.addEventListener("pointermove", e => this.#onPointerMove(e));
         this.#container.addEventListener("wheel", e => this.#onMouseWheel(e));
         this.#container.oncontextmenu = () => false;
     }
@@ -397,7 +400,7 @@ export default class LevelView {
 
 
     /* UI */
-    #onMouseDown(e) {
+    #onPointerDown(e) {
         if (e.shiftKey) return;
 
         const tile = this.#screenToLevelCoords(e.offsetX, e.offsetY);
@@ -421,7 +424,7 @@ export default class LevelView {
 
         this.#repaintUI();
     }
-    #onMouseMove(e) {
+    #onPointerMove(e) {
         if (e.shiftKey && (e.buttons & 1)) {
             // Shift + drag: adjust pan
             this.adjustPan(e.movementX, e.movementY);
