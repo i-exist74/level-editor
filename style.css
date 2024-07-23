@@ -46,6 +46,7 @@ ul {
     grid-area: side-ui;
     background-color: rgb(28, 34, 79);
 
+    font-size: 1rem;
     padding: 1em 4em 1em 1em;
     overflow: auto;
     color: white;
