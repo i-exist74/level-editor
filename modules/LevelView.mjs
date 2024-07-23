@@ -464,7 +464,7 @@ export default class LevelView {
         if (this.#initiatedRectSelection) {
             this.#performEditAction();
             this.#initiatedRectSelection = false;
-            this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
+            //this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
         }
     }
     #onMouseWheel(e) {
