@@ -82,6 +82,7 @@ export default class LevelView {
         
         this.#container.addEventListener("pointerdown", e => this.#onPointerDown(e));
         this.#container.addEventListener("pointermove", e => this.#onPointerMove(e));
+        this.#container.addEventListener("pointerup", e => this.#onPointerUp(e));
         this.#container.addEventListener("wheel", e => this.#onMouseWheel(e));
         this.#container.oncontextmenu = () => false;
     }
@@ -409,15 +410,17 @@ export default class LevelView {
         // Handle selection
         if (this.#selectionType === "rect") {
             // Rect selection behavior
-            if (this.#initiatedRectSelection) {
-                this.#selection.x2 = tile.x;
-                this.#selection.y2 = tile.y;
+            if (!this.#initiatedRectSelection) {
+                this.#initiatedRectSelection = true;
+                this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
+            } else if (e.pointerType === "mouse") {
                 this.#performEditAction(e.altKey);
                 this.#initiatedRectSelection = false;
+                this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
             } else {
-                this.#initiatedRectSelection = true;
+                this.#selection.x2 = tile.x;
+                this.#selection.y2 = tile.y;
             }
-            this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
         } else if (this.#selectionType === "paint") {
             // Paint selection behavior
             this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
@@ -454,6 +457,15 @@ export default class LevelView {
             }
         }
         this.#repaintUI();
+    }
+    #onPointerUp(e) {
+        if (e.pointerType === "mouse") return;
+        
+        if (this.#initiatedRectSelection) {
+            this.#performEditAction();
+            this.#initiatedRectSelection = false;
+            this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
+        }
     }
     #onMouseWheel(e) {
         this.adjustZoom(-e.deltaY * 0.008, e.offsetX, e.offsetY);
