@@ -42,7 +42,6 @@ export default class LevelView {
         [this.#levelCanvas, this.#gridCanvas, this.#uiCanvas].forEach(canvas => {
             canvas.style.position = "absolute";
             canvas.style.width = canvas.style.height = "100%";
-            //alert(`${canvas.width}, ${canvas.height}`);
         });
         const observer = new ResizeObserver((entries) => {
             entries.forEach(({target: canvas}) => {
