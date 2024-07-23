@@ -440,7 +440,10 @@ export default class LevelView {
             // Target mouse position when idle
             this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
 
-            if (this.#selectionType === "paint" && e.buttons > 0) {
+            if (
+                this.#selectionType === "paint" &&
+                (e.buttons > 0 || e.pointerType !== "mouse")
+            ) {
                 // Paint if mouse pressed
                 this.#performEditAction(e.altKey);
             }
