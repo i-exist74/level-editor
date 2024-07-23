@@ -48,6 +48,8 @@ export default class LevelView {
             entries.forEach(({target: canvas}) => {
                 canvas.width = canvas.clientWidth;
                 canvas.height = canvas.clientHeight;
+                this.width = canvas.width;
+                this.height = canvas.height;
             });
         });
         observer.observe(this.#levelCanvas);
