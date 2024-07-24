@@ -30,6 +30,7 @@ body {
 
 ul {
     /*padding-left: 1em;*/
+    list-style-position: inside;
 }
 
 #main-menu {
