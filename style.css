@@ -12,6 +12,8 @@ html, body {
 
 input {
     vertical-align: middle;
+    width: 1em;
+    height: 1em;
 }
 
 /* Page Layout */
@@ -45,7 +47,8 @@ ul {
 #side-ui {
     grid-area: side-ui;
     background-color: rgb(28, 34, 79);
-
+    
+    font-size: min(1em, 20%);
     padding: 1em;
     overflow: auto;
     color: white;
