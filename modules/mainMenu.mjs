@@ -21,7 +21,7 @@ menuButtons.forEach(btn => {
 });
 
 // for mobile - focus button when clicked
-document.addEventListener("click", e => {
+document.addEventListener("touchstart", e => {
     if (
         !e.target.classList.contains("dropdown__button") &&
         !e.target.classList.contains("dropdown__option")
