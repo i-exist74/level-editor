@@ -20,11 +20,17 @@ menuButtons.forEach(btn => {
     }
 });
 
-document.addEventListener("click", e => {
-    if (e.target.classList.contains("dropdown__button")) {
+document.addEventListener("pointerdown", e => {
+    /*if (e.target.classList.contains("dropdown__button")) {
         e.target.parentNode.classList.toggle("open");
     } else if (e.target.classList.contains("dropdown__option")) {
         
+    }*/
+    if (
+        e.target.classList.contains("dropdown__button") ||
+        e.target.classList.contains("dropdown__content")
+    ) {
+        e.target.focus();
     }
 });
 
