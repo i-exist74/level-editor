@@ -130,7 +130,7 @@ ul {
 .modal {
     background-color: transparent;
     border: none;
-    width: max(300px, 30%);
+    width: min(20em, 60%);
     margin: auto;
 }
 .modal__container {
