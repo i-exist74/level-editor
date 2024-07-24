@@ -5,19 +5,22 @@ const editDimensionsModal = document.getElementById("edit-dimensions-modal");
 
 const menuButtons = document.querySelectorAll("#main-menu .dropdown__option");
 menuButtons.forEach(btn => {
+    let modal;
     switch (btn.value) {
         case "openImportModal":
-            btn.addEventListener("touchend", e => importModal.showModal());
+            modal = importModal;
             break;
         case "openExportModal":
-            btn.addEventListener("click", e => exportModal.showModal());
+            modal = exportModal;
             break;
         case "openRenderModal":
-            btn.addEventListener("click", e => renderModal.showModal());
+            modal = renderModal;
             break;
         case "openEditDimensionsModal":
-            btn.addEventListener("click", e => editDimensionsModal.showModal());
+            modal = editDimensionsModal;
     }
+    btn.addEventListener("touchend", e => modal.openModal());
+    btn.addEventListener("click", e => modal.openModal());
 });
 
 document.addEventListener("click", e => {
