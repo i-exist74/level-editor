@@ -20,6 +20,8 @@ menuButtons.forEach(btn => {
             modal = editDimensionsModal;
     }
     btn.addEventListener("click", e => modal.showModal());
+    // I don't know why just the click handler doesn't work for mobile;
+    // if I tap on an option it just defocuses the dropdown button and the click handler doesn't trigger
     btn.addEventListener("touchend", e => modal.showModal());
 });
 
@@ -29,6 +31,9 @@ document.addEventListener("click", e => {
     } else if (e.target.classList.contains("dropdown__option")) {
         
     }*/
+    if (document.activeElement && e.target !== document.activeElement) {
+        document.activeElement.blur();
+    }
     if (
         e.target.classList.contains("dropdown__button") ||
         e.target.classList.contains("dropdown__option")
