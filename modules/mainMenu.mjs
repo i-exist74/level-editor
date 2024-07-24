@@ -20,6 +20,7 @@ menuButtons.forEach(btn => {
     }
 });
 
+// for mobile - focus button when clicked
 document.addEventListener("click", e => {
     if (
         !e.target.classList.contains("dropdown__button") &&
