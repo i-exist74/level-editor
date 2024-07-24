@@ -19,8 +19,8 @@ menuButtons.forEach(btn => {
         case "openEditDimensionsModal":
             modal = editDimensionsModal;
     }
-    btn.addEventListener("click", e => modal.openModal());
-    btn.addEventListener("touchend", e => modal.openModal());
+    btn.addEventListener("click", e => modal.showModal());
+    btn.addEventListener("touchend", e => modal.showModal());
 });
 
 document.addEventListener("click", e => {
