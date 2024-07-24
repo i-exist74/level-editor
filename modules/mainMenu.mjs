@@ -20,13 +20,11 @@ menuButtons.forEach(btn => {
     }
 });
 
-// for mobile - focus button when clicked
-document.addEventListener("touchstart", e => {
-    if (
-        !e.target.classList.contains("dropdown__button") &&
-        !e.target.classList.contains("dropdown__option")
-    ) return;
-    
-    e.target.focus();
+document.addEventListener("click", e => {
+    if (e.target.classList.contains("dropdown__button")) {
+        e.target.parentNode.classList.toggle("open");
+    } else if (e.target.classList.contains("dropdown__option")) {
+        
+    }
 });
 
