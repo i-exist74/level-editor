@@ -20,3 +20,12 @@ menuButtons.forEach(btn => {
     }
 });
 
+document.addEventListener("click", e => {
+    if (
+        !e.target.classList.contains("dropdown__button") &&
+        !e.target.classList.contains("dropdown__option")
+    ) return;
+    
+    e.target.focus();
+});
+
