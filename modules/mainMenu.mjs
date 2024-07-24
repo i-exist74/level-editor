@@ -7,21 +7,21 @@ const menuButtons = document.querySelectorAll("#main-menu .dropdown__option");
 menuButtons.forEach(btn => {
     switch (btn.value) {
         case "openImportModal":
-            btn.addEventListener("click", e => alert(1) + importModal.showModal() + alert(2));
+            btn.addEventListener("pointerup", e => alert(1) + importModal.showModal() + alert(2));
             break;
         case "openExportModal":
-            btn.addEventListener("click", e => exportModal.showModal());
+            btn.addEventListener("pointerup", e => exportModal.showModal());
             break;
         case "openRenderModal":
-            btn.addEventListener("click", e => renderModal.showModal());
+            btn.addEventListener("pointerup", e => renderModal.showModal());
             break;
         case "openEditDimensionsModal":
-            btn.addEventListener("click", e => editDimensionsModal.showModal());
+            btn.addEventListener("pointerup", e => editDimensionsModal.showModal());
     }
 });
 
 // for mobile - focus button when clicked
-document.addEventListener("click", e => {
+document.addEventListener("pointerup", e => {
     if (
         !e.target.classList.contains("dropdown__button") &&
         !e.target.classList.contains("dropdown__option")
