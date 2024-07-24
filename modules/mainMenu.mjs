@@ -20,7 +20,7 @@ menuButtons.forEach(btn => {
     }
 });
 
-document.addEventListener("pointerdown", e => {
+document.addEventListener("touchstart", e => {
     /*if (e.target.classList.contains("dropdown__button")) {
         e.target.parentNode.classList.toggle("open");
     } else if (e.target.classList.contains("dropdown__option")) {
