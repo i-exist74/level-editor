@@ -7,7 +7,7 @@ const menuButtons = document.querySelectorAll("#main-menu .dropdown__option");
 menuButtons.forEach(btn => {
     switch (btn.value) {
         case "openImportModal":
-            btn.addEventListener("pointerup", e => alert(1) + importModal.showModal() + alert(2));
+            btn.addEventListener("pointerup", e => importModal.showModal());
             break;
         case "openExportModal":
             btn.addEventListener("pointerup", e => exportModal.showModal());
