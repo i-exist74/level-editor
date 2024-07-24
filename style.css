@@ -12,8 +12,8 @@ html, body {
 
 input {
     vertical-align: middle;
-    width: 1em;
-    height: 1em;
+    /*width: 1em;
+    height: 1em;*/
 }
 
 /* Page Layout */
