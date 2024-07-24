@@ -29,7 +29,7 @@ body {
 }
 
 ul {
-    padding-left: 1em;
+    /*padding-left: 1em;*/
 }
 
 #main-menu {
@@ -48,7 +48,7 @@ ul {
     grid-area: side-ui;
     background-color: rgb(28, 34, 79);
     
-    font-size: min(1rem, 2vw);
+    font-size: min(1rem, 4vw);
     padding: 1em;
     overflow: auto;
     color: white;
