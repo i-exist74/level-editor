@@ -91,16 +91,16 @@ ul {
     color: white;
 }
 .dropdown__button:hover,
-.dropdown/*:focus-within*/.open .dropdown__button {
+.dropdown:focus-within/*.open*/ .dropdown__button {
     background-color: #444;
     outline: 1px solid #BBB;
 }
-/*.dropdown:focus-within .dropdown__content {
-    display: flex;
-}*/
-.dropdown.open .dropdown__content {
+.dropdown:focus-within .dropdown__content {
     display: flex;
 }
+/*.dropdown.open .dropdown__content {
+    display: flex;
+}*/
 .dropdown__content {
     display: none;
     position: absolute;
