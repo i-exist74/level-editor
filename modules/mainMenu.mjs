@@ -28,7 +28,7 @@ document.addEventListener("pointerdown", e => {
     }*/
     if (
         e.target.classList.contains("dropdown__button") ||
-        e.target.classList.contains("dropdown__content")
+        e.target.classList.contains("dropdown__option")
     ) {
         e.target.focus();
     }
