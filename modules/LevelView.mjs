@@ -430,15 +430,14 @@ export default class LevelView {
         this.#repaintUI();
     }
     #onPointerMove(e) {
-        try{
         if ((e.shiftKey || this.#tool.action === "none") &&
             (e.buttons & 1 || e.pointerType !== "mouse")
         ) {
             // Shift + drag: adjust pan
+alert(e.movementX + ", " + e.movementY);
             this.adjustPan(e.movementX, e.movementY);
             return;
         }
-        }catch(er){alert(er+e.movementX+" "+e.movementY)}
 
         const tile = this.#screenToLevelCoords(e.offsetX, e.offsetY);
         if (!this.levelData.isInBounds(tile)) return;
