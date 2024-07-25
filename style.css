@@ -137,6 +137,7 @@ ul {
     padding: 1.5em 0.8em;
     background-color: white;
     border-radius: 10px;
+    font-size: min(1rem, 5vw);
 }/*
 .modal__container {
     padding: 1.5em 0.8em;
