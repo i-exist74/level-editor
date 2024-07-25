@@ -445,7 +445,7 @@ export default class LevelView {
             } else {
                 // movementX/Y is undefined on mobile for some reason
                 // so we calculate movement using the previous position of the pointer
-                const pointerData = this.#pointerCache.find(ev => ev.id === e.pointerId);
+                const pointerData = this.#pointerCache.find(pointer => pointer.id === e.pointerId);
                 const { x: prevX, y: prevY } = pointerData;
                 this.adjustPan(e.offsetX - prevX, e.offsetY - prevY);
                 pointerData.x = e.offsetX;
@@ -480,7 +480,7 @@ export default class LevelView {
         if (e.pointerType === "mouse") return;
         
         this.#pointerCache.splice(
-            this.#pointerCache.findIndex(ev => ev.id === e.pointerId),
+            this.#pointerCache.findIndex(pointer => pointer.id === e.pointerId),
             1);
         
         if (this.#tool.action === "none") return;
