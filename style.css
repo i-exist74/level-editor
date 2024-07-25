@@ -134,12 +134,15 @@ ul {
     border: none;
     width: min(20em, 60%);
     margin: auto;
-}
+    padding: 1.5em 0.8em;
+    background-color: white;
+    border-radius: 10px;
+}/*
 .modal__container {
     padding: 1.5em 0.8em;
     background-color: white;
     border-radius: 10px;
-}
+}*/
 .modal::backdrop {
     background-color: #0006;
 }
