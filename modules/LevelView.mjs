@@ -17,9 +17,8 @@ export default class LevelView {
     #rawZoom; // un-rounded zoom value is stored
     pan;
     
-    // For detecting two pointer zoom/drag gestures
-    // (and for calculating touch movement cause movementX/Y is undefined on mobile for some reason)
-    #pointerEventCache = [];
+    // For zoom/drag gesture behavior
+    #pointerCache = [];
 
     // Selection/editing
     #selection = {};
@@ -404,10 +403,10 @@ export default class LevelView {
     /* UI */
     #onPointerDown(e) {
         if (e.pointerType !== "mouse") {
-            this.#pointerEventCache.push({
+            this.#pointerCache.push({
                 id: e.pointerId,
-                offsetX: e.offsetX,
-                offsetY: e.offsetY
+                x: e.offsetX,
+                y: e.offsetY
             });
         }
         if (e.shiftKey || this.#tool.action === "none") return;
@@ -444,12 +443,13 @@ export default class LevelView {
             if (e.movementX !== undefined) {
                 this.adjustPan(e.movementX, e.movementY);
             } else {
-                const index = 
-                    this.#pointerEventCache.findIndex(ev => ev.pointerId === e.pointerId);
-                const { offsetX: prevX, offsetY: prevY } = this.#pointerEventCache[index];
+                // movementX/Y is undefined on mobile for some reason
+                // so we calculate movement using the previous position of the pointer
+                const pointerData = this.#pointerCache.find(ev => ev.id === e.pointerId);
+                const { x: prevX, y: prevY } = pointerData;
                 this.adjustPan(e.offsetX - prevX, e.offsetY - prevY);
-                this.#pointerEventCache[index].offsetX = offsetX;
-                this.#pointerEventCache[index].offsetY = offsetY;
+                pointerData.x = e.offsetX;
+                pointerData.y = e.offsetY;
             }
             return;
         }
@@ -479,8 +479,8 @@ export default class LevelView {
     #onPointerUp(e) {
         if (e.pointerType === "mouse") return;
         
-        this.#pointerEventCache.splice(
-            this.#pointerEventCache.findIndex(ev => ev.pointerId === e.pointerId),
+        this.#pointerCache.splice(
+            this.#pointerCache.findIndex(ev => ev.id === e.pointerId),
             1);
         
         if (this.#tool.action === "none") return;
