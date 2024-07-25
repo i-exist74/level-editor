@@ -149,6 +149,7 @@ ul {
 }
 .modal h1 {
     text-align: center;
+    font-size: min(2em, 7vw)
 }
 .modal p {
     margin: 0.5em 0 0.5em 0;
