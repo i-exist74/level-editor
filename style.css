@@ -130,7 +130,7 @@ ul {
 
 /* Modal behavior */
 .modal {
-    background-color: transparent;
+    /*background-color: transparent;*/
     border: none;
     width: min(20em, 60%);
     margin: auto;
