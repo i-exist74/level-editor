@@ -10,7 +10,7 @@ html, body {
     height: 100%;
 }
 
-input {
+input[type=radio] {
     vertical-align: middle;
     width: 1em;
     height: 1em;
