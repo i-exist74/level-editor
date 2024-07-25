@@ -18,7 +18,8 @@ export default class LevelView {
     pan;
     
     // For detecting two pointer zoom/drag gestures
-    #activePointerIds = [];
+    // (and for calculating touch movement cause movementX/Y is undefined on mobile for some reason)
+    #pointerEventCache = [];
 
     // Selection/editing
     #selection = {};
@@ -402,6 +403,9 @@ export default class LevelView {
 
     /* UI */
     #onPointerDown(e) {
+        if (e.pointerType !== "mouse") {
+            this.#pointerEventCache.push(e);
+        }
         if (e.shiftKey || this.#tool.action === "none") return;
 
         const tile = this.#screenToLevelCoords(e.offsetX, e.offsetY);
@@ -433,9 +437,13 @@ export default class LevelView {
         if ((e.shiftKey || this.#tool.action === "none") &&
             (e.buttons & 1 || e.pointerType !== "mouse")
         ) {
-            // Shift + drag: adjust pan
-alert(e.movementX + ", " + e.movementY);
-            this.adjustPan(e.movementX, e.movementY);
+            if (e.movementX !== undefined) {
+                this.adjustPan(e.movementX, e.movementY);
+            } else {
+                const { offsetX: prevX, offsetY: prevY } =
+                    this.#pointerEventCache.findIndex(ev => ev.pointerId === e.pointerId);
+                this.adjustPan(e.offsetX - prevX, e.offsetY - prevY);
+            }
             return;
         }
 
@@ -463,6 +471,11 @@ alert(e.movementX + ", " + e.movementY);
     }
     #onPointerUp(e) {
         if (e.pointerType === "mouse") return;
+        
+        this.#pointerEventCache.splice(
+            this.#pointerEventCache.findIndex(ev => ev.pointerId === e.pointerId),
+            1);
+        
         if (this.#tool.action === "none") return;
         
         if (this.#initiatedRectSelection) {
