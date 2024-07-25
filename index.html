@@ -170,7 +170,6 @@
         </section>
 
         <dialog class="modal" id="import-modal">
-            <div class="modal__container">
                 <button class="modal__close-button"></button>
 
                 <h1>Import Project</h1>
@@ -181,36 +180,30 @@
                     <input type="file" id="project-file-input" accept=".txt" autofocus />
                     <button id="import-project-button">Load project</button>
                 </div>
-            </div>
         </dialog>
 
         <dialog class="modal" id="export-modal">
-            <div class="modal__container" autofocus>
                 <button class="modal__close-button"></button>
 
                 <h1>Export Project</h1>
                 <p>Copy the text output into your leditor project file to continue work on an official-based editor.</p>
                 <textarea></textarea>
-                <button id="export-project-button">Export project</button>
-            </div>
+                <button id="export-project-button" autofocus>Export project</button>
         </dialog>
 
         <dialog class="modal" id="edit-dimensions-modal">
-            <div class="modal__container" autofocus>
                 <button class="modal__close-button"></button>
 
                 <h1>Edit Dimensions</h1>
                 this does not do anything!!!!! though if you already have a project file with changed level dimensions you can import it
                 <p>Note: Reducing the level size will permanently delete affected parts of the level, unless I decide to make an undo system but uhhh no</p>
                 <label for="level-width-input">Width:</label>
-                <input type="number" id="level-width-input" min="1" value="72" max="1080" />
+                <input type="number" id="level-width-input" min="1" value="72" max="1080" autofocus />
                 <label for="level-height-input">Height:</label>
                 <input type="number" id="level-height-input" min="1" value="43" max="1075" />
-            </div>
         </dialog>
 
         <dialog class="modal" id="render-modal">
-            <div class="modal__container" autofocus>
                 <button class="modal__close-button"></button>
 
                 <h1>Render Project</h1>
@@ -219,11 +212,10 @@
                 </p>
 
                 <div>
-                    <button id="render-project-button">Render</button>
+                    <button id="render-project-button" autofocus>Render</button>
                 </div>
 
                 <canvas id="render-output-canvas"></canvas>
-            </div>
         </dialog>
 
         <div id="graphical-display"></div>
