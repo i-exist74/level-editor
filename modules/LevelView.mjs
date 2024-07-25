@@ -434,7 +434,9 @@ export default class LevelView {
             (e.buttons & 1 || e.pointerType !== "mouse")
         ) {
             // Shift + drag: adjust pan
-            this.adjustPan(e.movementX, e.movementY);
+            alert(e.movementX);
+            try this.adjustPan(e.movementX, e.movementY);
+            catch (e) alert(e);
             return;
         }
 
