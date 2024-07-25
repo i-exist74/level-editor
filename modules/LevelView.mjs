@@ -404,7 +404,11 @@ export default class LevelView {
     /* UI */
     #onPointerDown(e) {
         if (e.pointerType !== "mouse") {
-            this.#pointerEventCache.push(e);
+            this.#pointerEventCache.push({
+                id: e.pointerId,
+                offsetX: e.offsetX,
+                offsetY: e.offsetY
+            });
         }
         if (e.shiftKey || this.#tool.action === "none") return;
 
@@ -444,7 +448,8 @@ export default class LevelView {
                     this.#pointerEventCache.findIndex(ev => ev.pointerId === e.pointerId);
                 const { offsetX: prevX, offsetY: prevY } = this.#pointerEventCache[index];
                 this.adjustPan(e.offsetX - prevX, e.offsetY - prevY);
-                this.#pointerEventCache.splice(index, 1, e);
+                this.#pointerEventCache[index].offsetX = offsetX;
+                this.#pointerEventCache[index].offsetY = offsetY;
             }
             return;
         }
