@@ -402,7 +402,7 @@ export default class LevelView {
 
     /* UI */
     #onPointerDown(e) {
-        if (e.shiftKey) return;
+        if (e.shiftKey || this.#tool.action === "none") return;
 
         const tile = this.#screenToLevelCoords(e.offsetX, e.offsetY);
         if (!this.levelData.isInBounds(tile)) return;
@@ -430,7 +430,9 @@ export default class LevelView {
         this.#repaintUI();
     }
     #onPointerMove(e) {
-        if (e.shiftKey && (e.buttons & 1)) {
+        if ((e.shiftKey || this.#tool.action === "none") &&
+            (e.buttons & 1 || e.pointerType !== "mouse")
+        ) {
             // Shift + drag: adjust pan
             this.adjustPan(e.movementX, e.movementY);
             return;
@@ -460,6 +462,7 @@ export default class LevelView {
     }
     #onPointerUp(e) {
         if (e.pointerType === "mouse") return;
+        if (this.#tool.action === "none") return;
         
         if (this.#initiatedRectSelection) {
             this.#performEditAction();
