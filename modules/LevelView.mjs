@@ -440,9 +440,11 @@ export default class LevelView {
             if (e.movementX !== undefined) {
                 this.adjustPan(e.movementX, e.movementY);
             } else {
-                const { offsetX: prevX, offsetY: prevY } =
-                    this.#pointerEventCache.find(ev => ev.pointerId === e.pointerId);
+                const index = 
+                    this.#pointerEventCache.findIndex(ev => ev.pointerId === e.pointerId);
+                const { offsetX: prevX, offsetY: prevY } = this.#pointerEventCache[index];
                 this.adjustPan(e.offsetX - prevX, e.offsetY - prevY);
+                this.#pointerEventIndex.splice(index, 1, e);
             }
             return;
         }
