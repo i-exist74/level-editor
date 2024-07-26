@@ -19,7 +19,7 @@ export default class LevelView {
     
     // For zoom/drag gesture behavior
     #pointerCache = [];
-    #prevDistBetweenPointers = 0;
+    #prevSqDistBetweenPointers = 0;
 
     // Selection/editing
     #selection = {};
@@ -418,8 +418,8 @@ export default class LevelView {
             });
             if (this.#pointerCache.length === 2) {
                 const [a, b] = this.#pointerCache;
-                this.#prevDistBetweenPointers =
-                    Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
+                this.#prevSqDistBetweenPointers =
+                    (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
             }
         }
         if (e.shiftKey || this.#tool.action === "none") return;
@@ -467,12 +467,13 @@ export default class LevelView {
             }
             if (this.#tool.action === "none" && this.#pointerCache.length === 2) {
                 const [a, b] = this.#pointerCache;
-                const newDist = Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
+                const newSqDist = (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
                 this.adjustZoom(
-                    newDist - this.#prevDistBetweenPointers,
-                    (a.x + b.x) / 2, (a.y + b.y) / 2
+                    Math.sqrt(newSqDist / this.#prevSqDistBetweenPointers),
+                    (a.x + b.x) / 2, (a.y + b.y) / 2,
+                    true
                 );
-                this.#prevDistBetweenPointers = newDist;
+                this.#prevSqDistBetweenPointers = newSqDist;
             }
             return;
         }
@@ -575,8 +576,8 @@ export default class LevelView {
         this.#calculateOnscreenLevelBoundaries();
         this.#repaintAll();
     }
-    adjustZoom(value, pivotX, pivotY) {
-        this.#rawZoom += value;
+    adjustZoom(value, pivotX, pivotY, multiply = false) {
+        this.#rawZoom = multiply ? this.#rawZoom * value : this.#rawZoom + value;
         this.#rawZoom = Math.max(Math.min(this.#rawZoom, this.maxZoom), this.minZoom);
         this.setZoom(this.#rawZoom, pivotX, pivotY);
     }
