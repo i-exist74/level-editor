@@ -19,7 +19,7 @@ export default class LevelView {
     
     // For zoom/drag gesture behavior
     #pointerCache = [];
-    #prevSqDistBetweenPointers = 0;
+    #prevDistBetweenPointers = 0;
 
     // Selection/editing
     #selection = {};
@@ -418,8 +418,8 @@ export default class LevelView {
             });
             if (this.#pointerCache.length === 2) {
                 const [a, b] = this.#pointerCache;
-                this.#prevSqDistBetweenPointers =
-                    (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
+                this.#prevDistBetweenPointers =
+                    Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
             }
         }
         if (e.shiftKey || this.#tool.action === "none") return;
@@ -467,12 +467,12 @@ export default class LevelView {
             }
             if (this.#tool.action === "none" && this.#pointerCache.length === 2) {
                 const [a, b] = this.#pointerCache;
-                const newSqDist = (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
+                const newDist = Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
                 this.adjustZoom(
-                    Math.sqrt(newSqDist / this.#prevSqDistBetweenPointers),
+                    newDist - this.#prevDistBetweenPointers,
                     (a.x + b.x) / 2, (a.y + b.y) / 2
                 );
-                this.#prevSqDistBetweenPointers = newSqDist;
+                this.#prevDistBetweenPointers = newDist;
             }
             return;
         }
