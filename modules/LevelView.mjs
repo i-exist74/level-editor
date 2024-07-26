@@ -189,6 +189,13 @@ export default class LevelView {
             case Geometry.wall:
                 this.#ctx.fillRect(x, y, 1, 1);
                 break;
+            case Geometry.glassWall:
+                for (let x = 0; x < 1; x += 0.25) {
+                    for (let y = 0.125; y < 1; y += 0.25) {
+                        this.#ctx.fillRect(x, y, 0.125, 0.125);
+                    }
+                }
+                break;
             case Geometry.slopeNE:
                 this.#ctx.beginPath();
                 this.#ctx.moveTo(x, y);
