@@ -13,7 +13,8 @@ html, body {
 input {
     vertical-align: middle;
 }
-input[type=radio] {
+input[type=radio],
+input[type=checkbox] {
     width: 1em;
     height: 1em;
 }
@@ -51,7 +52,7 @@ ul {
     grid-area: side-ui;
     background-color: rgb(28, 34, 79);
     
-    font-size: min(1rem, 2vh);
+    font-size: min(1rem, 3vh);
     padding: 1em;
     overflow: auto;
     color: white;
