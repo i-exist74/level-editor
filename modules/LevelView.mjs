@@ -465,7 +465,7 @@ export default class LevelView {
                 pointerData.x = e.offsetX;
                 pointerData.y = e.offsetY;
             }
-            if (this.#tool.action === "none" && this.#pointerCache.length === 2 {
+            if (this.#tool.action === "none" && this.#pointerCache.length === 2) {
                 const [a, b] = this.#pointerCache;
                 const newSqDist = (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
                 this.adjustZoom(
