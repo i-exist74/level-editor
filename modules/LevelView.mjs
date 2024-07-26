@@ -579,7 +579,16 @@ export default class LevelView {
     adjustZoom(value, pivotX, pivotY, multiply = false) {
         this.#rawZoom = multiply ? this.#rawZoom * value : this.#rawZoom + value;
         this.#rawZoom = Math.max(Math.min(this.#rawZoom, this.maxZoom), this.minZoom);
-        this.setZoom(this.#rawZoom, pivotX, pivotY);
+        //Idk how this was working before with the rawZoom but it's not working now
+        //this.setZoom(this.#rawZoom, pivotX, pivotY);
+        this.zoom = Math.floor(this.#rawZoom);
+        
+        this.pan.x = (this.pan.x - pivotX) * zoom * this.#invZoom + pivotX;
+        this.pan.y = (this.pan.y - pivotY) * zoom * this.#invZoom + pivotY;
+        this.#invZoom = 1 / this.zoom;
+        
+        this.#calculateOnscreenLevelBoundaries();
+        this.#repaintAll();
     }
 
     adjustPan(x, y) {
