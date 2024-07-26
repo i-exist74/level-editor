@@ -5,6 +5,7 @@ const blank1x1 = await fetch("leveltemplates/blank1x1.txt").then(res => res.text
 /** LevelData - interface for storing and editing levels
 
 leditorProject.txt format as follows:
+(not my doc, I found it by searching in RW discord, forgot who sent it)
 https://docs.google.com/document/d/1zcxeQGibkZORstwGQUovhQk71k00B69oYwkqFpGyOqs/edit
 */
 
@@ -23,7 +24,7 @@ export const Geometry = {
     BLOCK_TYPE_MASK: BLOCK_TYPE_MASK,
     SHORTCUT_OBJECT_MASK: SHORTCUT_OBJECT_MASK,
 
-    // AND Geometry.wall to check for wall or glassWall
+    // use "& Geometry.wall" to check for wall or glassWall
     wall: 0b001,
     floor: 0b010,
     glassWall: 0b011,
@@ -397,7 +398,7 @@ export class LevelData extends EventEmitter {
         let geo = this.#geometry[x][y][l];
         let blockType = geo & BLOCK_TYPE_MASK;
 
-        if (blockType === Geometry.wall) {
+        if (blockType & Geometry.wall) {
             if (geo & Geometry.crack) {
                 // Cracked wall is functionally no wall, so remove objects that must be on wall excluding crack
                 this.#geometry[x][y][l] &= (~MUST_BE_ON_WALL_MASK) | Geometry.crack;
