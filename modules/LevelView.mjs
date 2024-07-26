@@ -19,6 +19,7 @@ export default class LevelView {
     
     // For zoom/drag gesture behavior
     #pointerCache = [];
+    #prevSqDistBetweenPointers = 0;
 
     // Selection/editing
     #selection = {};
@@ -415,6 +416,11 @@ export default class LevelView {
                 x: e.offsetX,
                 y: e.offsetY
             });
+            if (this.#pointerCache.length === 2) {
+                const [a, b] = this.#pointerCache;
+                this.#prevSqDistBetweenPointers =
+                    (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
+            }
         }
         if (e.shiftKey || this.#tool.action === "none") return;
 
@@ -447,6 +453,7 @@ export default class LevelView {
         if ((e.shiftKey || this.#tool.action === "none") &&
             (e.buttons & 1 || e.pointerType !== "mouse")
         ) {
+            let prevX, prevY;
             if (e.movementX !== undefined) {
                 this.adjustPan(e.movementX, e.movementY);
             } else {
@@ -457,6 +464,15 @@ export default class LevelView {
                 this.adjustPan(e.offsetX - prevX, e.offsetY - prevY);
                 pointerData.x = e.offsetX;
                 pointerData.y = e.offsetY;
+            }
+            if (this.#tool.action === "none" && this.#pointerCache.length === 2 {
+                const [a, b] = this.#pointerCache;
+                const newSqDist = (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
+                this.adjustZoom(
+                    Math.sqrt(newSqDist / this.#prevSqDistBetweenPointers),
+                    (a.x + b.x) / 2, (a.y + b.y) / 2
+                );
+                this.#prevSqDistBetweenPointers = newSqDist;
             }
             return;
         }
