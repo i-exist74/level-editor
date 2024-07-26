@@ -52,7 +52,7 @@ ul {
     grid-area: side-ui;
     background-color: rgb(28, 34, 79);
     
-    font-size: min(1rem, 3vh);
+    font-size: min(1rem, 4vw);
     padding: 1em;
     overflow: auto;
     color: white;
@@ -140,7 +140,7 @@ ul {
     padding: 1.5em 0.8em;
     background-color: white;
     border-radius: 10px;
-    font-size: min(1rem, 2vh);
+    font-size: min(1rem, 4vw);
 }/*
 .modal__container {
     padding: 1.5em 0.8em;
