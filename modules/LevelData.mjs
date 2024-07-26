@@ -325,7 +325,7 @@ export class LevelData extends EventEmitter {
     }
 
     /* Change level dimensions */
-    // This code SUCKS and it's TERRIBLE and I HATE IT and [transmission terminated]
+    // This code SUCKS and I HATE IT
     changeWidth(newWidth, rightBorder = true) {
         if (rightBorder) {
             // If moving the right border:
