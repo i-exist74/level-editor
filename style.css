@@ -52,7 +52,7 @@ ul {
     grid-area: side-ui;
     background-color: rgb(28, 34, 79);
     
-    font-size: min(1rem, 4vw);
+    font-size: clamp(0.6rem, 3vh, 1rem);
     padding: 1em;
     overflow: auto;
     color: white;
