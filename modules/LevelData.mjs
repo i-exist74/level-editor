@@ -29,7 +29,7 @@ export const Geometry = {
     floor: 0b010,
     glassWall: 0b011,
 
-    // AND Geometry.slope to check for any variation of slope
+    // use "& Geometry.slope" to check for any variation of slope
     slopeNE: 0b1000,
     slopeNW: 0b1010,
     slopeSE: 0b1100,
@@ -537,11 +537,12 @@ export class LevelData extends EventEmitter {
                 let geo = Geometry[geometry];
 
                 // Perform action if it is legal for the specified geometry and position
-                let illegalFirstLayerExclusive = (geo & MUST_BE_FIRST_LAYER_MASK) && l > 0;
-                let illegalOutOfBounds = (geo & MUST_BE_WITHIN_BOUNDS_MASK) && !this.isInBufferBounds(x, y);
-                if (!illegalFirstLayerExclusive && !illegalOutOfBounds) {
+                // idk why this was here cause i already resolves exclusivities right after, including wall exclusivities
+                //let illegalFirstLayerExclusive = (geo & MUST_BE_FIRST_LAYER_MASK) && l > 0;
+                //let illegalOutOfBounds = (geo & MUST_BE_WITHIN_BOUNDS_MASK) && !this.isInBufferBounds(x, y);
+                //if (!illegalFirstLayerExclusive && !illegalOutOfBounds) {
                     method.call(this, x, y, l, geo);
-                }
+                //}
 
                 // Resolve exclusivities at specified position
                 this.#resolveGeometryExclusivities(x, y, l);
