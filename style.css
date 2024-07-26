@@ -23,7 +23,7 @@ input[type=checkbox] {
 body {
     display: grid;
     grid-template:
-        "main-menu main-menu" 2rem
+        "main-menu main-menu" clamp(1.5rem, 8vh, 2rem)
         "side-ui graphical-display" 1fr
         "side-ui bottom-ui" min-content /
         fit-content(30%) 1fr;
