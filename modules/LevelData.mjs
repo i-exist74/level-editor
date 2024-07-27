@@ -123,8 +123,25 @@ const convertProjectData = {
 
     fromLeditorGeometry([blockType, stackables]) {
         let value = this.fromLeditor.geometry[blockType];
+        
+        let hasShortcutObject = false;
         for (let i = 0; i < stackables.length; i++) {
-            value |= this.fromLeditor.stackables[stackables[i]];
+            let stackable = this.fromLeditor.stackables[stackables[i]];
+            let shortcutObject = stackable & SHORTCUT_OBJECT_MASK;
+            if (shortcutObject) {
+                /* If multiple shortcut objects were placed on the same tile in another editor
+                make sure we only add one of them, and prioritize shortcut entrance
+                (cause people often put path on top of entrance accidentally)
+                */
+                if (!hasShortcutObject) {
+                    hasShortcutObject = true;
+                } else if (shortcutObject !== Geometry.shortcutEntrance) {
+                    continue;
+                } else {
+                    value &= ~SHORTCUT_OBJECT_MASK;
+                }
+            }
+            value |= stackable;
         }
         return value;
     },
