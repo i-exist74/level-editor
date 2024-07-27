@@ -216,7 +216,7 @@ export class LevelData extends EventEmitter {
             try {
                 return JSON.parse(str);
             } catch (e) {
-                throw new Error(`Error parsing line ${i} of file: ${e}`);
+                throw new Error(`Error parsing line ${i} of file: ${e}\n"${str}"`);
             }
         });
         let [geometry, tiles, effects, light, , levelSettings, cameras, water, props] = this.#originalProjectData;
