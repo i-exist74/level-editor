@@ -5,6 +5,7 @@ const modal = document.getElementById("import-modal");
 
 const inputEl = document.getElementById("project-file-input");
 const loadButton = document.getElementById("import-project-button");
+const errorDisplay = document.getElementById("import-error-display");
 
 loadButton.addEventListener("click", e => {
     const file = inputEl.files[0];
@@ -17,8 +18,12 @@ loadButton.addEventListener("click", e => {
     const reader = new FileReader();
     reader.readAsText(file);
     reader.onload = e => {
-        Editor.importProjectData(reader.result);
-        modal.close();
+        try {
+            Editor.importProjectData(reader.result);
+            modal.close();
+        } catch (e) {
+            errorDisplay.textContent = e;
+        }
     };
 });
 
