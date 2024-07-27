@@ -22,6 +22,7 @@ loadButton.addEventListener("click", e => {
             Editor.importProjectData(reader.result);
             modal.close();
         } catch (e) {
+            console.error(e);
             errorDisplay.textContent = e;
         }
     };
