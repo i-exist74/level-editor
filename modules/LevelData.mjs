@@ -286,7 +286,11 @@ export class LevelData extends EventEmitter {
             for (let y = 0; y < this.levelHeight; y++) {
                 data[0][x][y] = [];
                 for (let l = 0; l < this.layers; l++) {
-                    data[0][x][y][l] = convertProjectData.toLeditorGeometry(this.#geometry[x][y][l]);
+                    let geo = convertProjectData.toLeditorGeometry(this.#geometry[x][y][l]);
+                    if (geo[0] === undefined || geo[1].includes(undefined)) {
+                        throw new Error(`Error exporting: Undefined geometry at ${x},${y},${l} (${geo})`); 
+                    }
+                    data[0][x][y][l] = geo;
                 }
             }
         }
