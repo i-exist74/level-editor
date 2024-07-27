@@ -212,7 +212,13 @@ export class LevelData extends EventEmitter {
             lines[i] = str.join("");
         }
         // Parse JSON
-        this.#originalProjectData = lines.map(str => JSON.parse(str));
+        this.#originalProjectData = lines.map((str, i) => {
+            try {
+                return JSON.parse(str);
+            } catch (e) {
+                throw new Error(`Error parsing line ${i} of file: ${e}`);
+            }
+        });
         let [geometry, tiles, effects, light, , levelSettings, cameras, water, props] = this.#originalProjectData;
 
         // Set level dimensions
