@@ -180,7 +180,7 @@ export class LevelData extends EventEmitter {
         let lines = leditorProjectData.split("\r");
         lines.length = 9;
 
-        // Make each line of leditor data JSON-parseable (Geometry is already a parseable array)
+        // Make each line of leditor data JSON-parseable (Geometry, index 0, is already a parseable array)
         for (let i = 1; i < lines.length; i++) {
             let str = lines[i];
             str = str
@@ -213,6 +213,7 @@ export class LevelData extends EventEmitter {
         }
         // Parse JSON
         this.#originalProjectData = lines.map((str, i) => {
+            if (!str) str = "[]"; // delete this
             try {
                 return JSON.parse(str);
             } catch (e) {
