@@ -128,7 +128,14 @@ const convertProjectData = {
         let hasShortcutObject = false;
         for (let i = 0; i < stackables.length; i++) {
             let stackable = this.fromLeditor.stackables[stackables[i]];
+            
             let shortcutObject = stackable & SHORTCUT_OBJECT_MASK;
+            // Skip adding shortcutEntrance if we already have a block type
+            // (in my understanding this happens if attempting to place one not on 1st layer,
+            // so it updates the stackable but not the block type)
+            if (shortcutObject === Geometry.shortcutEntrance && (value & BLOCK_TYPE_MASK) !== 0) {
+                continue;
+            }
             if (shortcutObject) {
                 /* If multiple shortcut objects were placed on the same tile in another editor
                 make sure we only add one of them, and prioritize shortcut entrance
@@ -137,9 +144,6 @@ const convertProjectData = {
                 if (!hasShortcutObject) {
                     hasShortcutObject = true;
                 } else if (shortcutObject !== Geometry.shortcutEntrance) {
-                    continue;
-                } else if ((value & BLOCK_TYPE_MASK) !== 0) {
-                    // Skip adding shortcutEntrance if we already have a block type
                     continue;
                 } else {
                     value &= ~SHORTCUT_OBJECT_MASK;
