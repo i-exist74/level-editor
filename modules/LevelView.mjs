@@ -84,6 +84,7 @@ export default class LevelView {
         this.#container.addEventListener("pointerdown", e => this.#onPointerDown(e));
         this.#container.addEventListener("pointermove", e => this.#onPointerMove(e));
         this.#container.addEventListener("pointerup", e => this.#onPointerUp(e));
+        this.#container.addEventListener("pointercancel", e => this.#onPointerCancel(e));
         this.#container.addEventListener("wheel", e => this.#onMouseWheel(e));
         this.#container.oncontextmenu = () => false;
     }
@@ -514,6 +515,13 @@ export default class LevelView {
             this.#initiatedRectSelection = false;
             //this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
         }
+    }
+    #onPointerCancel(e) {
+        if (e.pointerType === "mouse") return;
+        
+        this.#pointerCache.splice(
+            this.#pointerCache.findIndex(pointer => pointer.id === e.pointerId),
+            1);
     }
     #onMouseWheel(e) {
         this.adjustZoom(-e.deltaY * 0.008, e.offsetX, e.offsetY);
