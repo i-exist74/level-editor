@@ -261,6 +261,7 @@ export class LevelData extends EventEmitter {
                 this.#geometry[x][y] = [];
                 for (let l = 0; l < this.layers; l++) {
                     this.#geometry[x][y][l] = convertProjectData.fromLeditorGeometry(geometry[x][y][l]);
+                    this.#resolveGeometryExclusivities(x, y, l);
                 }
             }
         }
