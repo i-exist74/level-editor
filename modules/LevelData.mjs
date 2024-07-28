@@ -138,8 +138,10 @@ const convertProjectData = {
                     hasShortcutObject = true;
                 } else if (shortcutObject !== Geometry.shortcutEntrance) {
                     continue;
-                } else if ((value & BLOCK_TYPE_MASK) === 0) {
-                    // Don't add shortcutEntrance if we already have a block type
+                } else if ((value & BLOCK_TYPE_MASK) !== 0) {
+                    // Skip adding shortcutEntrance if we already have a block type
+                    continue;
+                } else {
                     value &= ~SHORTCUT_OBJECT_MASK;
                 }
             }
