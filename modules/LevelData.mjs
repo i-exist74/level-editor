@@ -19,7 +19,8 @@ const EXCLUSIVE_TO_WALL_MASK           = 0b000000111100000000;
 const EXCLUSIVE_TO_WALL_AND_SLOPE_MASK = 0b001111000000000000;
 const MUST_BE_ON_WALL_MASK             = 0b110000000000000000;
 
-
+// man surely I could have done better than making this whole convoluted format
+// and having to finagle with it and the original format
 export const Geometry = {
     BLOCK_TYPE_MASK: BLOCK_TYPE_MASK,
     SHORTCUT_OBJECT_MASK: SHORTCUT_OBJECT_MASK,
@@ -137,7 +138,8 @@ const convertProjectData = {
                     hasShortcutObject = true;
                 } else if (shortcutObject !== Geometry.shortcutEntrance) {
                     continue;
-                } else {
+                } else if ((value & BLOCK_TYPE_MASK) === 0) {
+                    // Don't add shortcutEntrance if we already have a block type
                     value &= ~SHORTCUT_OBJECT_MASK;
                 }
             }
