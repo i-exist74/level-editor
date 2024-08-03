@@ -203,12 +203,13 @@
                 <button class="modal__close-button"></button>
 
                 <h1>Edit Dimensions</h1>
-                this does not do anything!!!!! though if you already have a project file with changed level dimensions you can import it
                 <p>Note: Reducing the level size will permanently delete affected parts of the level, unless I decide to make an undo system but uhhh no</p>
                 <label for="level-width-input">Width:</label>
                 <input type="number" id="level-width-input" min="1" value="72" max="1080" autofocus />
                 <label for="level-height-input">Height:</label>
                 <input type="number" id="level-height-input" min="1" value="43" max="1075" />
+                <button id="edit-dimensions-left-top">Move Left/Top Border</button>
+                <button id="edit-dimensions-right-bottom">Move Right/Bottom Border</button>
         </dialog>
 
         <dialog class="modal" id="render-modal">
