@@ -7,6 +7,7 @@ export default class LevelView {
     #levelCanvas;
     #gridCanvas;
     #uiCanvas;
+    #canvases;
     #ctx;
 
     // Camera
@@ -39,11 +40,12 @@ export default class LevelView {
         this.#levelCanvas = document.createElement("canvas");
         this.#gridCanvas = document.createElement("canvas");
         this.#uiCanvas = document.createElement("canvas");
-
+        this.#canvases = [this.#levelCanvas, this.#gridCanvas, this.#uiCanvas];
+        
         this.#container = container;
         this.#container.append(this.#levelCanvas, this.#gridCanvas, this.#uiCanvas);
         
-        [this.#levelCanvas, this.#gridCanvas, this.#uiCanvas].forEach(canvas => {
+        this.#canvases.forEach(canvas => {
             canvas.style.position = "absolute";
             canvas.style.width = canvas.style.height = "100%";
         });
@@ -69,6 +71,15 @@ export default class LevelView {
             this.#resetCamera();
 
             this.#selection = {};
+            this.#repaintAll();
+        });
+        this.levelData.on("change dimensions", (newW, newH) => {
+            this.width = newW;
+            this.height = newH;
+            this.#canvases.forEach(canvas => {
+                canvas.width = newW;
+                canvas.height = newH;
+            });
             this.#repaintAll();
         });
         this.levelData.on("edit", (x1, y1, x2, y2) => {
