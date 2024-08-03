@@ -50,18 +50,10 @@ export default class LevelView {
             canvas.style.width = canvas.style.height = "100%";
         });
         const observer = new ResizeObserver((entries) => {
-            entries.forEach(({target: canvas}) => {
-                canvas.width = canvas.clientWidth;
-                canvas.height = canvas.clientHeight;
-                this.width = canvas.width;
-                this.height = canvas.height;
-                this.#calculateOnscreenLevelBoundaries();
-                this.#repaintAll();
-            });
+            const canvas = entries[0].target;
+            this.updateDimensions(canvas.clientWidth, canvas.clientHeight);
         });
         observer.observe(this.#levelCanvas);
-        observer.observe(this.#gridCanvas);
-        observer.observe(this.#uiCanvas);
 
         this.width = this.#levelCanvas.width;
         this.height = this.#levelCanvas.height;
@@ -71,15 +63,6 @@ export default class LevelView {
             this.#resetCamera();
 
             this.#selection = {};
-            this.#repaintAll();
-        });
-        this.levelData.on("change dimensions", (newW, newH) => {
-            this.width = newW;
-            this.height = newH;
-            this.#canvases.forEach(canvas => {
-                canvas.width = newW;
-                canvas.height = newH;
-            });
             this.#repaintAll();
         });
         this.levelData.on("edit", (x1, y1, x2, y2) => {
@@ -99,7 +82,18 @@ export default class LevelView {
         this.#container.addEventListener("wheel", e => this.#onMouseWheel(e));
         this.#container.oncontextmenu = () => false;
     }
-
+    
+    updateDimensions(newW, newH) {
+        this.width = newW;
+        this.height = newH;
+        this.#canvases.forEach(canvas => {
+            canvas.width = newW;
+            canvas.height = newH;
+        });
+        this.#calculateOnscreenLevelBoundaries();
+        this.#repaintAll();
+    }
+    
     /* Display */
     #repaintAll() {
         this.#repaintLevel();
