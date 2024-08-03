@@ -50,7 +50,6 @@ export default {
     changeDimensions(newWidth, newHeight, rightBottomBorder) {
         levelData.changeWidth(newWidth, rightBottomBorder);
         levelData.changeHeight(newHeight, rightBottomBorder);
-        levelView.updateDimensions(newWidth, newHeight);
     },
 
     getLevelData() {
