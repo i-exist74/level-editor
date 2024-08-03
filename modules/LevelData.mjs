@@ -248,10 +248,10 @@ export class LevelData extends EventEmitter {
         let [geometry, tiles, effects, light, , levelSettings, cameras, water, props] = this.#originalProjectData;
 
         // Set level dimensions
-        this.levelWidth = levelSettings.size.x;
-        this.levelHeight = levelSettings.size.y;
+        this.levelWidth = +levelSettings.size.x;
+        this.levelHeight = +levelSettings.size.y;
         this.layers = geometry[0][0].length;
-        [this.bufferLeft, this.bufferTop, this.bufferRight, this.bufferBottom] = levelSettings.extraTiles;
+        [this.bufferLeft, this.bufferTop, this.bufferRight, this.bufferBottom] = levelSettings.extraTiles.map(value => +value);
 
         // Set geometry matrix
         this.#geometry = [];
