@@ -51,7 +51,7 @@ export default class LevelView {
         });
         const observer = new ResizeObserver((entries) => {
             const canvas = entries[0].target;
-            this.updateDimensions(canvas.clientWidth, canvas.clientHeight);
+            this.#onResized(canvas.clientWidth, canvas.clientHeight);
         });
         observer.observe(this.#levelCanvas);
 
@@ -83,7 +83,7 @@ export default class LevelView {
         this.#container.oncontextmenu = () => false;
     }
     
-    updateDimensions(newW, newH) {
+    #onResized(newW, newH) {
         this.width = newW;
         this.height = newH;
         this.#canvases.forEach(canvas => {
@@ -93,6 +93,8 @@ export default class LevelView {
         this.#calculateOnscreenLevelBoundaries();
         this.#repaintAll();
     }
+    
+    levelDim
     
     /* Display */
     #repaintAll() {
