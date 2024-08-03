@@ -47,6 +47,10 @@ export default {
     exportProjectData() {
         return levelData.exportProjectData();
     },
+    changeDimensions(newWidth, newHeight, rightBottomBorder) {
+        levelData.changeWidth(newWidth, rightBottomBorder);
+        levelData.changeHeight(newHeight, rightBottomBorder);
+    },
 
     getLevelData() {
         return levelData;
