@@ -94,8 +94,6 @@ export default class LevelView {
         this.#repaintAll();
     }
     
-    levelDim
-    
     /* Display */
     #repaintAll() {
         this.#repaintLevel();
