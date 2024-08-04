@@ -202,7 +202,7 @@ export class LevelData extends EventEmitter {
     /* File */
 
     importProjectData(leditorProjectData) {
-        let lines = leditorProjectData.split(/[\r\g]/g);
+        let lines = leditorProjectData.split(/[\r\n]/g);
         lines.length = 9;
 
         // Make each line of leditor data JSON-parseable (Geometry, index 0, is already a parseable array)
