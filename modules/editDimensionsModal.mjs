@@ -8,7 +8,9 @@ const rightBottomButton = document.getElementById("edit-dimensions-right-bottom"
 
 leftTopButton.addEventListener("click", e => {
     Editor.changeDimensions(widthInput.value, heightInput.value, false);
+    modal.close();
 });
 rightBottomButton.addEventListener("click", e => {
     Editor.changeDimensions(widthInput.value, heightInput.value, true);
+    modal.close();
 });
