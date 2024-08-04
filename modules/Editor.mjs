@@ -48,9 +48,9 @@ export default {
         return levelData.exportProjectData();
     },
     changeDimensions(newWidth, newHeight, rightBottomBorder) {
-        levelData.changeWidth(newWidth, rightBottomBorder);
-        levelData.changeHeight(newHeight, rightBottomBorder);
-        levelView.levelDimensionsChanged();
+        let changedW = levelData.changeWidth(newWidth, rightBottomBorder);
+        let changedH = levelData.changeHeight(newHeight, rightBottomBorder);
+        if (changedW || changedH) levelView.levelDimensionsChanged();
     },
 
     getLevelData() {
