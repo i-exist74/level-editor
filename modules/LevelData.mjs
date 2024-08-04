@@ -371,9 +371,9 @@ export class LevelData extends EventEmitter {
             this.#geometry.length = newWidth;
             this.levelWidth = newWidth;
 
-            if (newWidth < this.levelWidth) return true;
+            if (newWidth < oldWidth) return true;
             // Fill in the added space with empty rows
-            for (let x = this.levelWidth; x < newWidth; x++) {
+            for (let x = oldWidth; x < newWidth; x++) {
                 this.#geometry[x] = new Array(this.levelHeight);
                 for (let y = 0; y < this.levelHeight; y++) {
                     this.#geometry[x][y] = new Array(this.layers).fill(0);
@@ -405,9 +405,8 @@ export class LevelData extends EventEmitter {
 
     /* Get level data */
 
-    // Return geometry at current position, or glassWall if out of bounds
     geometryAt(x, y, l) {
-        return this.#geometry[x]?.[y]?.[l] ?? Geometry.glassWall;
+        return this.#geometry[x][y][l];
     }
 
     // todo
