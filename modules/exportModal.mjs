@@ -7,7 +7,14 @@ const errorDisplay = document.getElementById("export-error-display");
 
 exportButton.addEventListener("click", e => {
     try {
-        outputEl.value = Editor.exportProjectData();
+        const data = Editor.exportProjectData();
+        const blob = new Blob([data], { type: "text/plain" });
+        const elem = document.createElement('a');
+        elem.href = URL.createObjectURL(blob);
+        //elem.download = filename;        
+        document.body.appendChild(elem);
+        elem.click();        
+        document.body.removeChild(elem);
     } catch (e) {
         console.error(e);
         errorDisplay.textContent = `Export error: ${e}`;
