@@ -365,13 +365,13 @@ export class LevelData extends EventEmitter {
     /* Change level dimensions */m
     changeWidth(newWidth, rightBorder = true) {
         let oldWidth = this.levelWidth;
-        if (oldWidth === newWidth) return;
+        if (oldWidth === newWidth) return false;
         
         if (rightBorder) {
             this.#geometry.length = newWidth;
             this.levelWidth = newWidth;
 
-            if (newWidth < this.levelWidth) return;
+            if (newWidth < this.levelWidth) return true;
             // Fill in the added space with empty rows
             for (let x = this.levelWidth; x < newWidth; x++) {
                 this.#geometry[x] = new Array(this.levelHeight);
@@ -379,6 +379,7 @@ export class LevelData extends EventEmitter {
                     this.#geometry[x][y] = new Array(this.layers).fill(0);
                 }
             }
+            return true;
         }
         
         for (let x = newWidth - 1; x >= 0; x--) {
@@ -393,6 +394,7 @@ export class LevelData extends EventEmitter {
         }
         this.#geometry.length = newWidth;
         this.levelWidth = newWidth;
+        return true;
     }
     changeHeight(newHeight, bottomBorder = true) {
         for (let x = 0; x < this.levelWidth; x++) {
