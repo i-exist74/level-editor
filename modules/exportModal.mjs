@@ -9,7 +9,8 @@ const errorDisplay = document.getElementById("export-error-display");
 outputToTextareaButton.addEventListener("click", e => {
     try {
         outputEl.value = Editor.exportProjectData();
-        outputEl.select();
+        //outputEl.select();
+        outputEl.setSelectionRange(0, outputEl.value.length);
     } catch (e) {
         console.error(e);
         errorDisplay.textContent = `Export error: ${e}`;
