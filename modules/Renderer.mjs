@@ -268,7 +268,7 @@ function render(levelData, cameraIndex) {
 
     for (let x = 0; x < levelData.levelWidth; x++) {
         for (let y = 0; y < levelData.levelHeight; y++) {
-            for (let l = 0; x < levelData.layers; l++) {
+            for (let l = 0; l < levelData.layers; l++) {
                 let geom = levelData.geometryAt(x, y, l);
                 if ((geom & Geometry.BLOCK_TYPE_MASK) !== Geometry.wall) continue;
     
