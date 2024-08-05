@@ -228,7 +228,9 @@ function initializeGL(canvas) {
 /**
  * @param {import("LevelData.mjs").LevelData} levelData
  */
-function render(levelData, cameraIndex) {
+function render(levelData, cameraIndex = 0) {
+    const cameraPos = levelData.cameraPositions[cameraIndex];
+    
     // Create VAO for a 1x1 rectangle centered around the origin
     const vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
@@ -273,9 +275,12 @@ function render(levelData, cameraIndex) {
                 if ((geom & Geometry.BLOCK_TYPE_MASK) !== Geometry.wall) continue;
     
                 let matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
-    
+                
+                // Account for position of camera
+                //matrix = m4.translate(matrix, -cameraPos[0], -cameraPos[1], 0);
+                
                 // Convert to pixels
-                matrix = m4.scale(matrix, 20, -20, 1);
+                matrix = m4.scale(matrix, 20, 20, 1);
     
                 // Position in level coords
                 matrix = m4.translate(matrix, x, y, l * 10);
