@@ -275,7 +275,7 @@ function render(levelData, cameraIndex) {
                 let matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
     
                 // Convert to pixels
-                matrix = m4.scale(matrix, 20, 20, 1);
+                matrix = m4.scale(matrix, 20, -20, 1);
     
                 // Position in level coords
                 matrix = m4.translate(matrix, x, y, l * 10);
