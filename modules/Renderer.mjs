@@ -268,27 +268,32 @@ function render(levelData, cameraIndex) {
 
     for (let x = 0; x < levelData.levelWidth; x++) {
         for (let y = 0; y < levelData.levelHeight; y++) {
-            let geom = levelData.geometryAt(x, y)
-
-            let matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
-
-            // Convert to pixels
-            matrix = m4.scale(matrix, 20, 20, 1);
-
-            // Position in level coords
-            matrix = m4.translate(matrix, x, y, Math.floor(Math.random() * 30));
-
-            // Convert to level coords
-            matrix = m4.scale(matrix, 1, 1, 10);
-            matrix = m4.translate(matrix, 0.5, 0.5, 0.5);
-
-            // Rotation around center of grid space (for floor, ceiling, wall tiles)
-            matrix = m4.xRotate(matrix, 0);
-            matrix = m4.yRotate(matrix, 0);
-            matrix = m4.zRotate(matrix, 0);
-
-            gl.uniformMatrix4fv(u_worldMatrixLoc, false, matrix);
-            gl.drawArrays(gl.TRIANGLES, 0, 6);
+            for (let l = 0; x < levelData.layers; l++) {
+                let geom = levelData.geometryAt(x, y, l);
+                if ((geom & Geometry.BLOCK_TYPE_MASK) !== Geometry.wall) continue;
+    
+                let matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+    
+                // Convert to pixels
+                matrix = m4.scale(matrix, 20, 20, 1);
+    
+                // Position in level coords
+                matrix = m4.translate(matrix, x, y, l * 10);
+    
+                // Convert to level coords
+                matrix = m4.scale(matrix, 1, 1, 10);
+                matrix = m4.translate(matrix, 0.5, 0.5, 0.5);
+    
+                // Rotation around center of grid space (for floor, ceiling, wall tiles)
+                matrix = m4.xRotate(matrix, 0);
+                matrix = m4.yRotate(matrix, 0);
+                matrix = m4.zRotate(matrix, 0);
+    
+                gl.uniformMatrix4fv(u_worldMatrixLoc, false, matrix);
+                gl.drawArrays(gl.TRIANGLES, 0, 6);
+                
+                break;
+            }
         }
     }
 }
