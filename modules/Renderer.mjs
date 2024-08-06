@@ -2,7 +2,7 @@
  * Original non-webGL attempt & info about the format of the rendered level png file in renderModa.mjs.
  */
 import { Geometry } from "./LevelData.mjs";
-import m4 from "./m4.mjs";
+import { default as m4 } from "./m4.mjs";
 
 const vertexShaderSource = `#version 300 es
     in vec4 a_position;
@@ -76,7 +76,7 @@ function initializeGL(canvas) {
 /**
  * @param {import("LevelData.mjs").LevelData} levelData
  */
-const render = function(levelData, cameraIndex = 0) {
+function render(levelData, cameraIndex = 0) {
     try {
     
     const cameraPos = levelData.cameraPositions[cameraIndex];
