@@ -231,7 +231,7 @@ function initializeGL(canvas) {
 function render(levelData, cameraIndex = 0) {
     const cameraPos = levelData.cameraPositions[cameraIndex];
     
-    // Create VAO for a 1x1 rectangle centered around the origin
+    // Create VAO for a 1x1 square centered around the origin
     const vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
 
@@ -276,8 +276,8 @@ function render(levelData, cameraIndex = 0) {
     
                 let matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
                 
-                // Account for position of camera
-                //matrix = m4.translate(matrix, -cameraPos[0], -cameraPos[1], 0);
+                // Shift pixels by position of camera
+                matrix = m4.translate(matrix, -cameraPos[0], -cameraPos[1], 0);
                 
                 // Convert to pixels
                 matrix = m4.scale(matrix, 20, 20, 1);
@@ -285,14 +285,14 @@ function render(levelData, cameraIndex = 0) {
                 // Position in level coords
                 matrix = m4.translate(matrix, x, y, l * 10);
     
-                // Convert to level coords
+                // Convert unit square to level coords
                 matrix = m4.scale(matrix, 1, 1, 10);
                 matrix = m4.translate(matrix, 0.5, 0.5, 0.5);
-    
+                matrix = m4.scale(matrix, 1, -1, 1);
                 // Rotation around center of grid space (for floor, ceiling, wall tiles)
-                matrix = m4.xRotate(matrix, 0);
-                matrix = m4.yRotate(matrix, 0);
-                matrix = m4.zRotate(matrix, 0);
+                //matrix = m4.xRotate(matrix, 0);
+                //matrix = m4.yRotate(matrix, 0);
+                //matrix = m4.zRotate(matrix, 0);
     
                 gl.uniformMatrix4fv(u_worldMatrixLoc, false, matrix);
                 gl.drawArrays(gl.TRIANGLES, 0, 6);
