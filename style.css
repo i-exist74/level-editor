@@ -78,6 +78,11 @@ ul {
 }
 
 #render-output-canvas {
+    display: none;
+    /*width: min(700px, 50vw);
+    outline: 1px solid black;*/
+}
+#render-output-image {
     width: min(700px, 50vw);
     outline: 1px solid black;
 }
