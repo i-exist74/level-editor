@@ -17,13 +17,15 @@ renderButton.addEventListener("click", e => {
     Renderer.render(levelData);
 });
 downloadButton.addEventListener("click", e => {
-    const link = document.createElement("a");
-    link.target = "_blank";
-    link.href = URL.createObjectURL(renderOutputCanvas.toBlob());
-    link.download = "image.png";
-    document.body.append(link);
-    link.click();
-    link.remove();
+    renderOutputCanvas.toBlob(blob => {
+        const link = document.createElement("a");
+        link.target = "_blank";
+        link.href = URL.createObjectURL(blob);
+        link.download = "image.png";
+        document.body.append(link);
+        link.click();
+        link.remove();
+    });
 });
 
 
