@@ -152,7 +152,7 @@ function render(levelData, cameraIndex = 0) {
         }
     }
     } catch (e) {
-        alert(e);
+        alert(e. stack);
     }
 }
 
