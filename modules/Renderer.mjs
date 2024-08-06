@@ -3,7 +3,7 @@
  */
 import { Geometry } from "./LevelData.mjs";
 import m4 from "./m4.mjs";
-alert(m4);
+
 const vertexShaderSource = `#version 300 es
     in vec4 a_position;
 
@@ -76,7 +76,7 @@ function initializeGL(canvas) {
 /**
  * @param {import("LevelData.mjs").LevelData} levelData
  */
-function render(levelData, cameraIndex = 0) {
+const render = function(levelData, cameraIndex = 0) {
     try {
     
     const cameraPos = levelData.cameraPositions[cameraIndex];
