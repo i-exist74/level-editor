@@ -23,7 +23,7 @@ downloadButton.addEventListener("click", e => {
         const elem = document.createElement('a');
         elem.href = URL.createObjectURL(blob);
         elem.target = "_blank";
-        //elem.download = filename;        
+        elem.download = "file.txt";        
         document.body.appendChild(elem);
         elem.click();
         document.body.removeChild(elem);
