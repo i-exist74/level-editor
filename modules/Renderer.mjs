@@ -23,7 +23,7 @@ const vertexShaderSource = `#version 300 es
         float u = worldPosition.x / 1400.0;
         float v = worldPosition.y / 800.0;
         
-        float w = (worldPosition.z + 1.0) / 30.0;
+        float w = (worldPosition.z - 4.0) / 30.0;
         vec2 topLeft = mix(vec2(0.0, 0.0), u_layer30topLeft, w);
         vec2 topRight = mix(vec2(1400.0, 0.0), u_layer30topRight, w);
         vec2 bottomLeft = mix(vec2(0.0, 800.0), u_layer30bottomLeft, w);
@@ -106,12 +106,27 @@ function render(levelData, cameraIndex = 0) {
     const a_positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, a_positionBuffer);
     const positions = new Float32Array([
+        // front square
         -0.5, -0.5, -0.5,
         -0.5, 0.5, -0.5,
         0.5, -0.5, -0.5,
         0.5, 0.5, -0.5,
         0.5, -0.5, -0.5,
         -0.5, 0.5, -0.5,
+        // left
+        -0.5, -0.5, -0.5,
+        -0.5, -0.5, 0.5,
+        -0.5, 0.5, -0.5,
+        -0.5, -0.5, 0.5,
+        -0.5, 0.5, -0.5,
+        -0.5, 0.5, -0.5,
+        // right
+        0.5, -0.5, -0.5,
+        0.5, 0.5, -0.5,
+        0.5, -0.5, 0.5,
+        0.5, -0.5, 0.5,
+        0.5, 0.5, -0.5,
+        0.5, 0.5, -0.5,
     ]);
     gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
 
@@ -171,7 +186,7 @@ function render(levelData, cameraIndex = 0) {
                 //matrix = m4.zRotate(matrix, 0);
     
                 gl.uniformMatrix4fv(u_worldMatrixLoc, false, matrix);
-                gl.drawArrays(gl.TRIANGLES, 0, 6);
+                gl.drawArrays(gl.TRIANGLES, 0, 6 * 3);
                 
                 break;
             }
