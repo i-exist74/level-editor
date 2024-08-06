@@ -9,12 +9,31 @@ const vertexShaderSource = `#version 300 es
 
     uniform mat4 u_worldMatrix;
     uniform mat4 u_projectionMatrix;
-
+    
+    uniform vec2 u_layer30topLeft;
+    uniform vec2 u_layer30topRight;
+    uniform vec2 u_layer30bottomLeft;
+    uniform vec2 u_layer30bottomRight;
+    
     out float z;
 
     void main() {
         vec4 worldPosition = u_worldMatrix * a_position;
-
+        
+        float u = worldPosition.x / 1400.0;
+        float v = worldPosition.y / 800.0;
+        
+        float w = (worldPosition.z + 1.0) / 30.0;
+        vec2 topLeft = mix(vec2(0.0, 0.0), u_layer30topLeft, w);
+        vec2 topRight = mix(vec2(1400.0, 0.0), u_layer30topRight, w);
+        vec2 bottomLeft = mix(vec2(0.0, 800.0), u_layer30bottomLeft, w);
+        vec2 bottomRight = mix(vec2(1400.0, 800.0), u_layer30bottomRight, w);
+        
+        worldPosition.xy = mix(
+            mix(topLeft, topRight, u),
+            mix(bottomLeft, bottomRight, u),
+            v
+        );
         gl_Position = u_projectionMatrix * worldPosition;
 
         z = worldPosition.z;
@@ -78,6 +97,7 @@ function initializeGL(canvas) {
  */
 function render(levelData, cameraIndex = 0) {
     const cameraPos = levelData.cameraPositions[cameraIndex];
+    //const corners = levelData.cameraQuads[cameraIndex];
     
     // Create VAO for a 1x1 square centered around the origin
     const vao = gl.createVertexArray();
@@ -98,11 +118,14 @@ function render(levelData, cameraIndex = 0) {
     const a_positionLoc = gl.getAttribLocation(program, "a_position");
     gl.enableVertexAttribArray(a_positionLoc);
     gl.vertexAttribPointer(a_positionLoc, 3, gl.FLOAT, false, 0, 0);
-
-
-    // matrix uniforms
+    
+    // uniforms
     const u_worldMatrixLoc = gl.getUniformLocation(program, "u_worldMatrix");
     const u_projectionMatrixLoc = gl.getUniformLocation(program, "u_projectionMatrix");
+    const u_l30topLeftLoc = gl.getUniformLocation(program, "u_layer30topLeft");
+    const u_l30topRightLoc = gl.getUniformLocation(program, "u_layer30topRight");
+    const u_l30bottomLeftLoc = gl.getUniformLocation(program, "u_layer30bottomLeft");
+    const u_l30bottomRightLoc = gl.getUniformLocation(program, "u_layer30bottomRight");
 
     // Set up the canvas
     gl.clearColor(0, 0, 0, 0);
@@ -111,6 +134,11 @@ function render(levelData, cameraIndex = 0) {
     // Use our perspective 3d program to draw rectangles
     gl.useProgram(program);
     gl.bindVertexArray(vao);
+    
+    gl.uniform2f(u_l30topLeftLoc, 0, 0);//corners[0].x, corners[0].y);
+    gl.uniform2f(u_l30topRightLoc, 1400, 0);//corners[1].x, corners[1].y);
+    gl.uniform2f(u_l30bottomLeftLoc, 0, 800);//corners[2].x, corners[2].y);
+    gl.uniform2f(u_l30bottomRightLoc, 1400, 800);//corners[3].x, corners[3].y);
 
     let projectionMatrix = m4.scaling(1, -1, 1);
     projectionMatrix = m4.translate(projectionMatrix, -1, -1, -1);
