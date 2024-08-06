@@ -3,7 +3,7 @@
  */
 import { Geometry } from "./LevelData.mjs";
 import m4 from "./m4.mjs";
-
+alert(m4);
 const vertexShaderSource = `#version 300 es
     in vec4 a_position;
 
