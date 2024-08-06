@@ -125,7 +125,7 @@ function render(levelData, cameraIndex = 0) {
                 let matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
                 
                 // Shift pixels by position of camera
-                matrix = m4.translate(matrix, -cameraPos.x, -cameraPos.y, 0);
+                //matrix = m4.translate(matrix, -cameraPos.x, -cameraPos.y, 0);
                 
                 // Convert to pixels
                 matrix = m4.scale(matrix, 20, 20, 1);
@@ -136,7 +136,7 @@ function render(levelData, cameraIndex = 0) {
                 // Convert unit square to level coords
                 matrix = m4.scale(matrix, 1, 1, 10);
                 matrix = m4.translate(matrix, 0.5, 0.5, 0.5);
-                matrix = m4.scale(matrix, 1, -1, 1);
+                //matrix = m4.scale(matrix, 1, -1, 1);
                 // Rotation around center of grid space (for floor, ceiling, wall tiles)
                 //matrix = m4.xRotate(matrix, 0);
                 //matrix = m4.yRotate(matrix, 0);
