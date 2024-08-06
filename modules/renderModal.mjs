@@ -7,13 +7,23 @@ const modal = document.getElementById("render-modal");
 
 const renderButton = document.getElementById("render-project-button");
 const renderOutputCanvas = document.getElementById("render-output-canvas");
+const downloadButton = document.getElementById("download-render-canvas-button");
 
 Renderer.init(renderOutputCanvas);
 
-renderButton.addEventListener("click", async e => {
+renderButton.addEventListener("click", e => {
     const levelData = Editor.getLevelData();
 
     Renderer.render(levelData);
+});
+downloadButton.addEventListener("click", e => {
+    const link = document.createElement("a");
+    link.target = "_blank";
+    link.href = renderOutputCanvas.toDataURL();
+    link.download = "image.png";
+    document.body.append(link);
+    link.click();
+    link.remove();
 });
 
 
