@@ -125,7 +125,7 @@ function render(levelData, cameraIndex = 0) {
                 let matrix = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
                 
                 // Shift pixels by position of camera
-                matrix = m4.translate(matrix, -cameraPos[0], -cameraPos[1], 0);
+                matrix = m4.translate(matrix, -cameraPos.x, -cameraPos.y, 0);
                 
                 // Convert to pixels
                 matrix = m4.scale(matrix, 20, 20, 1);
