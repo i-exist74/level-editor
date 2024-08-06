@@ -11,6 +11,8 @@ const renderOutputImage = document.getElementById("render-output-image");
 //const downloadButton = document.getElementById("download-render-canvas-button");
 
 Renderer.init(renderOutputCanvas);
+renderOutputImage.width = renderOutputCanvas.width;
+renderOutputImage.height = renderOutputCanvas.height;
 
 renderButton.addEventListener("click", e => {
     const levelData = Editor.getLevelData();
