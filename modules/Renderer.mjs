@@ -112,7 +112,8 @@ function render(levelData, cameraIndex = 0) {
     gl.useProgram(program);
     gl.bindVertexArray(vao);
 
-    let projectionMatrix = m4.translation(-1, -1, -1);
+    let projectionMatrix = m4.scaling(1, -1, 1);
+    projectionMatrix = m4.translate(projectionMatrix, -1, -1, -1);
     projectionMatrix = m4.scale(projectionMatrix, 1 / 700, 1 / 400, 1 / 15);
     gl.uniformMatrix4fv(u_projectionMatrixLoc, false, projectionMatrix);
 
