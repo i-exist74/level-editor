@@ -201,8 +201,6 @@ function render(levelData, cameraIndex = 0) {
     
                 gl.uniformMatrix4fv(u_worldMatrixLoc, false, matrix);
                 gl.drawArrays(gl.TRIANGLES, 0, 6 * 5);
-                
-                break;
             }
         }
     }
