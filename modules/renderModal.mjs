@@ -7,7 +7,8 @@ const modal = document.getElementById("render-modal");
 
 const renderButton = document.getElementById("render-project-button");
 const renderOutputCanvas = document.getElementById("render-output-canvas");
-const downloadButton = document.getElementById("download-render-canvas-button");
+const renderOutputImage = document.getElementById("render-output-image");
+//const downloadButton = document.getElementById("download-render-canvas-button");
 
 Renderer.init(renderOutputCanvas);
 
@@ -15,18 +16,22 @@ renderButton.addEventListener("click", e => {
     const levelData = Editor.getLevelData();
 
     Renderer.render(levelData);
-});
-downloadButton.addEventListener("click", e => {
     renderOutputCanvas.toBlob(blob => {
-        const link = document.createElement("image");
-        //link.target = "_blank";
-        link.href = URL.createObjectURL(blob);
-        //link.download = "image.png";
-        modal.append(link);
-        //link.click();
-        //link.remove();
+        const objectURL = renderOutputImage.href = URL.createObjectURL(blob);
+        renderOutputImage.onload = e => URL.revokeObjectURL(objectURL);
     });
 });
+/*downloadButton.addEventListener("click", e => {
+    renderOutputCanvas.toBlob(blob => {
+        const link = document.createElement("a");
+        link.target = "_blank";
+        link.href = URL.createObjectURL(blob);
+        link.download = "image.png";
+        document.body.append(link);
+        link.click();
+        link.remove();
+    });
+});*/
 
 
 /*
