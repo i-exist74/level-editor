@@ -7,23 +7,16 @@ const modal = document.getElementById("render-modal");
 
 const renderButton = document.getElementById("render-project-button");
 const renderOutputCanvas = document.getElementById("render-output-canvas");
-const renderOutputImage = document.getElementById("render-output-image");
-//const downloadButton = document.getElementById("download-render-canvas-button");
+const downloadButton = document.getElementById("download-render-canvas-button");
 
 Renderer.init(renderOutputCanvas);
-renderOutputImage.width = renderOutputCanvas.width;
-renderOutputImage.height = renderOutputCanvas.height;
 
 renderButton.addEventListener("click", e => {
     const levelData = Editor.getLevelData();
 
     Renderer.render(levelData);
-    renderOutputCanvas.toBlob(blob => {
-        const objectURL = renderOutputImage.href = URL.createObjectURL(blob);
-        renderOutputImage.onload = e => URL.revokeObjectURL(objectURL);
-    });
 });
-/*downloadButton.addEventListener("click", e => {
+downloadButton.addEventListener("click", e => {
     renderOutputCanvas.toBlob(blob => {
         const link = document.createElement("a");
         link.target = "_blank";
@@ -33,7 +26,7 @@ renderButton.addEventListener("click", e => {
         link.click();
         link.remove();
     });
-});*/
+});
 
 
 /*
