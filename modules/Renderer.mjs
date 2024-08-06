@@ -77,6 +77,8 @@ function initializeGL(canvas) {
  * @param {import("LevelData.mjs").LevelData} levelData
  */
 function render(levelData, cameraIndex = 0) {
+    try {
+    
     const cameraPos = levelData.cameraPositions[cameraIndex];
     
     // Create VAO for a 1x1 square centered around the origin
@@ -148,6 +150,9 @@ function render(levelData, cameraIndex = 0) {
                 break;
             }
         }
+    }
+    } catch (e) {
+        alert(e);
     }
 }
 
