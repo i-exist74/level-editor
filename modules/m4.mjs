@@ -1,5 +1,5 @@
 //i probably got this code from webgl2fundamentals.org
-export default {
+const m4 = {
 
     perspective: function (fieldOfViewInRadians, aspect, near, far) {
         var f = Math.tan(Math.PI * 0.5 - 0.5 * fieldOfViewInRadians);
@@ -151,3 +151,4 @@ export default {
     },
 
 };
+export default m4;
