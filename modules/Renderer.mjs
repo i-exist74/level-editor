@@ -2,7 +2,7 @@
  * Original non-webGL attempt & info about the format of the rendered level png file in renderModa.mjs.
  */
 import { Geometry } from "./LevelData.mjs";
-import { default as m4 } from "./m4.mjs";
+import m4 from "./m4.mjs";
 
 const vertexShaderSource = `#version 300 es
     in vec4 a_position;
@@ -77,8 +77,6 @@ function initializeGL(canvas) {
  * @param {import("LevelData.mjs").LevelData} levelData
  */
 function render(levelData, cameraIndex = 0) {
-    try {
-    
     const cameraPos = levelData.cameraPositions[cameraIndex];
     
     // Create VAO for a 1x1 square centered around the origin
@@ -150,9 +148,6 @@ function render(levelData, cameraIndex = 0) {
                 break;
             }
         }
-    }
-    } catch (e) {
-        alert(e. stack);
     }
 }
 
