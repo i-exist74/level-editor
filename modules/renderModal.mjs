@@ -18,7 +18,7 @@ renderButton.addEventListener("click", e => {
 });
 downloadButton.addEventListener("click", e => {
     renderOutputCanvas.toBlob(blob => {
-        const link = document.createElement("img");
+        const link = document.createElement("image");
         //link.target = "_blank";
         link.href = URL.createObjectURL(blob);
         //link.download = "image.png";
