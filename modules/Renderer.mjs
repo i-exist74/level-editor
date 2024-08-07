@@ -62,7 +62,7 @@ const uniforms = {
 };
 
 function initializeGL(canvas) {
-    gl = canvas.getContext("webgl2");
+    gl = canvas.getContext("webgl2", { preserveDrawingBuffer: true });
 
     // resize canvas and GL viewport
     canvas.width = 1400;
