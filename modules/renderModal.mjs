@@ -22,11 +22,9 @@ downloadButton.addEventListener("click", e => {
         link.target = "_blank";
         link.href = URL.createObjectURL(blob);
         link.download = "image.png";
-        link.textContent = "download";
-        modal.append(link);
-        //document.body.append(link);
-        //link.click();
-        //link.remove();
+        document.body.append(link);
+        link.click();
+        link.remove();
     });
 });
 
