@@ -27,7 +27,8 @@ downloadButton.addEventListener("click", e => {
         //link.remove();
         const image = document.createElement("image");
         image.href = URL.createObjectURL(blob);
-        image.style.width = "auto";
+        image.width = "200px";
+        image.height = "100px";
         modal.append(image);
     });
 });
