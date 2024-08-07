@@ -25,13 +25,11 @@ downloadButton.addEventListener("click", e => {
         //document.body.append(link);
         //link.click();
         //link.remove();
-try{
-        const image = document.createElement("image");
+        const image = document.createElement("img");
         image.href = URL.createObjectURL(blob);
         image.width = "200";
         image.height = "100";
         modal.append(image);
-        }catch(e){alert(e);}alert(7);
     });
 });
 
