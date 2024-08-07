@@ -18,18 +18,15 @@ renderButton.addEventListener("click", e => {
 });
 downloadButton.addEventListener("click", e => {
     renderOutputCanvas.toBlob(blob => {
-        //const link = document.createElement("a");
-        //link.target = "_blank";
-        //link.href = URL.createObjectURL(blob);
-        //link.download = "image.png";
+        const link = document.createElement("a");
+        link.target = "_blank";
+        link.href = URL.createObjectURL(blob);
+        link.download = "image.png";
+        link.textContent = "download";
+        modal.append(link);
         //document.body.append(link);
         //link.click();
         //link.remove();
-        const image = document.createElement("img");
-        image.href = URL.createObjectURL(blob);
-        image.width = "200";
-        image.height = "100";
-        modal.append(image);
     });
 });
 
