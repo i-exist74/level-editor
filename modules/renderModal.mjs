@@ -6,15 +6,16 @@ import Renderer from "./Renderer.mjs";
 const modal = document.getElementById("render-modal");
 
 const renderButton = document.getElementById("render-project-button");
-const renderOutputCanvas = document.getElementById("render-output-canvas");
 const downloadButton = document.getElementById("download-render-canvas-button");
+const screenIndexInput = document.getElementById("screen-to-render-input");
+const renderOutputCanvas = document.getElementById("render-output-canvas");
 
 Renderer.init(renderOutputCanvas);
 
 renderButton.addEventListener("click", e => {
     const levelData = Editor.getLevelData();
 
-    Renderer.render(levelData);
+    Renderer.render(levelData, screenIndexInput.value);
 });
 downloadButton.addEventListener("click", e => {
     renderOutputCanvas.toBlob(blob => {
