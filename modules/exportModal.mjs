@@ -1,4 +1,4 @@
-import Editor from "./Editor.mjs";
+import { levelData } from "./Editor.mjs";
 
 const modal = document.getElementById("export-modal");
 const outputEl = modal.querySelector("textarea");
@@ -8,7 +8,7 @@ const errorDisplay = document.getElementById("export-error-display");
 
 outputToTextareaButton.addEventListener("click", e => {
     try {
-        outputEl.value = Editor.exportProjectData();
+        outputEl.value = levelData.exportProjectData();
         outputEl.select();
         //outputEl.setSelectionRange(0, outputEl.value.length);
     } catch (e) {
@@ -18,7 +18,7 @@ outputToTextareaButton.addEventListener("click", e => {
 });
 downloadButton.addEventListener("click", e => {
     try {
-        const data = Editor.exportProjectData();
+        const data = levelData.exportProjectData();
         const blob = new Blob([data], { type: "text/plain" });
         const elem = document.createElement('a');
         elem.href = URL.createObjectURL(blob);
