@@ -1,4 +1,4 @@
-import Editor from "./Editor.mjs";
+import { levelData } from "./Editor.mjs";
 
 // "Import project" modal interaction
 const modal = document.getElementById("import-modal");
@@ -19,7 +19,7 @@ loadButton.addEventListener("click", e => {
     reader.readAsText(file);
     reader.onload = e => {
         try {
-            Editor.importProjectData(reader.result);
+            levelData.importProjectData(reader.result);
             modal.close();
         } catch (e) {
             console.error(e);
