@@ -40,7 +40,4 @@ document.getElementById("edit-tool-select").addEventListener("change", e => {
 });
 
 
-export default {
-    levelData,
-    levelView
-};
+export { levelData, levelView };
