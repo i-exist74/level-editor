@@ -41,19 +41,6 @@ document.getElementById("edit-tool-select").addEventListener("change", e => {
 
 
 export default {
-    importProjectData(leditorProjectFile) {
-        levelData.importProjectData(leditorProjectFile);
-    },
-    exportProjectData() {
-        return levelData.exportProjectData();
-    },
-    changeDimensions(newWidth, newHeight, rightBottomBorder) {
-        let changedW = levelData.changeWidth(newWidth, rightBottomBorder);
-        let changedH = levelData.changeHeight(newHeight, rightBottomBorder);
-        if (changedW || changedH) levelView.levelDimensionsChanged();
-    },
-
-    getLevelData() {
-        return levelData;
-    }
+    levelData,
+    levelView
 };
