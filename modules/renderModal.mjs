@@ -1,4 +1,4 @@
-import Editor from "./Editor.mjs";
+import { levelData } from "./Editor.mjs";
 import Renderer from "./Renderer.mjs";
 
 
@@ -13,8 +13,6 @@ const renderOutputCanvas = document.getElementById("render-output-canvas");
 Renderer.init(renderOutputCanvas);
 
 renderButton.addEventListener("click", e => {
-    const levelData = Editor.getLevelData();
-
     Renderer.render(levelData, screenIndexInput.value);
 });
 downloadButton.addEventListener("click", e => {
