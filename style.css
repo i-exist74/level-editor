@@ -91,18 +91,18 @@ ul {
 }
 #edit-tool-select div {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
     border: 1px solid black;
 }
 #edit-tool-select div svg {
     width: 1em;
     height: 1em;
+    place-self: center;
 }
 #edit-tool-select div input {
     position: absolute;
     appearance: none;
+    place-self: stretch;
 }
 #edit-tool-select div input:checked::before {
     content: "";
