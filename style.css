@@ -99,6 +99,7 @@ ul {
     height: 100%;
 }
 #edit-tool-select div svg {
+    display: block;
     margin: auto;
 }
 
