@@ -88,10 +88,14 @@ ul {
     grid-auto-rows: 1.25em;
     background-color: #AAA;
 }
-
 #edit-tool-select div {
     position: relative;
     text-align: center;
+    border: 1px solid black;
+}
+#edit-tool-select div svg {
+    width: 1em;
+    height: 1em;
     vertical-align: middle;
 }
 #edit-tool-select div input {
