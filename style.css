@@ -92,7 +92,6 @@ ul {
 #edit-tool-select div {
     position: relative;
     display: flex;
-    border: 1px solid black;
     align-items: center;
     justify-content: center;
 }
