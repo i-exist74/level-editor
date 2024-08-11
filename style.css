@@ -91,6 +91,7 @@ ul {
 
 #edit-tool-select div {
     position: relative;
+    border: 1px solid black;
 }
 #edit-tool-select div input[name=editTool] {
     position: absolute;
@@ -101,6 +102,9 @@ ul {
 #edit-tool-select div svg {
     text-align: center;
     vertical-align: middle;
+}
+#edit-tool-select div input:checked + svg {
+    background-color: white;
 }
 
 /* Dropdown behavior */
