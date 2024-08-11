@@ -96,7 +96,7 @@ ul {
     justify-content: center;
 }
 #edit-tool-select label:has(input:checked) {
-    background-color: white;
+    outline: 1px solid white;
 }
 #edit-tool-select label svg {
     width: 1em;
