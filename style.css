@@ -94,8 +94,8 @@ ul {
 #edit-tool-select div input[name=editTool] {
     position: absolute;
     
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
 }
 
 /* Dropdown behavior */
