@@ -99,8 +99,8 @@ ul {
     height: 100%;
 }
 #edit-tool-select div svg {
-    display: block;
-    margin: auto;
+    text-align: center;
+    vertical-align: middle;
 }
 
 /* Dropdown behavior */
