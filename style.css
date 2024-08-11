@@ -91,25 +91,21 @@ ul {
 }
 #edit-tool-select div {
     position: relative;
-    display: grid;
+    display: flex;
     border: 1px solid black;
+    align-items: center;
+    justify-content: center;
+}
+#edit-tool-select div:has(input:checked) {
+    background-color: white;
 }
 #edit-tool-select div svg {
     width: 1em;
     height: 1em;
-    place-self: center;
 }
 #edit-tool-select div input {
     position: absolute;
     appearance: none;
-    place-self: stretch;
-}
-#edit-tool-select div input:checked::before {
-    content: "";
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    background-color: white;
 }
 
 /* Dropdown behavior */
