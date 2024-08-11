@@ -85,7 +85,7 @@ ul {
 #edit-tool-select {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(1.25em, 1fr));
-    grid-template-rows: repeat(auto-fit, 1.25em);
+    grid-auto-rows: 1.25em;
     background-color: #AAA;
 }
 
