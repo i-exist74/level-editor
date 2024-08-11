@@ -84,15 +84,17 @@ ul {
 
 #edit-tool-select {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(1.5em, 1fr));
+    grid-auto-columns: 1em;
+    grid-auto-rows: 1em;
 }
 
 #edit-tool-select div {
     position: relative;
 }
-#edit-tool-select input[name=editTool] {
-    /*appearance: none;*/
+#edit-tool-select div input[name=editTool] {
     position: absolute;
+    width: auto;
+    height: auto;
 }
 
 /* Dropdown behavior */
