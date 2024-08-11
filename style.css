@@ -84,8 +84,7 @@ ul {
 
 #edit-tool-select {
     display: grid;
-    grid-auto-columns: 1em;
-    grid-auto-rows: 1em;
+    grid-template-columns: repeat(auto-fit, 1em);
 }
 
 #edit-tool-select div {
