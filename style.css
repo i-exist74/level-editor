@@ -89,20 +89,20 @@ ul {
     grid-auto-rows: 1.25em;
     background-color: #AAA;
 }
-#edit-tool-select div {
+#edit-tool-select label {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-#edit-tool-select div:has(input:checked) {
+#edit-tool-select label:has(input:checked) {
     background-color: white;
 }
-#edit-tool-select div svg {
+#edit-tool-select label svg {
     width: 1em;
     height: 1em;
 }
-#edit-tool-select div input {
+#edit-tool-select label input {
     position: absolute;
     appearance: none;
 }
