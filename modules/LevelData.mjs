@@ -359,8 +359,8 @@ export class LevelData extends EventEmitter {
     constrainToBounds(x, y) {
         if (y === void 0) [x, y] = [x.x, x.y];
 
-        x = Math.min(Math.max(x, 0), this.levelWidth);
-        y = Math.min(Math.max(y, 0), this.levelHeight);
+        x = Math.min(Math.max(x, 0), this.levelWidth - 1);
+        y = Math.min(Math.max(y, 0), this.levelHeight - 1);
         return { x, y };
     }
 
