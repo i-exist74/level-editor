@@ -184,6 +184,7 @@ export class LevelData extends EventEmitter {
     #tileData;
     #defaultMaterial;
     cameraPositions;
+    cameraQuads;
 
     levelWidth;
     levelHeight;
