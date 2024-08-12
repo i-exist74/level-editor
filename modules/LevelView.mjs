@@ -360,13 +360,13 @@ export default class LevelView {
             for (let x = start.x; x <= end.x + 1; x++) {
                 this.#ctx.beginPath();
                 this.#ctx.moveTo(x, start.y);
-                this.#ctx.lineTo(x, end.y);
+                this.#ctx.lineTo(x, end.y + 1);
                 this.#ctx.stroke();
             }
             for (let y = start.y; y <= end.y + 1; y++) {
                 this.#ctx.beginPath();
                 this.#ctx.moveTo(start.x, y);
-                this.#ctx.lineTo(end.x, y);
+                this.#ctx.lineTo(end.x + 1, y);
                 this.#ctx.stroke();
             }
         }
