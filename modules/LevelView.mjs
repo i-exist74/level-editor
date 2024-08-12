@@ -434,12 +434,12 @@ export default class LevelView {
         }
         if (e.shiftKey || this.#tool.action === "none") return;
 
-        const tile = this.#screenToLevelCoords(e.offsetX, e.offsetY);
-        if (!this.levelData.isInBounds(tile)) return;
+        let tile = this.#screenToLevelCoords(e.offsetX, e.offsetY);
 
         // Handle selection
         if (this.#selectionType === "rect") {
             // Rect selection behavior
+            tile = this.levelData.constrainToBounds(tile);
             if (!this.#initiatedRectSelection) {
                 this.#initiatedRectSelection = true;
                 this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
@@ -452,6 +452,7 @@ export default class LevelView {
                 this.#selection.y2 = tile.y;
             }
         } else if (this.#selectionType === "paint") {
+            if (!this.levelData.isInBounds(tile)) return;
             // Paint selection behavior
             this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
             this.#performEditAction(e.altKey);
@@ -488,16 +489,15 @@ export default class LevelView {
             return;
         }
 
-        const tile = this.#screenToLevelCoords(e.offsetX, e.offsetY);
-        if (!this.levelData.isInBounds(tile)) return;
+        let tile = this.#screenToLevelCoords(e.offsetX, e.offsetY);
         if (this.#selection && this.#selection.x2 === tile.x && this.#selection.y2 === tile.y) return;
 
         if (this.#selectionType === "rect" && this.#initiatedRectSelection) {
             // Move point 2 of targeted rect
+            tile = this.levelData.constrainToBounds(tile);
             this.#selection.x2 = tile.x;
             this.#selection.y2 = tile.y;
-        } else {
-            // Target mouse position when idle
+        } else if (this.levelData.isInBounds(tile)) {
             this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
 
             if (
