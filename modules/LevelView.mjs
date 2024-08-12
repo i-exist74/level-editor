@@ -159,8 +159,8 @@ export default class LevelView {
         this.#applyCameraTransformation(this.#ctx);
 
         // Draw geometry
-        for (let x = start.x; x < end.x; x++) {
-            for (let y = start.y; y < end.y; y++) {
+        for (let x = start.x; x <= end.x; x++) {
+            for (let y = start.y; y <= end.y; y++) {
                 this.#drawGeometryAt(x, y);
             }
         }
@@ -357,13 +357,13 @@ export default class LevelView {
 
             this.#ctx.lineWidth = 0.04;
             this.#ctx.strokeStyle = "#BBB";
-            for (let x = start.x; x <= end.x; x++) {
+            for (let x = start.x; x <= end.x + 1; x++) {
                 this.#ctx.beginPath();
                 this.#ctx.moveTo(x, start.y);
                 this.#ctx.lineTo(x, end.y);
                 this.#ctx.stroke();
             }
-            for (let y = start.y; y <= end.y; y++) {
+            for (let y = start.y; y <= end.y + 1; y++) {
                 this.#ctx.beginPath();
                 this.#ctx.moveTo(start.x, y);
                 this.#ctx.lineTo(end.x, y);
