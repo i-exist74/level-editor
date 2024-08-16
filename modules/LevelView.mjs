@@ -189,7 +189,7 @@ export default class LevelView {
         const geo = this.levelData.geometryAt(x, y, l);
 
         this.#ctx.textAlign = "center";
-        this.#ctx.textBaseline = "middle";
+        //this.#ctx.textBaseline = "middle";
         this.#ctx.font = `1px monospace`;
 
         const color = ["#000000B0", "#008800A0", "#880000A0"][l];
@@ -306,7 +306,7 @@ export default class LevelView {
         switch (geo & Geometry.SHORTCUT_OBJECT_MASK) {
             case Geometry.shortcutEntrance:
                 this.#ctx.fillStyle = "white";
-                this.#ctx.fillText("S", x + 0.5, y + 0.5);
+                this.#ctx.fillText("S", x + 0.5, y);
                 break;
 
             case Geometry.shortcutPath:
@@ -407,7 +407,7 @@ export default class LevelView {
 
             // Draw text coordinates
             this.#ctx.fillStyle = "#F00";
-            this.#ctx.font = `${this.#invZoom * 12}px Arial`;
+            document.getElementById("side-ui").textContent = this.#ctx.font = `${(this.#invZoom * 12).toFixed(2)}px Arial`;
 
             let text = `(${x1}, ${y1})`;
             if (this.#selectionType === "rect") {
