@@ -407,7 +407,7 @@ export default class LevelView {
 
             // Draw text coordinates
             this.#ctx.fillStyle = "#F00";
-            document.getElementById("side-ui").textContent = this.#ctx.font = `${(this.#invZoom * 12).toFixed(2)}px Arial`;
+            document.getElementById("side-ui").append(this.#ctx.font = `${(this.#invZoom * 12).toFixed(2)}px Arial`);
 
             let text = `(${x1}, ${y1})`;
             if (this.#selectionType === "rect") {
