@@ -306,7 +306,7 @@ export default class LevelView {
         switch (geo & Geometry.SHORTCUT_OBJECT_MASK) {
             case Geometry.shortcutEntrance:
                 this.#ctx.fillStyle = "white";
-                this.#ctx.fillText("S", x + 0.5, y);
+                this.#ctx.fillText("S", x + 0.5, y + 0.5);
                 break;
 
             case Geometry.shortcutPath:
@@ -387,13 +387,13 @@ export default class LevelView {
     /* UI display */
     #repaintUI() {
         this.#ctx = this.#uiCanvas.getContext("2d");
-        this.#ctx.restore();
+        // manually do transformations due to jank with some browsers involving font size being rounded to integer
+        // this.#ctx.restore();
         this.#ctx.clearRect(0, 0, this.width, this.height);
 
         if (this.#selection) {
-            this.#ctx.save();
-            this.#applyCameraTransformation(this.#ctx);
-
+            //this.#ctx.save();
+            //this.#applyCameraTransformation(this.#ctx);
 
             let x1 = Math.min(this.#selection.x1, this.#selection.x2);
             let x2 = Math.max(this.#selection.x1, this.#selection.x2);
@@ -401,19 +401,23 @@ export default class LevelView {
             let y2 = Math.max(this.#selection.y1, this.#selection.y2);
 
             // Draw rectangle selection
-            this.#ctx.lineWidth = 0.04;
+            this.#ctx.lineWidth = 0.04 * this.zoom;
             this.#ctx.strokeStyle = "#F00";
-            this.#ctx.strokeRect(x1, y1, x2 - x1 + 1, y2 - y1 + 1);
+            this.#ctx.strokeRect(
+                x1 * this.zoom - this.pan.x, y1 * this.zoom - this.pan.y,
+                (x2 - x1 + 1) * this.zoom, (y2 - y1 + 1) * this.zoom);
 
             // Draw text coordinates
             this.#ctx.fillStyle = "#F00";
-            document.getElementById("side-ui").append(this.#ctx.font = `${(this.#invZoom * 12).toFixed(2)}px Arial`);
+            this.#ctx.font = `12px Arial`;
 
             let text = `(${x1}, ${y1})`;
             if (this.#selectionType === "rect") {
                 text += ` w: ${x2 - x1 + 1} h: ${y2 - y1 + 1}`;
             }
-            this.#ctx.fillText(text, x2 + 1 + this.#invZoom * 4, y2 + 1);
+            this.#ctx.fillText(text,
+                (x2 + 1) * this.zoom - this.pan.x + 4,
+                (y2 + 1) * this.zoom - this.pan.y);
         }
     }
 
