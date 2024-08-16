@@ -391,8 +391,8 @@ export default class LevelView {
         this.#ctx.clearRect(0, 0, this.width, this.height);
 
         if (this.#selection) {
-            //this.#ctx.save();
-            //this.#applyCameraTransformation(this.#ctx);
+            this.#ctx.save();
+            this.#applyCameraTransformation(this.#ctx);
 
             let x1 = Math.min(this.#selection.x1, this.#selection.x2);
             let x2 = Math.max(this.#selection.x1, this.#selection.x2);
