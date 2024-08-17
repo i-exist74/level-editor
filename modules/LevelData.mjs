@@ -19,8 +19,6 @@ const EXCLUSIVE_TO_WALL_MASK           = 0b000000111100000000;
 const EXCLUSIVE_TO_WALL_AND_SLOPE_MASK = 0b001111000000000000;
 const MUST_BE_ON_WALL_MASK             = 0b110000000000000000;
 
-// man surely I could have done better than making this whole convoluted format
-// and having to finagle with it and the original format
 export const Geometry = {
     BLOCK_TYPE_MASK: BLOCK_TYPE_MASK,
     SHORTCUT_OBJECT_MASK: SHORTCUT_OBJECT_MASK,
@@ -365,6 +363,7 @@ export class LevelData extends EventEmitter {
     }
 
     /* Change level dimensions */
+    // this code sucks
     changeWidth(newWidth, rightBorder = true) {
         newWidth = +newWidth;
         let oldWidth = this.levelWidth;
@@ -418,13 +417,17 @@ export class LevelData extends EventEmitter {
                 for (let y = oldHeight; y < newHeight; y++) {
                     this.#geometry[x][y] = new Array(this.layers).fill(0);
                 }
-            } else {
+            } else if (newHeight > oldHeight) {
                 for (let y = newHeight - 1; y >= 0; y--) {
                     if (y >= newHeight - oldHeight) {
                         this.#geometry[x][y] = this.#geometry[x][y + oldHeight - newHeight];
                     } else {
                         this.#geometry[x][y] = new Array(this.layers).fill(0);
                     }
+                }
+            } else {
+                for (let y = 0; y < newHeight; y++) {
+                    this.#geometry[x][y] = this.#geometry[x][y + oldHeight - newHeight];
                 }
                 this.#geometry[x].length = newHeight;
             }
