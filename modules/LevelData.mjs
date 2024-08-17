@@ -366,6 +366,7 @@ export class LevelData extends EventEmitter {
 
     /* Change level dimensions */
     changeWidth(newWidth, rightBorder = true) {
+        newWidth = +newWidth;
         let oldWidth = this.levelWidth;
         if (oldWidth === newWidth) return false;
         this.levelWidth = newWidth;
@@ -398,6 +399,7 @@ export class LevelData extends EventEmitter {
         return true;
     }
     changeHeight(newHeight, bottomBorder = true) {
+        newHeight = +newHeight;
         const oldHeight = this.levelHeight;
         if (oldHeight === newHeight) return false;
         this.levelHeight = newHeight;
