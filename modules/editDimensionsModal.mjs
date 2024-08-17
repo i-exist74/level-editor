@@ -22,6 +22,6 @@ function changeDimensionsAndCloseModal(newWidth, newHeight, rightBottomBorder) {
         modal.close();
     } catch (e) {
         console.error(e);
-        errorDisplay.textContent = e.stack;
+        errorDisplay.textContent = e;
     }
 }
