@@ -252,13 +252,14 @@
                 <h1>Edit Dimensions</h1>
                 <p>Note: Reducing the level size will permanently delete affected parts of the level</p>
                 <p>Add 52 width and 43 height for each screen above 1</p>
-                <p>changing height not implemented; doesn't modify tile matrix & all except for geometry, so other editors might not work after changing the level size</p>
+                <p>doesn't modify tile matrix & all except for geometry, so other editors might not work after changing the level size</p>
                 <label for="level-width-input">Width:</label>
                 <input type="number" id="level-width-input" min="1" value="72" max="1080" autofocus />
                 <label for="level-height-input">Height:</label>
                 <input type="number" id="level-height-input" min="1" value="43" max="1075" />
                 <button id="edit-dimensions-left-top">Move Left/Top Border</button>
                 <button id="edit-dimensions-right-bottom">Move Right/Bottom Border</button>
+                <p id="edit-dimensions-error-display"></p>
         </dialog>
 
         <dialog class="modal" id="render-modal">
