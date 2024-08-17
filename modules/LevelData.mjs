@@ -400,6 +400,7 @@ export class LevelData extends EventEmitter {
     changeHeight(newHeight, bottomBorder = true) {
         const oldHeight = this.levelHeight;
         if (oldHeight === newHeight) return false;
+        this.levelHeight = newHeight;
         
         for (let x = 0; x < this.levelWidth; x++) {
             if (bottomBorder) {
@@ -417,6 +418,7 @@ export class LevelData extends EventEmitter {
                         this.#geometry[x][y] = new Array(this.layers).fill(0);
                     }
                 }
+                this.#geometry[x].length = newHeight;
             }
         }
         return true;
