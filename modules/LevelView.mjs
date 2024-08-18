@@ -189,7 +189,7 @@ export default class LevelView {
         const geo = this.levelData.geometryAt(x, y, l);
 
         this.#ctx.textAlign = "center";
-        //this.#ctx.textBaseline = "middle";
+        this.#ctx.textBaseline = "middle";
         this.#ctx.font = `1px monospace`;
 
         const color = ["#000000B0", "#008800A0", "#880000A0"][l];
@@ -198,7 +198,11 @@ export default class LevelView {
         // Block type
         switch (geo & Geometry.BLOCK_TYPE_MASK) {
             case Geometry.wall:
-                this.#ctx.fillRect(x, y, 1, 1);
+                if (geo & Geometry.crack) {
+                    this.#ctx.fillRect(x + 0.33, y + 0.33, 0.34, 0.34);
+                } else {
+                    this.#ctx.fillRect(x, y, 1, 1);
+                }
                 break;
             case Geometry.glassWall:
                 for (let offX = 0; offX < 1; offX += 0.25) {
@@ -240,10 +244,6 @@ export default class LevelView {
         }
 
         // Stackable objects
-        if (geo & Geometry.crack) {
-            this.#ctx.fillStyle = "red";
-            this.#ctx.fillText("C", x + 0.5, y + 0.5);
-        }
         if (geo & Geometry.garbageWormHole) {
             this.#ctx.fillStyle = "rgb(60, 132, 76)";
             this.#ctx.fillText("G", x + 0.5, y + 0.5);
@@ -271,7 +271,7 @@ export default class LevelView {
             this.#ctx.stroke();
         }
         if (geo & Geometry.hive) {
-            this.#ctx.fillStyle = "white";
+            this.#ctx.fillStyle = l === 0 ? "white" : color;
             this.#ctx.beginPath();
             this.#ctx.moveTo(x + 1, y + 1);
             this.#ctx.lineTo(x, y + 1);
