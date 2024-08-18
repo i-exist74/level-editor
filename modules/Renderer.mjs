@@ -97,7 +97,7 @@ function initializeGL(canvas) {
  */
 function render(levelData, cameraIndex = 0) {
     const cameraPos = levelData.cameraPositions[cameraIndex];
-    //const corners = levelData.cameraQuads[cameraIndex];
+    const corners = levelData.cameraQuads[cameraIndex];
     
     // Create VAO for a 1x1 square centered around the origin
     const vao = gl.createVertexArray();
@@ -164,10 +164,10 @@ function render(levelData, cameraIndex = 0) {
     gl.useProgram(program);
     gl.bindVertexArray(vao);
     
-    gl.uniform2f(u_l30topLeftLoc, 50, 50);//corners[0].x, corners[0].y);
-    gl.uniform2f(u_l30topRightLoc, 1350, 50);//corners[1].x, corners[1].y);
-    gl.uniform2f(u_l30bottomLeftLoc, 50, 750);//corners[2].x, corners[2].y);
-    gl.uniform2f(u_l30bottomRightLoc, 1350, 750);//corners[3].x, corners[3].y);
+    gl.uniform2f(u_l30topLeftLoc, corners[0][0] * 20, corners[0][1] * 20);
+    gl.uniform2f(u_l30topRightLoc, 1400 + corners[1][0] * 20, corners[1][1] * 20);
+    gl.uniform2f(u_l30bottomLeftLoc, corners[2][0] * 20, 800 + corners[2][1] * 20);
+    gl.uniform2f(u_l30bottomRightLoc, 1400 + corners[3][0] * 20, 800 + corners[3][1] * 20);
 
     let projectionMatrix = m4.scaling(1, -1, 1);
     projectionMatrix = m4.translate(projectionMatrix, -1, -1, -1);
