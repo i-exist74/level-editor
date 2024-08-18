@@ -274,7 +274,8 @@ export class LevelData extends EventEmitter {
         this.cameraPositions = cameras.cameras;
         this.cameraQuads = cameras.quads.map(quad => {
             return quad.map(point => {
-                return [Math.cos(point[0]) * point[1], Math.sin(point[0]) * point[1]];
+                let angle = point[0] * Math.PI/180;
+                return [Math.cos(angle) * point[1], Math.sin(angle) * point[1]];
             });
         });
 
