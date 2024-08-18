@@ -272,6 +272,11 @@ export class LevelData extends EventEmitter {
 
         // Cameras
         this.cameraPositions = cameras.cameras;
+        this.cameraQuads = camera.quads.map(quad => {
+            return quad.map(point => {
+                return [Math.cos(point[0]) * point[1], Math.sin(point[0]) * point[1]);
+            });
+        });
 
         // cleanup
         this.#originalProjectData[0] = null;
@@ -310,6 +315,11 @@ export class LevelData extends EventEmitter {
 
         // Cameras
         data[6].cameras = this.cameraPositions;
+        data[6].quads = this.cameraQuads.map(quad => {
+            return quad.map(([x, y]) => {
+                return [Math.atan2(y, x) * 180/Math.PI, Math.sqrt(x * x + y * y)];
+            });
+        });
 
         // Stringify and reformat merged data to create leditor project file
         let stringifiedData = [];
