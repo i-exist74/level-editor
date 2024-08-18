@@ -194,7 +194,10 @@ export class LevelData extends EventEmitter {
 
     constructor() {
         super();
+        alert(1);
+        try{
         this.importProjectData(blank1x1);
+        }catch(e){alert(e)}
     }
 
 
