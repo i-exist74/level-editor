@@ -194,10 +194,7 @@ export class LevelData extends EventEmitter {
 
     constructor() {
         super();
-        alert(1);
-        try{
         this.importProjectData(blank1x1);
-        }catch(e){alert(e)}
     }
 
 
@@ -275,7 +272,7 @@ export class LevelData extends EventEmitter {
 
         // Cameras
         this.cameraPositions = cameras.cameras;
-        this.cameraQuads = camera.quads.map(quad => {
+        this.cameraQuads = cameras.quads.map(quad => {
             return quad.map(point => {
                 return [Math.cos(point[0]) * point[1], Math.sin(point[0]) * point[1]];
             });
