@@ -398,7 +398,9 @@ export default class LevelView {
                 this.#drawSelection();
                 break;
             case "camera":
+            try{
                 this.#drawCameras();
+            }catch(e){alert(e.stack)}
         }
     }
     #drawSelection() {
