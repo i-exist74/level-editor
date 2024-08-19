@@ -19,13 +19,17 @@ input[type=checkbox] {
     height: 1em;
 }
 
+.hide {
+    display: none;
+}
+
 /* Page Layout */
 body {
     display: grid;
     grid-template:
         "main-menu main-menu" clamp(1.5rem, 2vh, 2rem)
         "side-ui graphical-display" 1fr
-        "side-ui bottom-ui" min-content /
+        "bottom-ui bottom-ui" clamp(1.5rem, 2vh, 2rem) /
         fit-content(30%) 1fr;
 
     background-color: rgb(35, 42, 100);
@@ -36,16 +40,31 @@ ul {
     list-style-position: inside;
 }
 
-#main-menu {
-    background-color: #1b1b1b;
-
-    grid-area: main-menu;
+#main-menu, #bottom-ui {
     place-self: stretch;
 
     display: flex;
     align-items: center;
     padding: 0 0.5em 0 0.5em;
     color: white;
+}
+
+#main-menu {
+    grid-area: main-menu;
+    background-color: #1b1b1b;
+}
+
+#bottom-ui {
+    grid-area: bottom-ui;
+    background-color: black;
+}
+#bottom-ui button {
+    background-color: transparent;
+    border: none;
+}
+.open-editor-button.active {
+    background-color: #444;
+    outline: 1px solid #BBB;
 }
 
 #side-ui {
@@ -55,13 +74,6 @@ ul {
     font-size: clamp(0.7rem, 3vh, 1rem);
     padding: 1em;
     overflow: auto;
-    color: white;
-}
-
-#bottom-ui {
-    grid-area: bottom-ui;
-    background-color: black;
-
     color: white;
 }
 
@@ -119,16 +131,13 @@ ul {
     color: white;
 }
 .dropdown__button:hover,
-.dropdown:focus-within/*.open*/ .dropdown__button {
+.dropdown:focus-within .dropdown__button {
     background-color: #444;
     outline: 1px solid #BBB;
 }
 .dropdown:focus-within .dropdown__content {
     display: flex;
 }
-/*.dropdown.open .dropdown__content {
-    display: flex;
-}*/
 .dropdown__content {
     display: none;
     position: absolute;
