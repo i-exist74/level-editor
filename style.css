@@ -59,10 +59,11 @@ ul {
     background-color: black;
     gap: 1em;
 }
-.open-editor-button button {
+.open-editor-button {
     background-color: transparent;
     border: none;
     color: white;
+    padding: 0.5em;
 }
 .open-editor-button.active {
     background-color: #888;
