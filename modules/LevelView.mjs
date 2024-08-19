@@ -398,9 +398,7 @@ export default class LevelView {
                 this.#drawSelection();
                 break;
             case "camera":
-            try{
                 this.#drawCameras();
-            }catch(e){alert(e.stack)}
         }
     }
     #drawSelection() {
@@ -438,7 +436,7 @@ export default class LevelView {
         this.#applyCameraTransformation(this.#ctx);
         
         for (let i = 0; i < this.levelData.cameraPositions.length; i++) {
-            let [x, y] = this.levelData.cameraPositions[i];
+            let { x, y } = this.levelData.cameraPositions[i];
             this.#ctx.lineWidth = 0.04;
             this.#ctx.strokeStyle = "#F00";
             this.#ctx.strokeRect(x / 20, y / 20, 70, 40);
