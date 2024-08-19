@@ -195,7 +195,7 @@ export default class LevelView {
         this.#ctx.textBaseline = "middle";
         this.#ctx.font = `1px monospace`;
 
-        const color = ["#000000B0", "#008800A0", "#880000A0"][l];
+        const color = ["#000000A0", "#008800A0", "#880000A0"][l];
         this.#ctx.fillStyle = color;
 
         // Block type
@@ -437,9 +437,15 @@ export default class LevelView {
         
         for (let i = 0; i < this.levelData.cameraPositions.length; i++) {
             let { x, y } = this.levelData.cameraPositions[i];
-            this.#ctx.lineWidth = 0.04;
-            this.#ctx.strokeStyle = "#F00";
+            
+            // 1400x800
+            this.#ctx.lineWidth = 0.06;
+            this.#ctx.strokeStyle = "#000";
             this.#ctx.strokeRect(x / 20, y / 20, 70, 40);
+            
+            // 1024x768
+            this.#ctx.strokeStyle = "#F00";
+            this.#ctx.strokeRect((x + 188) / 20, (y + 16) / 20, 51.2, 38.4);
         }
         
         this.#ctx.restore();
