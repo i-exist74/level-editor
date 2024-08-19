@@ -45,7 +45,7 @@ editorButtonClicked.call(openEditorButtons[0]);
 function editorButtonClicked() {
     let editorName = this.value;
     for (const el of document.getElementsByClassName("editor-exclusive")) {
-        if (el.classList.contains(editorName)) {
+        if (el.classList.contains(`${editorName}-editor`)) {
             el.classList.remove("hide");
         } else {
             el.classList.add("hide");
@@ -53,6 +53,7 @@ function editorButtonClicked() {
     }
     currentlyActiveButton?.classList.remove("active");
     (currentlyActiveButton = this).classList.add("active");
+    levelView.switchEditor(editorName);
 }
 
 export { levelData, levelView };
