@@ -34,5 +34,20 @@ document.getElementById("edit-tool-select").addEventListener("change", e => {
     toolInfoEl.textContent = e.target.dataset.description;
 });
 
+document.getElementsByClassName("open-editor-button")
+.forEach(button => {
+    button.addEventListener("click", editorButtonClicked);
+});
+function editorButtonClicked() {
+    let editorName = this.value;
+    document.getElementsByClassName("editor-exclusive")
+    .forEach(el => {
+        if (el.classList.contains(editorName)) {
+            el.classList.remove("hide");
+        } else {
+            el.classList.add("hide");
+        }
+    });
+}
 
 export { levelData, levelView };
