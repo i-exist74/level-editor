@@ -57,14 +57,15 @@ ul {
 #bottom-ui {
     grid-area: bottom-ui;
     background-color: black;
+    gap: 1em;
 }
-#bottom-ui button {
+.open-editor-button button {
     background-color: transparent;
     border: none;
+    color: white;
 }
 .open-editor-button.active {
-    background-color: #444;
-    outline: 1px solid #BBB;
+    background-color: #888;
 }
 
 #side-ui {
