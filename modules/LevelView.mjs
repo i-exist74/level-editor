@@ -21,8 +21,11 @@ export default class LevelView {
     // For zoom/drag gesture behavior
     #pointerCache = [];
     #prevSqDistBetweenPointers = 0;
-
-    // Selection/editing
+    
+    // Editor
+    #currentEditor = "geometry";
+    
+    // Tile selection/editing
     #selection = {};
     #initiatedRectSelection = false;
     #workLayer = 0;
@@ -390,7 +393,7 @@ export default class LevelView {
         // this.#ctx.restore();
         this.#ctx.clearRect(0, 0, this.width, this.height);
 
-        if (this.#selection) {
+        if (this.#currentEditor === "geometry" && this.#selection) {
             this.#ctx.save();
             this.#applyCameraTransformation(this.#ctx);
 
@@ -417,6 +420,10 @@ export default class LevelView {
             this.#ctx.fillText(text,
                 (x2 + 1) * this.zoom + this.pan.x + 4,
                 (y2 + 1) * this.zoom + this.pan.y);
+        }
+        
+        if (this.#currentEditor === "camera") {
+            
         }
     }
 
@@ -540,23 +547,24 @@ export default class LevelView {
     }
 
     /* Editing interface */
-
-    // Set work layer
+    switchEditor(editor) {
+        this.#currentEditor = editor;
+        this.#repaintUI();
+    }
+    
     setWorkLayer(layer) {
         this.#workLayer = layer;
     }
-
-    // Set selection behavior - "paint" | "rect" | "none"
+    
     setSelectionType(type) {
         this.#selectionType = type;
         this.#repaintUI();
     }
 
-    // Set edit action
     setEditAction(action) {
         this.#tool.action = action;
     }
-    // Set geometry tool
+    
     setGeometryTool(geometry) {
         this.#tool.geometry = geometry;
     }
