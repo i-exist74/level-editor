@@ -167,15 +167,6 @@ export default class LevelView {
                 this.#drawGeometryAt(x, y);
             }
         }
-        
-        // desaturate level for camera editor
-        if (this.#currentEditor === "camera") {
-            this.#ctx.save();
-            this.#ctx.setTransform(1, 0, 0, 1, 0, 0);
-            this.#ctx.fillStyle = `rgb(from ${this.#container.style.backgroundColor} r g b / 0.5)`;
-            this.#ctx.fillRect(0, 0, this.width, this.height);
-            this.#ctx.restore();
-        }
     }
 
     #repaintPartLevel(x1, y1, x2, y2) {
@@ -441,6 +432,9 @@ export default class LevelView {
             (y2 + 1) * this.zoom + this.pan.y);
     }
     #drawCameras() {
+        this.#ctx.fillStyle = `rgb(from ${this.#container.style.backgroundColor} r g b / 0.5)`;
+        this.#ctx.fillRect(0, 0, this.width, this.height);
+        
         this.#ctx.save();
         this.#applyCameraTransformation(this.#ctx);
         
