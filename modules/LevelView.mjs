@@ -443,11 +443,17 @@ export default class LevelView {
             let { x, y } = this.levelData.cameraPositions[i];
             
             // 1400x800
+            this.#ctx.lineWidth = 0.08;
+            this.#ctx.strokeStyle = "#000";
+            this.#ctx.strokeRect(x / 20, y / 20, 70, 40);
+            
+            // 1366x768 (max res)
             this.#ctx.lineWidth = 0.06;
             this.#ctx.strokeStyle = "#000";
             this.#ctx.strokeRect(x / 20, y / 20, 70, 40);
             
-            // 1024x768
+            // 1024x768 (min res)
+            this.#ctx.lineWidth = 0.1;
             this.#ctx.strokeStyle = "#F00";
             this.#ctx.strokeRect((x + 188) / 20, (y + 16) / 20, 51.2, 38.4);
         }
