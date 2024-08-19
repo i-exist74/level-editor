@@ -432,7 +432,8 @@ export default class LevelView {
             (y2 + 1) * this.zoom + this.pan.y);
     }
     #drawCameras() {
-        this.#ctx.fillStyle = `rgb(from ${this.#container.style.backgroundColor} r g b / 0.5)`;
+        //this.#ctx.fillStyle = `rgb(from ${this.#container.style.backgroundColor} r g b / 0.5)`;
+        this.#ctx.fillStyle = "white";
         this.#ctx.fillRect(0, 0, this.width, this.height);
         
         this.#ctx.save();
