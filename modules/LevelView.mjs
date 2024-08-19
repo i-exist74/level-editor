@@ -392,41 +392,58 @@ export default class LevelView {
         this.#ctx = this.#uiCanvas.getContext("2d");
         // this.#ctx.restore();
         this.#ctx.clearRect(0, 0, this.width, this.height);
-
-        if (this.#currentEditor === "geometry" && this.#selection) {
-            this.#ctx.save();
-            this.#applyCameraTransformation(this.#ctx);
-
-            let x1 = Math.min(this.#selection.x1, this.#selection.x2);
-            let x2 = Math.max(this.#selection.x1, this.#selection.x2);
-            let y1 = Math.min(this.#selection.y1, this.#selection.y2);
-            let y2 = Math.max(this.#selection.y1, this.#selection.y2);
-
-            // Draw rectangle selection
-            this.#ctx.lineWidth = 0.04;
-            this.#ctx.strokeStyle = "#F00";
-            this.#ctx.strokeRect(x1, y1, x2 - x1 + 1, y2 - y1 + 1);
-
-            // Draw text coordinates
-            // manually do transformations due to jank with some browsers rounding font size to integer
-            this.#ctx.restore();
-            this.#ctx.fillStyle = "#F00";
-            this.#ctx.font = `12px Arial`;
-
-            let text = `(${x1}, ${y1})`;
-            if (this.#selectionType === "rect") {
-                text += ` w: ${x2 - x1 + 1} h: ${y2 - y1 + 1}`;
-            }
-            this.#ctx.fillText(text,
-                (x2 + 1) * this.zoom + this.pan.x + 4,
-                (y2 + 1) * this.zoom + this.pan.y);
-        }
         
-        if (this.#currentEditor === "camera") {
-            
+        switch (this.#currentEditor) {
+            case "geometry":
+                this.#drawSelection();
+                break;
+            case "camera":
+                this.#drawCameras();
         }
     }
+    #drawSelection() {
+        if (!this.#selection) return;
+        
+        this.#ctx.save();
+        this.#applyCameraTransformation(this.#ctx);
 
+        let x1 = Math.min(this.#selection.x1, this.#selection.x2);
+        let x2 = Math.max(this.#selection.x1, this.#selection.x2);
+        let y1 = Math.min(this.#selection.y1, this.#selection.y2);
+        let y2 = Math.max(this.#selection.y1, this.#selection.y2);
+
+        // Draw rectangle selection
+        this.#ctx.lineWidth = 0.04;
+        this.#ctx.strokeStyle = "#F00";
+        this.#ctx.strokeRect(x1, y1, x2 - x1 + 1, y2 - y1 + 1);
+
+        // Draw text coordinates
+        // manually do transformations due to jank with some browsers rounding font size to integer
+        this.#ctx.restore();
+        this.#ctx.fillStyle = "#F00";
+        this.#ctx.font = `12px Arial`;
+
+        let text = `(${x1}, ${y1})`;
+        if (this.#selectionType === "rect") {
+            text += ` w: ${x2 - x1 + 1} h: ${y2 - y1 + 1}`;
+        }
+        this.#ctx.fillText(text,
+            (x2 + 1) * this.zoom + this.pan.x + 4,
+            (y2 + 1) * this.zoom + this.pan.y);
+    }
+    #drawCameras() {
+        this.#ctx.save();
+        this.#applyCameraTransformation(this.#ctx);
+        
+        for (let i = 0; i < this.levelData.cameras.length; i++) {
+            let [x, y] = this.levelData.cameras[i];
+            this.#ctx.lineWidth = 0.04;
+            this.#ctx.strokeStyle = "#F00";
+            this.#ctx.strokeRect(x / 20, y / 20, 70, 40);
+        }
+        
+        this.#ctx.restore();
+    }
 
     /* UI */
     #onPointerDown(e) {
