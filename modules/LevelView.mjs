@@ -435,8 +435,8 @@ export default class LevelView {
         this.#ctx.save();
         this.#applyCameraTransformation(this.#ctx);
         
-        for (let i = 0; i < this.levelData.cameras.length; i++) {
-            let [x, y] = this.levelData.cameras[i];
+        for (let i = 0; i < this.levelData.cameraPositions.length; i++) {
+            let [x, y] = this.levelData.cameraPositions[i];
             this.#ctx.lineWidth = 0.04;
             this.#ctx.strokeStyle = "#F00";
             this.#ctx.strokeRect(x / 20, y / 20, 70, 40);
