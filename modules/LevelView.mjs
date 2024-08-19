@@ -450,7 +450,7 @@ export default class LevelView {
             // 1366x768 (max res)
             this.#ctx.lineWidth = 0.06;
             this.#ctx.strokeStyle = "#000";
-            this.#ctx.strokeRect(x / 20, y / 20, 70, 40);
+            this.#ctx.strokeRect((x + 17) / 20, (y + 16) / 20, 68.3, 38.4);
             
             // 1024x768 (min res)
             this.#ctx.lineWidth = 0.1;
