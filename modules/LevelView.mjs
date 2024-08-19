@@ -150,7 +150,6 @@ export default class LevelView {
     /* Level display */
     #repaintLevel() {
         this.#ctx = this.#levelCanvas.getContext("2d");
-        this.#ctx.restore();
         this.#ctx.clearRect(0, 0, this.width, this.height);
 
         // Draw level
@@ -166,6 +165,15 @@ export default class LevelView {
             for (let y = start.y; y <= end.y; y++) {
                 this.#drawGeometryAt(x, y);
             }
+        }
+        
+        this.#ctx.restore();
+        
+        // desaturate level for camera editor
+        if (this.#currentEditor === "camera") {
+            this.#ctx.fillStyle = `rgb(from ${this.#container.backgroundColor} r g b / 0.5)`;
+        this.#ctx.fillRect(0, 0, this.width, this.height);
+            
         }
     }
 
