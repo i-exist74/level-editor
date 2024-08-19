@@ -34,9 +34,14 @@ document.getElementById("edit-tool-select").addEventListener("change", e => {
     toolInfoEl.textContent = e.target.dataset.description;
 });
 
-for (const button of document.getElementsByClassName("open-editor-button")) {
+const openEditorButtons = document.getElementsByClassName("open-editor-button");
+let currentlyActiveButton;
+
+for (const button of openEditorButtons) {
     button.addEventListener("click", editorButtonClicked);
 }
+editorButtonClicked.call(openEditorButtons[0]);
+
 function editorButtonClicked() {
     let editorName = this.value;
     for (const el of document.getElementsByClassName("editor-exclusive")) {
@@ -46,7 +51,8 @@ function editorButtonClicked() {
             el.classList.add("hide");
         }
     }
-    this.classList.add("active");
+    currentlyActiveButton?.classList.remove("active");
+    (currentlyActiveButton = this).classList.add("active");
 }
 
 export { levelData, levelView };
