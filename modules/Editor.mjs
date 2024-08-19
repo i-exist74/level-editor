@@ -46,6 +46,7 @@ function editorButtonClicked() {
             el.classList.add("hide");
         }
     }
+    this.classList.add("active");
 }
 
 export { levelData, levelView };
