@@ -5,7 +5,7 @@ const outputContainer = document.getElementById("graphical-display");
 const toolInfoEl = document.getElementById("tool-info");
 
 const levelData = new LevelData();
-const levelView = new LevelView(outputContainer, levelData, { minZoom: 4, maxZoom: 40, zoom: 12 });
+const levelView = new LevelView(outputContainer, levelData, { minZoom: 2, maxZoom: 40, zoom: 12 });
 
 
 const toggleGridCheckbox = document.getElementById("toggle-grid-input");
