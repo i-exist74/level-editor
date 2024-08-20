@@ -502,14 +502,6 @@ export default class LevelView {
         
         // Camera selection
         if (this.#currentEditor === "camera") {
-            for (let i = 0; i < this.levelData.cameraPositions.length; i++) {
-                
-            }
-            return;
-        }
-        
-        // Tile selection
-        if (e.shiftKey || this.#tool.action === "none") {
             let { x, y } = this.#screenToLevelTransform(e.offsetX, e.offsetY);
             x *= 20;
             y *= 20;
@@ -522,6 +514,11 @@ export default class LevelView {
                     break;
                 }
             }
+            return;
+        }
+        
+        // Tile selection
+        if (e.shiftKey || this.#tool.action === "none") {
             return;
         }
         
