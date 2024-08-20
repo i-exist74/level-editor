@@ -465,19 +465,22 @@ export default class LevelView {
             this.#ctx.strokeRect((x + 188) / 20, (y + 16) / 20, 51.2, 38.4);
             
             // center
+            this.#ctx.beginPath();
             this.#ctx.fillStyle = this.#selectedCameraIndex === i ?
                 "rgb(0, 255, 0)" : "rgb(0, 160, 0)";
-            this.#ctx.strokeStyle = "none";
             this.#ctx.ellipse((x + 700) / 20, (y + 400) / 20, this.cameraCenterRadius, this.cameraCenterRadius, 0, 0, Math.PI * 2);
+            this.#ctx.fill();
             
             // corners
             for (let j = 0; j < quad.length; j++) {
                 let cornerX = x + (j % 2)*1400 + quad[j].x;
                 let cornerY = y + Math.floor(j/2)*800 + quad[j].y;
+                this.#ctx.beginPath();
                 this.#ctx.fillStyle =
                     this.#selectedCameraIndex === i && this.#selectedCornerIndex === j ?
                     "rgb(0, 255, 0)" : "rgb(0, 160, 0)";
                 this.#ctx.ellipse(cornerX / 20, cornerY / 20, this.cameraCenterRadius / 20, this.cameraCenterRadius / 20, 0, 0, Math.PI * 2);
+                this.#ctx.fill();
             }
         }
         
