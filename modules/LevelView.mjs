@@ -9,6 +9,10 @@ export default class LevelView {
     #uiCanvas;
     #canvases;
     #ctx;
+    
+    // Store pointer event sata, for zoom/drag gesture behavior
+    #pointerCache = [];
+    #prevSqDistBetweenPointers = 0;
 
     // Camera
     minZoom;
@@ -18,22 +22,24 @@ export default class LevelView {
     #rawZoom; // un-rounded zoom value is stored
     pan;
     
-    // For zoom/drag gesture behavior
-    #pointerCache = [];
-    #prevSqDistBetweenPointers = 0;
-    
     // Editor
     #currentEditor = "geometry";
     
-    // Tile selection/editing
+    // Tile editing
     #selection = {};
     #initiatedRectSelection = false;
     #workLayer = 0;
     #selectionType = "none";
     #tool = { geometry: "wall", action: "write" };
 
-    // Display
+    // Camera editing
+    #selectedCameraIndex = -1;
+    #selectedCornerIndex = -1;
+
+    // Display settings
     #showGrid = true;
+    cameraCenterRadius = 10;
+    cameraCornerRadius = 10;
 
     // Values calculated at runtime when camera settings change
     #invZoom;
@@ -441,6 +447,7 @@ export default class LevelView {
         
         for (let i = 0; i < this.levelData.cameraPositions.length; i++) {
             let { x, y } = this.levelData.cameraPositions[i];
+            const quad = this.levelData.cameraQuads[i];
             
             // 1400x800
             this.#ctx.lineWidth = 0.08;
@@ -456,6 +463,22 @@ export default class LevelView {
             this.#ctx.lineWidth = 0.1;
             this.#ctx.strokeStyle = "#F00";
             this.#ctx.strokeRect((x + 188) / 20, (y + 16) / 20, 51.2, 38.4);
+            
+            // center
+            this.#ctx.fillStyle = this.#selectedCameraIndex === i ?
+                "rgb(0, 255, 0)" : "rgb(0, 160, 0)";
+            this.#ctx.strokeStyle = "none";
+            this.#ctx.ellipse((x + 700) / 20, (y + 400) / 20, this.#cameraCenterRadius, this.#cameraCenterRadius, 0, 0, Math.PI * 2);
+            
+            // corners
+            for (let j = 0; j < quad.length; j++) {
+                let cornerX = x + (j % 2)*1400 + quad[j].x;
+                let cornerY = y + Math.floor(j/2)*800 + quad[j].y;
+                this.#ctx.fillStyle =
+                    this.#selectedCameraIndex === i && this.#selectedCornerIndex === j ?
+                    "rgb(0, 255, 0)" : "rgb(0, 160, 0)";
+                this.#ctx.ellipse(cornerX / 20, cornerY / 20, this.#cameraCenterRadius / 20, this.#cameraCenterRadius / 20, 0, 0, Math.PI * 2);
+            }
         }
         
         this.#ctx.restore();
@@ -463,6 +486,7 @@ export default class LevelView {
 
     /* UI */
     #onPointerDown(e) {
+        // store pointer data
         if (e.pointerType !== "mouse") {
             this.#pointerCache.push({
                 id: e.pointerId,
@@ -475,11 +499,33 @@ export default class LevelView {
                     (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
             }
         }
-        if (e.shiftKey || this.#tool.action === "none") return;
-
+        
+        // Camera selection
+        if (this.#currentEditor === "camera") {
+            for (let i = 0; i < this.levelData.cameraPositions.length; i++) {
+                
+            }
+            return;
+        }
+        
+        // Tile selection
+        if (e.shiftKey || this.#tool.action === "none") {
+            let { x, y } = this.#screenToLevelTransform(e.offsetX, e.offsetY);
+            x *= 20;
+            y *= 20;
+            for (let i = 0; i < this.levelData.cameraPositions.length; i++) {
+                let { camX, camY } = this.levelData.cameraPositions[i];
+                let dx = camX - x, dy = camY - y;
+                if (Math.sqrt(dx * dx + dy * dy) < this.cameraCenterRadius) {
+                    this.#selectedCamera = i;
+                    this.#repaintUI();
+                    break;
+                }
+            }
+            return;
+        }
+        
         let tile = this.#screenToLevelCoords(e.offsetX, e.offsetY);
-
-        // Handle selection
         if (this.#selectionType === "rect") {
             // Rect selection behavior
             tile = this.levelData.constrainToBounds(tile);
@@ -496,7 +542,6 @@ export default class LevelView {
             }
         } else if (this.#selectionType === "paint") {
             if (!this.levelData.isInBounds(tile)) return;
-            // Paint selection behavior
             this.#selection = { x1: tile.x, y1: tile.y, x2: tile.x, y2: tile.y };
             this.#performEditAction(e.altKey);
         }
