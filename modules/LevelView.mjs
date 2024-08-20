@@ -509,7 +509,7 @@ export default class LevelView {
             x *= 20;
             y *= 20;
             for (let i = 0; i < this.levelData.cameraPositions.length; i++) {
-                let { camX, camY } = this.levelData.cameraPositions[i];
+                let { x: camX, y: camY } = this.levelData.cameraPositions[i];
                 let dx = camX + 700 - x, dy = camY + 400 - y;
                 if (dx * dx + dy * dy < this.cameraCenterRadius * this.cameraCenterRadius) {
                     this.#selectedCameraIndex = i;
