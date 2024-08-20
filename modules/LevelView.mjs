@@ -477,7 +477,7 @@ export default class LevelView {
                 this.#ctx.fillStyle =
                     this.#selectedCameraIndex === i && this.#selectedCornerIndex === j ?
                     "rgb(0, 255, 0)" : "rgb(0, 160, 0)";
-                this.#ctx.ellipse(cornerX / 20, cornerY / 20, this.#cameraCenterRadius / 20, this.#cameraCenterRadius / 20, 0, 0, Math.PI * 2);
+                this.#ctx.ellipse(cornerX / 20, cornerY / 20, this.cameraCenterRadius / 20, this.cameraCenterRadius / 20, 0, 0, Math.PI * 2);
             }
         }
         
