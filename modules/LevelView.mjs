@@ -509,7 +509,7 @@ export default class LevelView {
                 let { camX, camY } = this.levelData.cameraPositions[i];
                 let dx = camX - x, dy = camY - y;
                 if (Math.sqrt(dx * dx + dy * dy) < this.cameraCenterRadius) {
-                    this.#selectedCamera = i;
+                    this.#selectedCameraIndex = i;
                     this.#repaintUI();
                     break;
                 }
