@@ -468,7 +468,7 @@ export default class LevelView {
             this.#ctx.beginPath();
             this.#ctx.fillStyle = this.#selectedCameraIndex === i ?
                 "rgb(0, 255, 0)" : "rgb(0, 160, 0)";
-            this.#ctx.ellipse((x + 700) / 20, (y + 400) / 20, this.cameraCenterRadius, this.cameraCenterRadius, 0, 0, Math.PI * 2);
+            this.#ctx.ellipse((x + 700) / 20, (y + 400) / 20, this.cameraCenterRadius * this.#invZoom, this.cameraCenterRadius * this.#invZoom, 0, 0, Math.PI * 2);
             this.#ctx.fill();
             
             // corners
@@ -479,7 +479,7 @@ export default class LevelView {
                 this.#ctx.fillStyle =
                     this.#selectedCameraIndex === i && this.#selectedCornerIndex === j ?
                     "rgb(0, 255, 0)" : "rgb(0, 160, 0)";
-                this.#ctx.ellipse(cornerX / 20, cornerY / 20, this.cameraCenterRadius / 20, this.cameraCenterRadius / 20, 0, 0, Math.PI * 2);
+                this.#ctx.ellipse(cornerX / 20, cornerY / 20, this.cameraCornerRadius * this.#invZoom, this.cameraCornerRadius * this.#invZoom, 0, 0, Math.PI * 2);
                 this.#ctx.fill();
             }
         }
