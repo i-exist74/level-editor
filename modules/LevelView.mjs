@@ -38,8 +38,8 @@ export default class LevelView {
 
     // Display settings
     #showGrid = true;
-    cameraCenterRadius = 10;
-    cameraCornerRadius = 10;
+    cameraCenterRadius = 8;
+    cameraCornerRadius = 6;
 
     // Values calculated at runtime when camera settings change
     #invZoom;
@@ -467,7 +467,7 @@ export default class LevelView {
             // center
             this.#ctx.beginPath();
             this.#ctx.fillStyle = this.#selectedCameraIndex === i ?
-                "rgb(0, 255, 0)" : "rgb(0, 160, 0)";
+                "rgb(255, 100, 0)" : "rgb(0, 160, 0)";
             this.#ctx.ellipse((x + 700) / 20, (y + 400) / 20, this.cameraCenterRadius * this.#invZoom, this.cameraCenterRadius * this.#invZoom, 0, 0, Math.PI * 2);
             this.#ctx.fill();
             
@@ -478,7 +478,7 @@ export default class LevelView {
                 this.#ctx.beginPath();
                 this.#ctx.fillStyle =
                     this.#selectedCameraIndex === i && this.#selectedCornerIndex === j ?
-                    "rgb(0, 255, 0)" : "rgb(0, 160, 0)";
+                    "rgb(255, 100, 0)" : "rgb(0, 160, 0)";
                 this.#ctx.ellipse(cornerX / 20, cornerY / 20, this.cameraCornerRadius * this.#invZoom, this.cameraCornerRadius * this.#invZoom, 0, 0, Math.PI * 2);
                 this.#ctx.fill();
             }
@@ -510,8 +510,8 @@ export default class LevelView {
             y *= 20;
             for (let i = 0; i < this.levelData.cameraPositions.length; i++) {
                 let { camX, camY } = this.levelData.cameraPositions[i];
-                let dx = camX - x, dy = camY - y;
-                if (Math.sqrt(dx * dx + dy * dy) < this.cameraCenterRadius) {
+                let dx = camX + 700 - x, dy = camY + 400 - y;
+                if (dx * dx + dy * dy < this.cameraCenterRadius * this.cameraCenterRadius) {
                     this.#selectedCameraIndex = i;
                     this.#repaintUI();
                     break;
