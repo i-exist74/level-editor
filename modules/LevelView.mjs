@@ -508,10 +508,11 @@ export default class LevelView {
             let { x, y } = this.#screenToLevelTransform(e.offsetX, e.offsetY);
             x *= 20;
             y *= 20;
+            let buttonRadius = this.cameraCenterRadius * this.#invZoom * 20;
             for (let i = 0; i < this.levelData.cameraPositions.length; i++) {
                 let { x: camX, y: camY } = this.levelData.cameraPositions[i];
                 let dx = camX + 700 - x, dy = camY + 400 - y;
-                if (dx * dx + dy * dy < this.cameraCenterRadius * this.cameraCenterRadius) {
+                if (dx * dx + dy * dy < buttonRadius * buttonRadius) {
                     this.#selectedCameraIndex = i;
                     this.#repaintUI();
                     break;
