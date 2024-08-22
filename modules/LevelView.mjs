@@ -449,6 +449,17 @@ export default class LevelView {
             let { x, y } = this.levelData.cameraPositions[i];
             const quad = this.levelData.cameraQuads[i];
             
+            const isSelectedCamera = this.#selectedCameraIndex === i;
+            
+            // quad
+            this.#ctx.beginPath();
+            this.#ctx.moveTo(x + quad[0].x, y + quad[0].y);
+            this.#ctx.lineTo(x + quad[1].x, y + quad[1].y);
+            this.#ctx.lineTo(x + quad[3].x, y + quad[3].y);
+            this.#ctx.lineTo(x + quad[2].x, y + quad[2].y);
+            this.#ctx.fillStyle = "#0F06";
+            this.#ctx.fill();
+            
             // 1400x800
             this.#ctx.lineWidth = 0.08;
             this.#ctx.strokeStyle = "#000";
@@ -456,7 +467,7 @@ export default class LevelView {
             
             // 1366x768 (max res)
             this.#ctx.lineWidth = 0.06;
-            this.#ctx.strokeStyle = "#000";
+            this.#ctx.strokeStyle = "#80F";
             this.#ctx.strokeRect((x + 17) / 20, (y + 16) / 20, 68.3, 38.4);
             
             // 1024x768 (min res)
@@ -466,18 +477,18 @@ export default class LevelView {
             
             // center
             this.#ctx.beginPath();
-            this.#ctx.fillStyle = this.#selectedCameraIndex === i ?
+            this.#ctx.fillStyle = isSelectedCamera ?
                 "rgb(255, 100, 0)" : "rgb(0, 160, 0)";
             this.#ctx.ellipse((x + 700) / 20, (y + 400) / 20, this.cameraCenterRadius * this.#invZoom, this.cameraCenterRadius * this.#invZoom, 0, 0, Math.PI * 2);
             this.#ctx.fill();
             
             // corners
             for (let j = 0; j < quad.length; j++) {
-                let cornerX = x + (j % 2)*1400 + quad[j].x;
-                let cornerY = y + Math.floor(j/2)*800 + quad[j].y;
+                let cornerX = x + quad[j].x;
+                let cornerY = y + quad[j].y;
                 this.#ctx.beginPath();
                 this.#ctx.fillStyle =
-                    this.#selectedCameraIndex === i && this.#selectedCornerIndex === j ?
+                    isSelectedCamera && this.#selectedCornerIndex === j ?
                     "rgb(255, 100, 0)" : "rgb(0, 160, 0)";
                 this.#ctx.ellipse(cornerX / 20, cornerY / 20, this.cameraCornerRadius * this.#invZoom, this.cameraCornerRadius * this.#invZoom, 0, 0, Math.PI * 2);
                 this.#ctx.fill();
