@@ -453,10 +453,10 @@ export default class LevelView {
             
             // quad
             this.#ctx.beginPath();
-            this.#ctx.moveTo(x + quad[0].x, y + quad[0].y);
-            this.#ctx.lineTo(x + quad[1].x, y + quad[1].y);
-            this.#ctx.lineTo(x + quad[3].x, y + quad[3].y);
-            this.#ctx.lineTo(x + quad[2].x, y + quad[2].y);
+            this.#ctx.moveTo((x + quad[0].x) / 20, (y + quad[0].y) / 20);
+            this.#ctx.lineTo((x + quad[1].x) / 20, (y + quad[1].y) / 20);
+            this.#ctx.lineTo((x + quad[3].x) / 20, (y + quad[3].y) / 20);
+            this.#ctx.lineTo((x + quad[2].x) / 20, (y + quad[2].y) / 20);
             this.#ctx.fillStyle = "#0F06";
             this.#ctx.fill();
             
@@ -484,13 +484,11 @@ export default class LevelView {
             
             // corners
             for (let j = 0; j < quad.length; j++) {
-                let cornerX = x + quad[j].x;
-                let cornerY = y + quad[j].y;
                 this.#ctx.beginPath();
                 this.#ctx.fillStyle =
                     isSelectedCamera && this.#selectedCornerIndex === j ?
                     "rgb(255, 100, 0)" : "rgb(0, 160, 0)";
-                this.#ctx.ellipse(cornerX / 20, cornerY / 20, this.cameraCornerRadius * this.#invZoom, this.cameraCornerRadius * this.#invZoom, 0, 0, Math.PI * 2);
+                this.#ctx.ellipse((x + quad[j].x) / 20, (y + quad[j].y) / 20, this.cameraCornerRadius * this.#invZoom, this.cameraCornerRadius * this.#invZoom, 0, 0, Math.PI * 2);
                 this.#ctx.fill();
             }
         }
