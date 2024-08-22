@@ -457,7 +457,7 @@ export default class LevelView {
             this.#ctx.lineTo((x + quad[1].x) / 20, (y + quad[1].y) / 20);
             this.#ctx.lineTo((x + quad[3].x) / 20, (y + quad[3].y) / 20);
             this.#ctx.lineTo((x + quad[2].x) / 20, (y + quad[2].y) / 20);
-            this.#ctx.fillStyle = "#0F06";
+            this.#ctx.fillStyle = isSelectedCamera ? "#0F03" : "#0F02";
             this.#ctx.fill();
             
             // 1400x800
