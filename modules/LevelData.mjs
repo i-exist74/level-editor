@@ -5,8 +5,9 @@ const blank1x1 = await fetch("leveltemplates/blank1x1.txt").then(res => res.text
 /** LevelData - interface for storing and editing levels
 
 leditorProject.txt format as follows:
-(not my doc, I found it by searching in RW discord, forgot who sent it)
 https://docs.google.com/document/d/1zcxeQGibkZORstwGQUovhQk71k00B69oYwkqFpGyOqs/edit
+posted by Bro in RW discord:
+https://discord.com/channels/291184728944410624/305139167300550666/1102298445441675284
 */
 
 /* Geometry data */
