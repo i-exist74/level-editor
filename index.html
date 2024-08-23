@@ -40,7 +40,7 @@
             <br />
 
             <h3>Edit</h3>
-            <div class="editor-exclusive geometry-editor">
+            <div class="editor-exclusive geometry-editor tile-editor">
                 Work layer:
                 <span id="work-layer-select">
                     <input type="radio" id="workLayer-1" name="workLayer" value="0" checked />
@@ -51,7 +51,7 @@
                     <label for="workLayer-3">3</label>
                 </span>
             </div>
-            <div class="editor-exclusive geometry-editor">
+            <div class="editor-exclusive geometry-editor tile-editor">
                 Selection type:
                 <span id="selection-type-select">
                     <input type="radio" id="selectionType-paint" name="selectionType" value="paint" checked />
@@ -60,7 +60,7 @@
                     <label for="selectionType-rect">Rect fill</label>
                 </span>
             </div>
-            <div class="editor-exclusive geometry-editor">
+            <div class="editor-exclusive geometry-editor tile-editor">
                 Action:
                 <span id="edit-action-select">
                     <input type="radio" id="editAction-none" name="editAction" value="none" />
@@ -219,7 +219,8 @@
         </section>
 
         <section id="bottom-ui">
-            <button class="open-editor-button active" value="geometry">Geometry</button>
+            <button class="open-editor-button" value="geometry">Geometry</button>
+            <button class="open-editor-button" value="tile">Tile</button>
             <button class="open-editor-button" value="camera">Camera</button>
         </section>
 
