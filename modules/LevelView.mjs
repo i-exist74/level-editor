@@ -74,7 +74,7 @@ export default class LevelView {
             this.#selection = {};
             this.#repaintAll();
         });
-        this.levelData.on("edit", (x1, y1, x2, y2) => {
+        this.levelData.on("edit geometry", (x1, y1, x2, y2) => {
             this.#repaintPartLevel(x1, y1, x2, y2);
         });
 
@@ -663,7 +663,7 @@ export default class LevelView {
         if (x1 > x2) [x1, x2] = [x2, x1];
         if (y1 > y2) [y1, y2] = [y2, y1];
 
-        this.levelData.performAction({
+        this.levelData.rectGeometryAction({
             action: forceRemove ? "remove" : this.#tool.action,
             geometry: this.#tool.geometry
         }, x1, y1, x2, y2, this.#workLayer);
