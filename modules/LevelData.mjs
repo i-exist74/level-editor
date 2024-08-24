@@ -181,7 +181,7 @@ export class LevelData extends EventEmitter {
 
     #geometry;
     #tileData;
-    #defaultMaterial;
+    defaultMaterial;
     cameraPositions;
     cameraQuads;
 
@@ -269,7 +269,7 @@ export class LevelData extends EventEmitter {
 
         // Tiles & default material
         this.#tileData = tiles.tlMatrix;
-        this.#defaultMaterial = tiles.defaultMaterial;
+        this.defaultMaterial = tiles.defaultMaterial;
 
         // Cameras
         this.cameraPositions = cameras.cameras;
@@ -318,7 +318,7 @@ export class LevelData extends EventEmitter {
 
         // Tiles & default material
         data[1].tlMatrix = this.#tileData;
-        data[1].defaultMaterial = this.#defaultMaterial;
+        data[1].defaultMaterial = this.defaultMaterial;
 
         // Cameras
         data[6].cameras = this.cameraPositions;
@@ -460,10 +460,9 @@ export class LevelData extends EventEmitter {
     geometryAt(x, y, l) {
         return this.#geometry[x][y][l];
     }
-
-    // todo
-    tileAt(x, y) {
-        return this.#tileData[x][y];
+    
+    tileAt(x, y, l) {
+        return this.#tileData[x][y][l];
     }
 
 
@@ -595,8 +594,8 @@ export class LevelData extends EventEmitter {
         this.#geometry[x][y][l] = 0;
     }
 
-    // Perform a read or write operation (geometry) on a given part of the level
-    performAction({ action, geometry }, fromX, fromY, toX, toY, l) {
+    // Perform a read or write operation on a given part of level geometry
+    rectGeometryAction({ action, geometry }, fromX, fromY, toX, toY, l) {
         for (let x = fromX; x <= toX; x++) {
             for (let y = fromY; y <= toY; y++) {
                 if (action === "clear") {
@@ -619,12 +618,15 @@ export class LevelData extends EventEmitter {
                     method.call(this, x, y, l, geo);
                 //}
 
-                // Resolve exclusivities at specified position
                 this.#resolveGeometryExclusivities(x, y, l);
             }
         }
 
-        this.trigger("edit", fromX, fromY, toX, toY);
+        this.trigger("edit geometry", fromX, fromY, toX, toY);
+    }
+    
+    rectTileAction({ action, tile }, fromX, fromY, toX, toY, l) {
+        
     }
 }
 
