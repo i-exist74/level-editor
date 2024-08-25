@@ -653,7 +653,9 @@ export default class LevelView {
     }
     
     setWorkLayer(layer) {
-        this.#workLayer = layer;
+        if (this.#workLayer === +layer) return;
+        
+        this.#workLayer = +layer;
         if (this.#showWorkLayerOnTop) {
             this.#repaintLevel();
         }
