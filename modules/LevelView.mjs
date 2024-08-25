@@ -316,7 +316,8 @@ export default class LevelView {
                 this.#ctx.moveTo(curX + r, y + s - r);
                 this.#ctx.lineTo(curX - r, y + s - r);
                 this.#ctx.lineTo(curX - r, y + r);
-                this.#ctx.arc(curX, y + r, r, 0, Math.PI);
+                this.#ctx.arc(curX, y + r, r, 0, Math.PI, true);
+                this.#ctx.closePath();
                 this.#ctx.fill();
             }
         }
