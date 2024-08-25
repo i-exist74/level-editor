@@ -157,7 +157,7 @@ export default class LevelView {
     /* Level display */
     #repaintLevel() {
         this.#ctx = this.#levelCanvas.getContext("2d");
-        this.#ctx.restore();
+        //this.#ctx.restore();
         this.#ctx.clearRect(0, 0, this.width, this.height);
 
         // Draw level
@@ -165,8 +165,8 @@ export default class LevelView {
         start = this.levelData.constrainToBounds(start);
         end = this.levelData.constrainToBounds(end);
 
-        this.#ctx.save();
-        this.#applyCameraTransformation(this.#ctx);
+        //this.#ctx.save();
+        //this.#applyCameraTransformation(this.#ctx);
 
         // Draw geometry
         for (let x = start.x; x <= end.x; x++) {
@@ -178,7 +178,10 @@ export default class LevelView {
 
     #repaintPartLevel(x1, y1, x2, y2) {
         this.#ctx = this.#levelCanvas.getContext("2d");
-        this.#ctx.clearRect(x1, y1, x2 - x1 + 1, y2 - y1 + 1);
+        this.#ctx.clearRect(
+            x1 * this.zoom + this.pan.x, y1 * this.zoom + this.pan.y,
+            (x2 - x1 + 1) * this.zoom, (y2 - y1 + 1) * this.zoom
+        );
 
         for (let x = x1; x <= x2; x++) {
             for (let y = y1; y <= y2; y++) {
@@ -205,10 +208,13 @@ export default class LevelView {
     // Draw a single tile of geometry
     #drawGeometryTile(x, y, l, defaultColor) {
         const geo = this.levelData.geometryAt(x, y, l);
-
+        
+        x = x * this.zoom + this.pan.x;
+        y = y * this.zoom + this.pan.y;
+        
         this.#ctx.textAlign = "center";
         this.#ctx.textBaseline = "middle";
-        this.#ctx.font = `1px monospace`;
+        this.#ctx.font = `${this.zoom}px monospace`;
 
         this.#ctx.fillStyle = defaultColor;
 
@@ -216,93 +222,94 @@ export default class LevelView {
         switch (geo & Geometry.BLOCK_TYPE_MASK) {
             case Geometry.wall:
                 if (geo & Geometry.crack) {
-                    this.#ctx.fillRect(x + 0.33, y + 0.33, 0.34, 0.34);
+                    this.#ctx.fillRect(x + 0.33*this.zoom, y + 0.33*this.zoom, 0.34*this.zoom, 0.34*this.zoom);
                 } else {
-                    this.#ctx.fillRect(x, y, 1, 1);
+                    this.#ctx.fillRect(x, y, this.zoom, this.zoom);
                 }
                 break;
             case Geometry.glassWall:
-                for (let offX = 0; offX < 1; offX += 0.25) {
-                    for (let offY = 0; offY < 1; offY += 0.125) {
-                        this.#ctx.fillRect(x + offX + (offY % 0.25), y + offY, 0.125, 0.125);
+                let s = this.zoom/8;
+                for (let offX = 0; offX < this.zoom; offX += s*2) {
+                    for (let offY = 0; offY < this.zoom; offY += s) {
+                        this.#ctx.fillRect(x + offX + (offY % (s*2)), y + offY, s, s);
                     }
                 }
                 break;
             case Geometry.slopeNE:
                 this.#ctx.beginPath();
                 this.#ctx.moveTo(x, y);
-                this.#ctx.lineTo(x, y + 1);
-                this.#ctx.lineTo(x + 1, y + 1);
+                this.#ctx.lineTo(x, y + this.zoom);
+                this.#ctx.lineTo(x + this.zoom, y + this.zoom);
                 this.#ctx.fill();
                 break;
             case Geometry.slopeNW:
                 this.#ctx.beginPath();
-                this.#ctx.moveTo(x + 1, y);
-                this.#ctx.lineTo(x, y + 1);
-                this.#ctx.lineTo(x + 1, y + 1);
+                this.#ctx.moveTo(x + this.zoom, y);
+                this.#ctx.lineTo(x, y + this.zoom);
+                this.#ctx.lineTo(x + this.zoom, y + this.zoom);
                 this.#ctx.fill();
                 break;
             case Geometry.slopeSE:
                 this.#ctx.beginPath();
-                this.#ctx.moveTo(x + 1, y);
-                this.#ctx.lineTo(x, y + 1);
+                this.#ctx.moveTo(x + this.zoom, y);
+                this.#ctx.lineTo(x, y + this.zoom);
                 this.#ctx.lineTo(x, y);
                 this.#ctx.fill();
                 break;
             case Geometry.slopeSW:
                 this.#ctx.beginPath();
                 this.#ctx.moveTo(x, y);
-                this.#ctx.lineTo(x + 1, y);
-                this.#ctx.lineTo(x + 1, y + 1);
+                this.#ctx.lineTo(x + this.zoom, y);
+                this.#ctx.lineTo(x + this.zoom, y + this.zoom);
                 this.#ctx.fill();
                 break;
             case Geometry.floor:
-                this.#ctx.fillRect(x, y, 1, 0.5);
+                this.#ctx.fillRect(x, y, this.zoom, this.zoom / 2);
         }
 
         // Stackable objects
         if (geo & Geometry.garbageWormHole) {
             this.#ctx.fillStyle = "rgb(60, 132, 76)";
-            this.#ctx.fillText("G", x + 0.5, y + 0.5);
+            this.#ctx.fillText("G", x + 0.5 * this.zoom, y + 0.5 * this.zoom);
         }
         if (geo & Geometry.horizontalPole) {
             this.#ctx.fillStyle = defaultColor;
-            this.#ctx.fillRect(x, y + 0.4, 1, 0.2);
+            this.#ctx.fillRect(x, y + 0.4*this.zoom, this.zoom, 0.2 * this.zoom);
         }
         if (geo & Geometry.verticalPole) {
             this.#ctx.fillStyle = defaultColor;
-            this.#ctx.fillRect(x + 0.4, y, 0.2, 1);
+            this.#ctx.fillRect(x + 0.4*this.zoom, y, 0.2*this.zoom, this.zoom);
         }
         if (geo & Geometry.rock) {
             this.#ctx.fillStyle = "rgb(32, 32, 32)";
             this.#ctx.beginPath();
-            this.#ctx.ellipse(x + 0.5, y + 0.75, 1 * 0.25, 1 * 0.25, 0, 0, Math.PI * 2);
+            this.#ctx.ellipse(x + 0.5 * this.zoom, y + 0.75 * this.zoom, 0.25 * this.zoom, 0.25 * this.zoom, 0, 0, Math.PI * 2);
             this.#ctx.fill();
         }
         if (geo & Geometry.spear) {
             this.#ctx.strokeStyle = "rgb(32, 32, 32)";
-            this.#ctx.lineWidth = 0.05;
+            this.#ctx.lineWidth = 0.05 * this.zoom;
             this.#ctx.beginPath();
-            this.#ctx.moveTo(x, y + 1);
-            this.#ctx.lineTo(x + 1, y + 0.5);
+            this.#ctx.moveTo(x, y + this.zoom);
+            this.#ctx.lineTo(x + this.zoom, y + 0.5 * this.zoom);
             this.#ctx.stroke();
         }
         if (geo & Geometry.hive) {
             this.#ctx.fillStyle = l === 0 ? "white" : defaultColor;
             this.#ctx.beginPath();
-            this.#ctx.moveTo(x + 1, y + 1);
-            this.#ctx.lineTo(x, y + 1);
-            this.#ctx.lineTo(x, y + 0.7);
+            this.#ctx.moveTo(x + this.zoom, y + this.zoom);
+            this.#ctx.lineTo(x, y + this.zoom);
+            this.#ctx.lineTo(x, y + 0.7 * this.zoom);
             for (let curX = x; curX < (x + 1);) {
-                this.#ctx.lineTo(curX += 1 / 8, y);
-                this.#ctx.lineTo(curX += 1 / 8, y + 0.7);
+                this.#ctx.lineTo(curX += this.zoom / 8, y);
+                this.#ctx.lineTo(curX += this.zoom / 8, y + 0.7*this.zoom);
             }
             this.#ctx.fill();
         }
         if (geo & Geometry.wormGrass) {
-            let r = 0.1;
+            let r = 0.1*this.zoom;
             this.#ctx.fillStyle = "rgb(178, 32, 32)";
-            for (let curX = (x + 1 / 6); curX <= (x + 5 / 6); curX += 1 / 3) {
+            for (let curX = (x + this.zoom / 6); curX <= (x + 5 * this.zoom/ 6); curX += this.zoom / 3) {
                 this.#ctx.beginPath();
                 this.#ctx.rect(curX - r, y + r, r * 2, 1 - r);
                 this.#ctx.ellipse(curX, y + r, r, r, 0, 0, Math.PI, true);
@@ -311,11 +318,11 @@ export default class LevelView {
         }
         if (geo & Geometry.waterfall) {
             this.#ctx.fillStyle = "rgb(65, 101, 225)";
-            this.#ctx.fillText("W", x + 0.5, y + 0.5);
+            this.#ctx.fillText("W", x + 0.5*this.zoom, y + 0.5*this.zoom);
         }
         if (geo & Geometry.forbidFlyChains) {
             this.#ctx.fillStyle = "red";
-            this.#ctx.fillText("F", x + 0.5, y + 0.5);
+            this.#ctx.fillText("F", x + 0.5*this.zoom, y + 0.5*this.zoom);
         }
 
         // Shortcut elements
@@ -323,12 +330,12 @@ export default class LevelView {
         switch (geo & Geometry.SHORTCUT_OBJECT_MASK) {
             case Geometry.shortcutEntrance:
                 this.#ctx.fillStyle = "white";
-                this.#ctx.fillText("S", x + 0.5, y + 0.5);
+                this.#ctx.fillText("S", x + 0.5*this.zoom, y + 0.5*this.zoom);
                 break;
 
             case Geometry.shortcutPath:
                 this.#ctx.fillStyle = "white";
-                this.#ctx.fillRect(x + 0.45, y + 0.45, 0.1, 0.1);
+                this.#ctx.fillRect(x + 0.45*this.zoom, y + 0.45*this.zoom, 0.1*this.zoom, 0.1*this.zoom);
                 break;
 
             case Geometry.playerEntrance:
@@ -339,8 +346,8 @@ export default class LevelView {
                 strokeStyle ||= "rgb(121, 92, 52)";
 
                 this.#ctx.beginPath();
-                this.#ctx.ellipse(x + 0.5, y + 0.5, 0.4, 0.4, 0, 0, Math.PI * 2);
-                this.#ctx.lineWidth = 0.2;
+                this.#ctx.ellipse(x + 0.5*this.zoom, y + 0.5*this.zoom, 0.4*this.zoom, 0.4*this.zoom, 0, 0, Math.PI * 2);
+                this.#ctx.lineWidth = 0.2*this.zoom;
                 this.#ctx.strokeStyle = strokeStyle;
                 this.#ctx.stroke();
                 break;
@@ -348,10 +355,10 @@ export default class LevelView {
             case Geometry.whackAMoleHole:
                 this.#ctx.fillStyle = "rgb(255, 165, 0)";
                 this.#ctx.beginPath();
-                this.#ctx.moveTo(x + 0.5, y);
-                this.#ctx.lineTo(x + 1, y + 0.5);
-                this.#ctx.lineTo(x + 0.5, y + 1);
-                this.#ctx.lineTo(x, y + 0.5);
+                this.#ctx.moveTo(x + 0.5*this.zoom, y);
+                this.#ctx.lineTo(x + this.zoom, y + 0.5*this.zoom);
+                this.#ctx.lineTo(x + 0.5*this.zoom, y + this.zoom);
+                this.#ctx.lineTo(x, y + 0.5*this.zoom);
                 this.#ctx.fill();
                 break;
         }
