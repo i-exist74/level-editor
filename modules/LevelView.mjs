@@ -189,7 +189,7 @@ export default class LevelView {
 
     // Draw all layers of one tile geometry
     #drawGeometryAt(x, y) {
-        const colors =  ["#000000A0", "#008800A0", "#880000A0"][l];
+        const colors =  ["#000000A0", "#008800A0", "#880000A0"];
         
         for (let l = this.levelData.layers - 1; l >= 0; l--) {
             if (this.#showWorkLayerOnTop && l === this.#workLayer) {
