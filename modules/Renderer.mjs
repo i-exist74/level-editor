@@ -165,9 +165,9 @@ function render(levelData, cameraIndex = 0) {
     gl.bindVertexArray(vao);
     
     gl.uniform2f(u_l30topLeftLoc, corners[0].x, corners[0].y);
-    gl.uniform2f(u_l30topRightLoc, 1400 + corners[1].x, corners[1].y);
-    gl.uniform2f(u_l30bottomLeftLoc, corners[2].x, 800 + corners[2].y);
-    gl.uniform2f(u_l30bottomRightLoc, 1400 + corners[3].x, 800 + corners[3].y);
+    gl.uniform2f(u_l30topRightLoc, corners[1].x, corners[1].y);
+    gl.uniform2f(u_l30bottomLeftLoc, corners[2].x, corners[2].y);
+    gl.uniform2f(u_l30bottomRightLoc, corners[3].x, corners[3].y);
 
     let projectionMatrix = m4.scaling(1, -1, 1);
     projectionMatrix = m4.translate(projectionMatrix, -1, -1, -1);
