@@ -313,8 +313,8 @@ export default class LevelView {
             this.#ctx.fillStyle = "rgb(178, 32, 32)";
             for (let curX = (x + s / 6); curX <= (x + 5 * s / 6); curX += s / 3) {
                 this.#ctx.beginPath();
-                this.#ctx.moveTo(curX + r, s - r);
-                this.#ctx.lineTo(curX - r, s - r);
+                this.#ctx.moveTo(curX + r, y + s - r);
+                this.#ctx.lineTo(curX - r, y + s - r);
                 this.#ctx.lineTo(curX - r, y + r);
                 this.#ctx.arc(curX, y + r, r, 0, Math.PI);
                 this.#ctx.fill();
