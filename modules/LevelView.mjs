@@ -316,9 +316,9 @@ export default class LevelView {
                 this.#ctx.moveTo(curX + r, y + s);
                 this.#ctx.lineTo(curX - r, y + s);
                 this.#ctx.lineTo(curX - r, y + r);
-                this.#ctx.arc(curX, y + r, r, 0, Math.PI*2, true);
                 this.#ctx.lineTo(curX + r, y + r);
                 this.#ctx.fill();
+                this.#ctx.ellipse(curX, y + r, r, r, 0, 0, Math.PI * 2);
             }
         }
         if (geo & Geometry.waterfall) {
