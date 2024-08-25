@@ -38,7 +38,7 @@ export default class LevelView {
 
     // Display settings
     #showGrid = true;
-    #showWorkLayerOnTop = true;
+    #showWorkLayerOnTop = false;
     cameraCenterRadius = 8;
     cameraCornerRadius = 6;
 
