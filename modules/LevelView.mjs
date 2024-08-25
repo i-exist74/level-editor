@@ -38,6 +38,7 @@ export default class LevelView {
 
     // Display settings
     #showGrid = true;
+    #showWorkLayerOnTop = true;
     cameraCenterRadius = 8;
     cameraCornerRadius = 6;
 
@@ -188,21 +189,28 @@ export default class LevelView {
 
     // Draw all layers of one tile geometry
     #drawGeometryAt(x, y) {
+        const colors =  ["#000000A0", "#008800A0", "#880000A0"][l];
+        
         for (let l = this.levelData.layers - 1; l >= 0; l--) {
-            this.#drawGeometryTile(x, y, l);
+            if (this.#showWorkLayerOnTop && l === this.#workLayer) {
+                continue;
+            }
+            this.#drawGeometryTile(x, y, l, colors[l]);
+        }
+        if (this.#showWorkLayerOnTop) {
+            this.#drawGeometryTile(x, y, this.#workLayer, colors[this.#workLayer]);
         }
     }
 
     // Draw a single tile of geometry
-    #drawGeometryTile(x, y, l) {
+    #drawGeometryTile(x, y, l, defaultColor) {
         const geo = this.levelData.geometryAt(x, y, l);
 
         this.#ctx.textAlign = "center";
         this.#ctx.textBaseline = "middle";
         this.#ctx.font = `1px monospace`;
 
-        const color = ["#000000A0", "#008800A0", "#880000A0"][l];
-        this.#ctx.fillStyle = color;
+        this.#ctx.fillStyle = defaultColor;
 
         // Block type
         switch (geo & Geometry.BLOCK_TYPE_MASK) {
@@ -258,11 +266,11 @@ export default class LevelView {
             this.#ctx.fillText("G", x + 0.5, y + 0.5);
         }
         if (geo & Geometry.horizontalPole) {
-            this.#ctx.fillStyle = color;
+            this.#ctx.fillStyle = defaultColor;
             this.#ctx.fillRect(x, y + 0.4, 1, 0.2);
         }
         if (geo & Geometry.verticalPole) {
-            this.#ctx.fillStyle = color;
+            this.#ctx.fillStyle = defaultColor;
             this.#ctx.fillRect(x + 0.4, y, 0.2, 1);
         }
         if (geo & Geometry.rock) {
@@ -280,7 +288,7 @@ export default class LevelView {
             this.#ctx.stroke();
         }
         if (geo & Geometry.hive) {
-            this.#ctx.fillStyle = l === 0 ? "white" : color;
+            this.#ctx.fillStyle = l === 0 ? "white" : defaultColor;
             this.#ctx.beginPath();
             this.#ctx.moveTo(x + 1, y + 1);
             this.#ctx.lineTo(x, y + 1);
@@ -636,8 +644,12 @@ export default class LevelView {
 
     /* Editing interface */
     switchEditor(editor) {
+        const oldEditor = this.#currentEditor;
         this.#currentEditor = editor;
-        this.#repaintUI();
+        
+        if (oldEditor === "camera" || editor === "camera") {
+            this.#repaintUI();
+        }
     }
     
     setWorkLayer(layer) {
@@ -721,7 +733,15 @@ export default class LevelView {
 
     /* Display settings */
     toggleGrid(show) {
-        this.#showGrid = show;
-        this.#repaintGrid();
+        if (this.#showGrid !== show) {
+            this.#showGrid = show;
+            this.#repaintGrid();
+        }
+    }
+    toggleShowWorkLayerOnTop(value) {
+        if (this.#showWorkLayerOnTop !== value) {
+            this.#showWorkLayerOnTop = value;
+            this.#repaintLevel();
+        }
     }
 }
