@@ -300,7 +300,7 @@ export default class LevelView {
             this.#ctx.moveTo(x + this.zoom, y + this.zoom);
             this.#ctx.lineTo(x, y + this.zoom);
             this.#ctx.lineTo(x, y + 0.7 * this.zoom);
-            for (let curX = x; curX < (x + 1);) {
+            for (let curX = x; curX < x + this.zoom;) {
                 this.#ctx.lineTo(curX += this.zoom / 8, y);
                 this.#ctx.lineTo(curX += this.zoom / 8, y + 0.7*this.zoom);
             }
@@ -309,9 +309,9 @@ export default class LevelView {
         if (geo & Geometry.wormGrass) {
             let r = 0.1*this.zoom;
             this.#ctx.fillStyle = "rgb(178, 32, 32)";
-            for (let curX = (x + this.zoom / 6); curX <= (x + 5 * this.zoom/ 6); curX += this.zoom / 3) {
+            for (let curX = (x + this.zoom / 6); curX <= (x + 5 * this.zoom / 6); curX += this.zoom / 3) {
                 this.#ctx.beginPath();
-                this.#ctx.rect(curX - r, y + r, r * 2, 1 - r);
+                this.#ctx.rect(curX - r, y + r, r * 2, this.zoom - r);
                 this.#ctx.ellipse(curX, y + r, r, r, 0, 0, Math.PI, true);
                 this.#ctx.fill();
             }
