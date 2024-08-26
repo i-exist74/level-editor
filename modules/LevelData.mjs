@@ -137,7 +137,7 @@ export const Tiles = (function() {
     let tiles = JSON.parse(tileData);
     return {
         getTile(categoryIndex, tileIndex) {
-            return tiles[categoryIndex - 3][tileIndex];
+            return tiles[categoryIndex - 3]?.tiles[tileIndex];
         },
         categories: tiles
     };
