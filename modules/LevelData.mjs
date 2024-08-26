@@ -84,8 +84,6 @@ export const Geometry = {
 };
 
 export const Tiles = (function() {
-    try {
-        
     const Tiles = Object.create(null);
     let lines = tileData.split(/[\r\n]/g);
     
@@ -108,11 +106,12 @@ export const Tiles = (function() {
             .replace(/point\((-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?)\)/g, '{"x": $1, "y": $2}')
         str = replaceLeditorStringBrackets(str);
         
-        Tiles[currentCategory] = JSON.parse(str);
-    }
-    
-    } catch (e) {
-        alert(e);
+        try {
+            Tiles[currentCategory] = JSON.parse(str);
+        } catch (e) {
+            alert(e + " " + str);
+            throw e;
+        }
     }
     
     return Tiles;
