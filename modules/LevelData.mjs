@@ -105,7 +105,7 @@ export const Tiles = (function() {
         str = str
             .replace(/#([^\:]+)/g, '"$1"')
             .replace(/point\((\d+), ?(\d+)\)/g, '{"x": $1, "y": $2}')
-            .replace(/specs2\: ?void/g, "specs2: 0");
+            .replace(/"specs2"\: ?void/g, '"specs2": 0');
         
         try {
             Tiles[currentCategory] = JSON.parse(str);
