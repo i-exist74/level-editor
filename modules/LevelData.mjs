@@ -88,7 +88,7 @@ export const Geometry = {
 };
 
 export const Tiles = (function() {
-    let a = "";
+    let a = "{\n";
     
     const Tiles = Object.create(null);
     let lines = tileData.split(/[\r\n]/g);
@@ -102,9 +102,11 @@ export const Tiles = (function() {
         let isCategory = str[0] === "-";
         if (isCategory) {
             let index1 = str.indexOf('"') + 1, index2 = str.indexOf('"', index1);
-            currentCategory = str.slice(index1, index2);
-            Tiles[currentCategory] = Object.create(null);
-            a += str + "\n";
+            let category = str.slice(index1, index2);
+            Tiles[category] = Object.create(null);
+            
+            a += (currentCategory ? "  },\n" : "  ") + category + `: {\n`;
+            currentCategory = category;
             continue;
         }
         
@@ -115,8 +117,9 @@ export const Tiles = (function() {
             .replace(/"specs2"\: ?void/g, '"specs2": 0');
         
         try {
-            Tiles[currentCategory] = JSON.parse(str);
-            a += str + "\n";
+            const obj = JSON.parse(str);
+            Tiles[currentCategory][obj.nm] = obj;
+            a += `    ${obj.nm}: ${str}\n`;
         } catch (e) {
             alert(e + " " + str);
             throw e;
