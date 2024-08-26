@@ -378,19 +378,19 @@ export default class LevelView {
     }
     
     #drawTileAt(x, y, l) {
-        let tile = this.levelData.tileAt(x, y, l);
+        let tileData = this.levelData.tileAt(x, y, l);
         
         x = x * this.zoom + this.pan.x;
         y = y * this.zoom + this.pan.y;
         const s = this.zoom;
         
-        if (tile.tp === "material") {
+        if (tileData.tp === "material") {
             this.#ctx.fillStyle = "red";
             this.#ctx.fillRect(x + s/3, y + s/3, s/3, s/3);
-        } else if (tile.tp === "tileBody") {
+        } else if (tileData.tp === "tileBody") {
             
-        } else if (tile.tp === "tileHead") {
-            const tile = Tiles.getTile(tile.data[0].x, tile.data[0].y);
+        } else if (tileData.tp === "tileHead") {
+            const tile = Tiles.getTile(tileData.data[0].x, tileData.data[0].y);
             if (false) {
                 
             } else {
