@@ -386,7 +386,42 @@ export default class LevelView {
         
         if (tileData.tp === "material") {
             this.#ctx.fillStyle = "red";
-            this.#ctx.fillRect(x + s/3, y + s/3, s/3, s/3);
+            switch (this.levelData.geometryAt(x, y, l) & Geometry.BLOCK_TYPE_MASK) {
+                case Geometry.wall:
+                    this.#ctx.fillRect(x + s/3, y + s/3, s/3, s/3);
+                    break;
+                case Geometry.floor:
+                    this.#ctx.fillRect(x + s/3, y + s/3, s/3, s/6);
+                    break;
+                case Geometry.slopeNW:
+                    this.#ctx.beginPath();
+                    this.#ctx.moveTo(x + s/3, y + s*2/3);
+                    this.#ctx.lineTo(x + s*2/3, y + s*2/3);
+                    this.#ctx.lineTo(x + s*2/3, y + s/3);
+                    this.#ctx.fill();
+                    break;
+                case Geometry.slopeNE:
+                    this.#ctx.beginPath();
+                    this.#ctx.moveTo(x + s/3, y + s*2/3);
+                    this.#ctx.lineTo(x + s*2/3, y + s*2/3);
+                    this.#ctx.lineTo(x + s/3, y + s/3);
+                    this.#ctx.fill();
+                    break;
+                case Geometry.slopeSW:
+                    this.#ctx.beginPath();
+                    this.#ctx.moveTo(x + s/3, y + s*/3);
+                    this.#ctx.lineTo(x + s*2/3, y + s*2/3);
+                    this.#ctx.lineTo(x + s*2/3, y + s/3);
+                    this.#ctx.fill();
+                    break;
+                case Geometry.slopeSE:
+                    this.#ctx.beginPath();
+                    this.#ctx.moveTo(x + s/3, y + s*2/3);
+                    this.#ctx.lineTo(x + s*2/3, y + s/3);
+                    this.#ctx.lineTo(x + s/3, y + s/3);
+                    this.#ctx.fill();
+                    break;
+            }
         } else if (tileData.tp === "tileBody") {
             
         } else if (tileData.tp === "tileHead") {
@@ -396,6 +431,7 @@ export default class LevelView {
             } else {
                 this.#ctx.fillStyle = "white";
                 this.#ctx.font = `${s}px monospace`;
+                
                 this.#ctx.fillText("?", x + s/2, y + s/2);
             }
         }
