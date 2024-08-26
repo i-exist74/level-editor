@@ -129,7 +129,7 @@ export const Tiles = (function() {
             throw e;
         }
     }
-    a = a.replace(/,\n  }/g, "\n  }");
+    a = a.replace(/,\n  ]/g, "\n  ]");
     document.body.innerHTML = `
     <textarea style="font-size:5px;">${a}</textarea>
     `;
