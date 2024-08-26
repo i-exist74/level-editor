@@ -11,7 +11,10 @@ https://discord.com/channels/291184728944410624/305139167300550666/1102298445441
 const [blank1x1, tileData] = await Promise.all(
     fetch("leveltemplates/blank1x1.txt").then(res => res.text()),
     fetch("init.txt").then(res => res.text())
-);
+).catch(e => {
+    alert(e);
+    throw e;
+});
 
 function replaceLeditorStringBrackets(str) {
     str = str.replace(/\[(?=#)/g, "{");
