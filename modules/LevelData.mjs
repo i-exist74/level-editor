@@ -123,12 +123,13 @@ export const Tiles = (function() {
         try {
             const obj = JSON.parse(str);
             Tiles[currentCategory][obj.nm] = obj;
-            a += `    ${str}${lines[i+1]?.[0]==="-"?"":","}\n`;
+            a += `    ,\n`;
         } catch (e) {
             alert(e + " " + str);
             throw e;
         }
     }
+    a = a.replace(/,\n  }/g, "\n  }");
     document.body.innerHTML = `
     <textarea style="font-size:5px;">${a}</textarea>
     `;
