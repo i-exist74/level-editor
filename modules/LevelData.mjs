@@ -101,10 +101,10 @@ export const Tiles = (function() {
             continue;
         }
         
+        str = replaceLeditorStringBrackets(str);
         str = str
             .replace(/#([^\:]+)/g, '"$1"')
             .replace(/point\((-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?)\)/g, '{"x": $1, "y": $2}')
-        str = replaceLeditorStringBrackets(str);
         
         try {
             Tiles[currentCategory] = JSON.parse(str);
@@ -270,13 +270,13 @@ export class LevelData extends EventEmitter {
         // Make each line of leditor data JSON-parseable (Geometry, index 0, is already a parseable array)
         for (let i = 1; i < lines.length; i++) {
             let str = lines[i];
+            str = replaceLeditorStringBrackets(str);
             str = str
                 .replace(/#([^\:]+)/g, '"$1"')
                 // objects representing leditor points, rects, colors
                 .replace(/point\((-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?)\)/g, '{"x": $1, "y": $2, "isPoint": true}')
                 .replace(/rect\((-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?)\)/g, '{"x": $1, "y": $2, "w": $3, "h": $4, "isRect": true}')
                 .replace(/color\( ?(-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?) ?\)/g, `{"r": $1, "g": $2, "b": $3, "isColor": true}`);
-            str = replaceLeditorStringBrackets(str);
             lines[i] = str;
         }
         
