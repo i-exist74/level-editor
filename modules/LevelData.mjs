@@ -88,7 +88,7 @@ export const Geometry = {
 };
 
 export const Tiles = (function() {
-    /*let a = "{\n";
+    let a = "[\n";
     
     const Tiles = Object.create(null);
     let lines = tileData.split(/[\r\n]/g);
@@ -105,7 +105,11 @@ export const Tiles = (function() {
             let category = str.slice(index1, index2);
             Tiles[category] = Object.create(null);
             
-            //a += (currentCategory ? "  },\n  " : "  ") +'"'+ category + `": {\n`;
+            // a += (currentCategory ? "  },\n  " : "  ") +'"'+ category + `": {\n`;
+            a += (currentCategory ? `  ]\n},\n` : "") + `{
+  name: ${currentCategory},
+  tiles: [
+`;
             currentCategory = category;
             continue;
         }
@@ -119,17 +123,22 @@ export const Tiles = (function() {
         try {
             const obj = JSON.parse(str);
             Tiles[currentCategory][obj.nm] = obj;
-            //a += `    "${obj.nm}": ${str}\n`;
+            a += `    str,\n`;
         } catch (e) {
             alert(e + " " + str);
             throw e;
         }
     }
-    //document.body.innerHTML = `
+    document.body.innerHTML = `
     <textarea style="font-size:5px;">${a}</textarea>
     `;
-    return Tiles;*/
+    return Tiles;
     return JSON.parse(tileData);
+    return {
+        getTile(categoryIndex, tileIndex) {
+            
+        }
+    };
 })();
 
 /* File */
