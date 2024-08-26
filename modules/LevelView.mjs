@@ -10,7 +10,7 @@ export default class LevelView {
     #canvases;
     #ctx;
     
-    // Store pointer event sata, for zoom/drag gesture behavior
+    // Store pointer event data, for zoom/drag gesture behavior
     #pointerCache = [];
     #prevSqDistBetweenPointers = 0;
 
@@ -194,6 +194,8 @@ export default class LevelView {
     #drawLevelAt(x, y) {
         const colors =  ["#000000A0", "#008800A0", "#880000A0"];
         
+        try {
+        
         for (let l = this.levelData.layers - 1; l >= 0; l--) {
             if (this.#showWorkLayerOnTop && l === this.#workLayer) {
                 continue;
@@ -206,6 +208,11 @@ export default class LevelView {
         if (this.#showWorkLayerOnTop) {
             this.#drawGeometryTile(x, y, this.#workLayer, colors[this.#workLayer]);
             this.#drawTileAt(x, y, this.#workLayer);
+        }
+        
+        } catch (e) {
+            alert(e);
+            throw e;
         }
     }
 
