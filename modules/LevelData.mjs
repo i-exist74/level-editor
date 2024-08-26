@@ -32,6 +32,10 @@ function replaceLeditorStringBrackets(str) {
             str[i] = "}";
         }
         if (char === "]" || char === "}") {
+            if (bracketStack.length === 0) {
+                str.pop();
+                continue;
+            }
             bracketStack.pop();
         }
     }
