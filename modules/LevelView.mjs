@@ -1,4 +1,4 @@
-import { Geometry } from "./LevelData.mjs";
+import { Geometry, Tiles } from "./LevelData.mjs";
 
 export default class LevelView {
     levelData;
@@ -171,7 +171,7 @@ export default class LevelView {
         // Draw geometry
         for (let x = start.x; x <= end.x; x++) {
             for (let y = start.y; y <= end.y; y++) {
-                this.#drawGeometryAt(x, y);
+                this.#drawLevelAt(x, y);
             }
         }
     }
@@ -185,13 +185,13 @@ export default class LevelView {
 
         for (let x = x1; x <= x2; x++) {
             for (let y = y1; y <= y2; y++) {
-                this.#drawGeometryAt(x, y);
+                this.#drawLevelAt(x, y);
             }
         }
     }
 
     // Draw all layers of one tile geometry
-    #drawGeometryAt(x, y) {
+    #drawLevelAt(x, y) {
         const colors =  ["#000000A0", "#008800A0", "#880000A0"];
         
         for (let l = this.levelData.layers - 1; l >= 0; l--) {
@@ -199,9 +199,13 @@ export default class LevelView {
                 continue;
             }
             this.#drawGeometryTile(x, y, l, colors[l]);
+            if (this.#currentEditor === "tile") {
+                this.#drawTileAt(x, y, l);
+            }
         }
         if (this.#showWorkLayerOnTop) {
             this.#drawGeometryTile(x, y, this.#workLayer, colors[this.#workLayer]);
+            this.#drawTileAt(x, y, this.#workLayer);
         }
     }
 
@@ -363,6 +367,30 @@ export default class LevelView {
                 this.#ctx.lineTo(x, y + 0.5*s);
                 this.#ctx.fill();
                 break;
+        }
+    }
+    
+    #drawTileAt(x, y, l) {
+        let tile = this.levelData.tileAt(x, y, l);
+        
+        x = x * this.zoom + this.pan.x;
+        y = y * this.zoom + this.pan.y;
+        const s = this.zoom;
+        
+        if (tile.tp === "material") {
+            this.#ctx.fillStyle = "red";
+            this.#ctx.fillRect(x + s/3, y + s/3, s/3, s/3);
+        } else if (tile.tp === "tileBody") {
+            
+        } else if (tile.tp === "tileHead") {
+            const tile = Tiles.getTile(tile.data[0].x, tile.data[0].y);
+            if (false) {
+                
+            } else {
+                this.#ctx.fillStyle = "white";
+                this.#ctx.font = `${s}px monospace`;
+                this.#ctx.fillText("?", x + s/2, y + s/2);
+            }
         }
     }
 
@@ -658,6 +686,9 @@ export default class LevelView {
         
         if (oldEditor === "camera" || editor === "camera") {
             this.#repaintUI();
+        }
+        if (oldEditor === "tile" || editor === "tile") {
+            this.#repaintLevel();
         }
     }
     
