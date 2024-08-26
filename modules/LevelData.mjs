@@ -107,7 +107,7 @@ export const Tiles = (function() {
             
             // a += (currentCategory ? "  },\n  " : "  ") +'"'+ category + `": {\n`;
             a += (currentCategory ? `  ]\n},\n` : "") + `{
-  name: ${currentCategory},
+  name: "${category},
   tiles: [
 `;
             currentCategory = category;
@@ -123,7 +123,7 @@ export const Tiles = (function() {
         try {
             const obj = JSON.parse(str);
             Tiles[currentCategory][obj.nm] = obj;
-            a += `    str,\n`;
+            a += `    ${str},\n`;
         } catch (e) {
             alert(e + " " + str);
             throw e;
