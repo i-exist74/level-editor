@@ -81,6 +81,8 @@ export const Geometry = {
 };
 
 export const Tiles = (function() {
+    try {
+        
     const Tiles = Object.create(null);
     let lines = tileData.split(/[\r\n]/g);
     
@@ -105,6 +107,11 @@ export const Tiles = (function() {
         
         Tiles[currentCategory] = JSON.parse(str);
     }
+    
+    } catch (e) {
+        alert(e);
+    }
+    
     return Tiles;
 })();
 
