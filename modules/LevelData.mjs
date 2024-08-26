@@ -88,6 +88,8 @@ export const Geometry = {
 };
 
 export const Tiles = (function() {
+    let a = "";
+    
     const Tiles = Object.create(null);
     let lines = tileData.split(/[\r\n]/g);
     
@@ -102,6 +104,7 @@ export const Tiles = (function() {
             let index1 = str.indexOf('"') + 1, index2 = str.indexOf('"', index1);
             currentCategory = str.slice(index1, index2);
             Tiles[currentCategory] = Object.create(null);
+            a += str + "\n";
             continue;
         }
         
@@ -113,12 +116,13 @@ export const Tiles = (function() {
         
         try {
             Tiles[currentCategory] = JSON.parse(str);
+            a += str + "\n";
         } catch (e) {
             alert(e + " " + str);
             throw e;
         }
     }
-    
+    document.body.innerHTML = a;
     return Tiles;
 })();
 
