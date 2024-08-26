@@ -122,7 +122,9 @@ export const Tiles = (function() {
             throw e;
         }
     }
-    document.body.innerHTML = a;
+    document.body.innerHTML = `
+    <textarea style="font-size:5px;">${a}</textarea>
+    `;
     return Tiles;
 })();
 
