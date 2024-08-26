@@ -105,7 +105,7 @@ export const Tiles = (function() {
             let category = str.slice(index1, index2);
             Tiles[category] = Object.create(null);
             
-            a += (currentCategory ? "  },\n" : "  ") + category + `: {\n`;
+            a += (currentCategory ? "  },\n  " : "  ") +'"'+ category + `": {\n`;
             currentCategory = category;
             continue;
         }
@@ -119,7 +119,7 @@ export const Tiles = (function() {
         try {
             const obj = JSON.parse(str);
             Tiles[currentCategory][obj.nm] = obj;
-            a += `    ${obj.nm}: ${str}\n`;
+            a += `    "${obj.nm}": ${str}\n`;
         } catch (e) {
             alert(e + " " + str);
             throw e;
