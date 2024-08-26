@@ -1,5 +1,6 @@
-{
-  "Stone": {
+[{
+  name: "Stone",
+  tiles: {
     "Small Stone": {"nm":"Small Stone", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStructRockType", "bfTiles":1, "rnd":4, "ptPos":0, "tags":["nonSolid"]},
     "Square Stone": {"nm":"Square Stone", "sz":{"x": 2, "y": 2}, "specs":[1, 1, 1, 1], "specs2":0, "tp":"voxelStructRockType", "bfTiles":1, "rnd":3, "ptPos":0, "tags":[]},
     "Tall Stone": {"nm":"Tall Stone", "sz":{"x": 2, "y": 3}, "specs":[1, 1, 1, 1, 1, 1], "specs2":0, "tp":"voxelStructRockType", "bfTiles":1, "rnd":3, "ptPos":0, "tags":[]},		
@@ -10,7 +11,10 @@
     "3DBrick": {"nm":"3DBrick", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 1, 1, 7], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "BigBrick": {"nm":"BigBrick", "sz":{"x": 2, "y": 2}, "specs":[1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 1, 1, 7], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "SU patterns": {
+},
+{
+  name: "SU patterns",
+  tiles: {
     "Block Edge N": {"nm":"Block Edge N", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,4,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Block Edge E": {"nm":"Block Edge E", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,4,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Block Edge S": {"nm":"Block Edge S", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,4,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
@@ -49,7 +53,10 @@
     "SUPatternN": {"nm":"SUPatternN", "sz":{"x": 4, "y": 4}, "specs":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["notTrashProp", "notProp"]},
     "SUPatternO": {"nm":"SUPatternO", "sz":{"x": 5, "y": 5}, "specs":[1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["notTrashProp", "notProp"]}
   },
-  "SU grates": {
+},
+{
+  name: "SU grates",
+  tiles: {
     "Block Clamp": {"nm":"Block Clamp", "sz":{"x": 1, "y": 2}, "specs":[1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Block Clamp R": {"nm":"Block Clamp R", "sz":{"x": 1, "y": 2}, "specs":[1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Block Clamp L": {"nm":"Block Clamp L", "sz":{"x": 1, "y": 2}, "specs":[1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
@@ -83,7 +90,10 @@
     "SUGrateN": {"nm":"SUGrateN", "sz":{"x": 4, "y": 4}, "specs":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,6,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["notTrashProp", "notProp"]},
     "SUGrateO": {"nm":"SUGrateO", "sz":{"x": 5, "y": 5}, "specs":[1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,6,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["notTrashProp", "notProp"]}
   },
-  "Metal": {
+},
+{
+  name: "Metal",
+  tiles: {
     "Small Metal": {"nm":"Small Metal", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"box", "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Metal Floor": {"nm":"Metal Floor", "sz":{"x": 2, "y": 1}, "specs":[1,1], "specs2":0, "tp":"box", "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Square Metal": {"nm":"Square Metal", "sz":{"x": 2, "y": 2}, "specs":[1, 1, 1, 1], "specs2":0, "tp":"box", "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
@@ -109,7 +119,10 @@
     "VLB Vertical Single": {"nm":"VLB Vertical Single", "sz":{"x": 3, "y": 9}, "specs":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "VLB Vertical Single B": {"nm":"VLB Vertical Single B", "sz":{"x": 3, "y": 1}, "specs":[1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Metal construction": {
+},
+{
+  name: "Metal construction",
+  tiles: {
     "Crossbox A": {"nm":"Crossbox A", "sz":{"x": 3, "y": 3}, "specs":[1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 8, 1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Crossbox B": {"nm":"Crossbox B", "sz":{"x": 4, "y": 4}, "specs":[1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 8, 1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Crossbox C": {"nm":"Crossbox C", "sz":{"x": 5, "y": 5}, "specs":[1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 8, 1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
@@ -141,7 +154,10 @@
     "Nub": {"nm":"Nub", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Split Nub": {"nm":"Split Nub", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Plate": {
+},
+{
+  name: "Plate",
+  tiles: {
     "Plate 1": {"nm":"Plate 1", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[10], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Plate 2": {"nm":"Plate 2", "sz":{"x": 1, "y": 3}, "specs":[1, 1, 1], "specs2":0, "tp":"voxelStruct", "repeatL":[10], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Plate N1": {"nm":"Plate N1", "sz":{"x": 1, "y": 3}, "specs":[1, 1, 1], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 1, 1, 1, 1, 5], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
@@ -157,7 +173,10 @@
     "Pit Antennae A": {"nm":"Pit Antennae A", "sz":{"x": 3, "y": 3}, "specs":[1, 1, 1, 1, 1, 1, 1, 1, 1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1, 1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Pit Antennae B": {"nm":"Pit Antennae B", "sz":{"x": 2, "y": 2}, "specs":[1, 1, 1, 1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1, 1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Ramps": {
+},
+{
+  name: "Ramps",
+  tiles: {
     "rampN": {"nm":"rampN", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "rampE": {"nm":"rampE", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "rampS": {"nm":"rampS", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
@@ -171,7 +190,10 @@
     "rampSE": {"nm":"rampSE", "sz":{"x": 2, "y": 2}, "specs":[-1,0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "rampSW": {"nm":"rampSW", "sz":{"x": 2, "y": 2}, "specs":[0,0,-1,0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]}
   },
-  "Fences and grates": {
+},
+{
+  name: "Fences and grates",
+  tiles: {
     "fence": {"nm":"fence", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,9], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "fenceExtended": {"nm":"fenceExtended", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,9], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "fence with pole": {"nm":"fence with pole", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,3,6], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
@@ -190,7 +212,10 @@
     "Back Wall Extended": {"nm":"Back Wall Extended", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[9,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Background Tiles": {"nm":"Background Tiles", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[9,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]}
   },
-  "Ventilation": {
+},
+{
+  name: "Ventilation",
+  tiles: {
     "Ventbox": {"nm":"Ventbox", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[3, 1, 1, 5], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Ventbox N": {"nm":"Ventbox N", "sz":{"x": 1, "y": 2}, "specs":[1, 1], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 1, 1, 1, 1, 5], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Ventbox E": {"nm":"Ventbox E", "sz":{"x": 2, "y": 1}, "specs":[1, 1], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 1, 1, 1, 1, 5], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
@@ -229,7 +254,10 @@
     "big wall vent": {"nm":"big wall vent", "sz":{"x": 6, "y": 6}, "specs":[-1,0,0,0,0,-1,  0,0,0,0,0,0,  0,0,0,0,0,0,  0,0,0,0,0,0,  0,0,0,0,0,0,  -1,0,0,0,0,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[6, 1, 1, 1, 1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "mega wall vent": {"nm":"mega wall vent", "sz":{"x": 11, "y": 11}, "specs":[-1,-1,-1,0,0,0,0,0,-1,-1,-1,  -1,-1,0,0,0,0,0,0,0,-1,-1,  -1,0,0,0,0,0,0,0,0,0,-1,  0,0,0,0,0,0,0,0,0,0,0,  0,0,0,0,0,0,0,0,0,0,0,  0,0,0,0,0,0,0,0,0,0,0,  0,0,0,0,0,0,0,0,0,0,0,  0,0,0,0,0,0,0,0,0,0,0,  -1,0,0,0,0,0,0,0,0,0,-1,  -1,-1,0,0,0,0,0,0,0,-1,-1,  -1,-1,-1,0,0,0,0,0,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[6, 1, 1, 1, 1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Misc": {
+},
+{
+  name: "Misc",
+  tiles: {
     "Corrugated Iron": {"nm":"Corrugated Iron", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[3,1,1,1,4], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Grates": {"nm":"Grates", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[2,2,6], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Big Head": {"nm":"Big Head", "sz":{"x": 4, "y": 4}, "specs":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
@@ -265,7 +293,10 @@
     "Spire Top A": {"nm":"Spire Top A", "sz":{"x": 4, "y": 7}, "specs":[0,0,0,0,3,1,1, 0,3,1,1,1,1,1, 0,2,1,1,1,1,1, 0,0,0,0,2,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Spire Top B": {"nm":"Spire Top B", "sz":{"x": 6, "y": 3}, "specs":[0,0,0, 0,3,1, 0,1,1, 0,1,1, 0,2,1, 0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Misc 2": {
+},
+{
+  name: "Misc 2",
+  tiles: {
     "bigClaw L": {"nm":"bigClaw L", "sz":{"x": 2, "y": 2}, "specs":[0,0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[2,3,5], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "bigClaw R": {"nm":"bigClaw R", "sz":{"x": 2, "y": 2}, "specs":[0,0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[2,1,7], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "triangle up": {"nm":"triangle up", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[4,6], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
@@ -294,7 +325,10 @@
     "Straight Barricade Segment": {"nm":"Straight Barricade Segment", "sz":{"x": 5, "y": 1}, "specs":[1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[10], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Bigger Head": {"nm":"Bigger Head", "sz":{"x": 6, "y": 10}, "specs":[-1,3,1,1,1,1,1,1,1,1, 3,1,1,1,1,1,1,1,1,1,  1,1,1,1,1,1,1,1,1,1,  1,1,1,1,1,1,1,1,1,1,   2,1,1,1,1,1,1,1,1,1,   -1,2,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,2], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Sky Islands": {
+},
+{
+  name: "Sky Islands",
+  tiles: {
     "Ornation A": {"nm":"Ornation A", "sz":{"x": 6, "y": 16}, "specs":[0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[6,1,3], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Ornation B": {"nm":"Ornation B", "sz":{"x": 4, "y": 7}, "specs":[0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[6,1,3], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Ornation C1": {"nm":"Ornation C1", "sz":{"x": 2, "y": 5}, "specs":[0,0,0,0,0, 0,0,0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[6,1,3], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
@@ -324,7 +358,10 @@
     "Egg Socket A": {"nm":"Egg Socket A", "sz":{"x": 2, "y": 2}, "specs":[1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,3], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Egg Socket B": {"nm":"Egg Socket B", "sz":{"x": 2, "y": 2}, "specs":[1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,3], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Machinery": {
+},
+{
+  name: "Machinery",
+  tiles: {
     "Metal Holes": {"nm":"Metal Holes", "sz":{"x": 2, "y": 2}, "specs":[1, 1, 1, 1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,4,1,4], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Dyson Fan": {"nm":"Dyson Fan", "sz":{"x": 3, "y": 3}, "specs":[1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,4,4,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Big Fan": {"nm":"Big Fan", "sz":{"x": 3, "y": 3}, "specs":[1,1,1,1,1,1,1,1,1], "specs2":[1,1,1,1,1,1,1,1,1], "tp":"voxelStruct", "repeatL":[1,8,1,10], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["fanBlade", "nonSolid"]},
@@ -352,13 +389,16 @@
     "Compressor L": {"nm":"Compressor L", "sz":{"x": 2, "y": 2}, "specs":[1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[2,2,2,2,2], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Compressor R": {"nm":"Compressor R", "sz":{"x": 2, "y": 2}, "specs":[1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[2,2,2,2,2], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Compressor Segment": {"nm":"Compressor Segment", "sz":{"x": 1, "y": 2}, "specs":[1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[2,2,2,2,2], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
-    "Giant Screw": {"nm":"Giant Screw", "sz":{"x": 4, "y": 4}, "specs":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
+    "Giant *****": {"nm":"Giant *****", "sz":{"x": 4, "y": 4}, "specs":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Pipe Box R": {"nm":"Pipe Box R", "sz":{"x": 2, "y": 2}, "specs":[1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,2,4,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Pipe Box L": {"nm":"Pipe Box L", "sz":{"x": 2, "y": 2}, "specs":[1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,2,4,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Door Holder R": {"nm":"Door Holder R", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,5,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Door Holder L": {"nm":"Door Holder L", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,5,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Machinery2": {
+},
+{
+  name: "Machinery2",
+  tiles: {
     "Piston Top": {"nm":"Piston Top", "sz":{"x": 4, "y": 1}, "specs":[1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Piston Segment Empty": {"nm":"Piston Segment Empty", "sz":{"x": 4, "y": 1}, "specs":[1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Piston Head": {"nm":"Piston Head", "sz":{"x": 4, "y": 5}, "specs":[1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
@@ -386,7 +426,10 @@
     "Big Drill": {"nm":"Big Drill", "sz":{"x": 3, "y": 3}, "specs":[1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Drill Rim": {"nm":"Drill Rim", "sz":{"x": 3, "y": 1}, "specs":[1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Small machine": {
+},
+{
+  name: "Small machine",
+  tiles: {
     "Small Machine A": {"nm":"Small Machine A", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Small Machine B": {"nm":"Small Machine B", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Small Machine C": {"nm":"Small Machine C", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
@@ -395,7 +438,10 @@
     "Small Machine F": {"nm":"Small Machine F", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Small Machine G": {"nm":"Small Machine G", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]}
   },
-  "Thin Pipes": {
+},
+{
+  name: "Thin Pipes",
+  tiles: {
     "Vertical Pipe": {"nm":"Vertical Pipe", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,4,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Horizontal Pipe": {"nm":"Horizontal Pipe", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,4,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Vertical Plain Pipe": {"nm":"Vertical Plain Pipe", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,4,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
@@ -414,7 +460,10 @@
     "Pipe Inwards W": {"nm":"Pipe Inwards W", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,4,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Pipe Inwards S": {"nm":"Pipe Inwards S", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,4,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]}
   },
-  "Pipes": {
+},
+{
+  name: "Pipes",
+  tiles: {
     "Thick pipe vertical": {"nm":"Thick pipe vertical", "sz":{"x": 2, "y": 2}, "specs":[1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,4,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Thick pipe horizontal": {"nm":"Thick pipe horizontal", "sz":{"x": 2, "y": 2}, "specs":[1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,4,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Thick pipe vertical filler": {"nm":"Thick pipe vertical filler", "sz":{"x": 2, "y": 1}, "specs":[1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,4,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
@@ -436,7 +485,10 @@
     "Water Chamber Open R": {"nm":"Water Chamber Open R", "sz":{"x": 7, "y": 1}, "specs":[1,0,0,0,0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Water Chamber Open L": {"nm":"Water Chamber Open L", "sz":{"x": 7, "y": 1}, "specs":[0,0,0,0,0,0,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Special Pipes": {
+},
+{
+  name: "Special Pipes",
+  tiles: {
     "insidePipeHorizontal": {"nm":"insidePipeHorizontal", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[3,2,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "insidePipeVertical": {"nm":"insidePipeVertical", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[3,2,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "insidePipeHorizontal": {"nm":"insidePipeHorizontal", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[3,2,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
@@ -463,7 +515,10 @@
     "Big Inside Pipe RD": {"nm":"Big Inside Pipe RD", "sz":{"x": 5, "y": 5}, "specs":[-1, -1, -1, -1, -1,     -1, 4, 0, 0, -1,    -1, 0, 0, 0, -1,    -1, 0, 0, 0, -1,    -1, -1, -1, -1, -1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Big Inside Pipe LD": {"nm":"Big Inside Pipe LD", "sz":{"x": 5, "y": 5}, "specs":[-1, -1, -1, -1, -1,     -1, 0, 0, 0, -1,    -1, 0, 0, 0, -1,    -1, 5, 0, 0, -1,    -1, -1, -1, -1, -1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Wall wires": {
+},
+{
+  name: "Wall wires",
+  tiles: {
     "WallWires Horizontal A": {"nm":"WallWires Horizontal A", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[7, 1, 1, 1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "WallWires Horizontal B": {"nm":"WallWires Horizontal B", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[6, 1, 1, 1, 1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "WallWires Vertical A": {"nm":"WallWires Vertical A", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[7, 1, 1, 1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
@@ -486,7 +541,10 @@
     "WallWires End S": {"nm":"WallWires End S", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[7, 1, 1, 1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "WallWires End W": {"nm":"WallWires End W", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[7, 1, 1, 1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]}
   },
-  "Pipish": {
+},
+{
+  name: "Pipish",
+  tiles: {
     "PipishL": {"nm":"PipishL", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,5,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "PipishU": {"nm":"PipishU", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,5,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "PipishR": {"nm":"PipishR", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,5,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
@@ -512,12 +570,18 @@
     "pipishRampRAndLowerFloor": {"nm":"pipishRampRAndLowerFloor", "sz":{"x": 1, "y": 1}, "specs":[2], "specs2":0, "tp":"voxelStruct", "repeatL":[1,5,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "pipishRampLAndLowerFloor": {"nm":"pipishRampLAndLowerFloor", "sz":{"x": 1, "y": 1}, "specs":[3], "specs2":0, "tp":"voxelStruct", "repeatL":[1,5,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Glass": {
+},
+{
+  name: "Glass",
+  tiles: {
     "Small Glass": {"nm":"Small Glass", "sz":{"x": 1, "y": 1}, "specs":[9], "specs2":0, "tp":"voxelStruct", "repeatL":[2, 6, 2], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid", "glass"]},
     "Wide Glass": {"nm":"Wide Glass", "sz":{"x": 3, "y": 1}, "specs":[9,9,9], "specs2":0, "tp":"voxelStruct", "repeatL":[2, 6, 2], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid", "glass"]},
     "Tall Glass": {"nm":"Tall Glass", "sz":{"x": 1, "y": 3}, "specs":[9,9,9], "specs2":0, "tp":"voxelStruct", "repeatL":[2, 6, 2], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid", "glass"]}
   },
-  "Shelters": {
+},
+{
+  name: "Shelters",
+  tiles: {
     "shelter gate N": {"nm":"shelter gate N", "sz":{"x": 5, "y": 5}, "specs":[1,1,1,1,1, 1,1,1,1,1, 0,0,0,0,0, 1,1,1,1,1, 1,1,1,1,1], "specs2":[1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1], "tp":"voxelStruct", "repeatL":[1, 1, 1, 4, 2, 2, 4, 5], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "shelter gate E": {"nm":"shelter gate E", "sz":{"x": 5, "y": 5}, "specs":[1,1,0,1,1, 1,1,0,1,1, 1,1,0,1,1, 1,1,0,1,1, 1,1,0,1,1], "specs2":[1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1], "tp":"voxelStruct", "repeatL":[1, 1, 1, 4, 2, 2, 4, 5], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "shelter gate S": {"nm":"shelter gate S", "sz":{"x": 5, "y": 5}, "specs":[1,1,1,1,1, 1,1,1,1,1, 0,0,0,0,0, 1,1,1,1,1, 1,1,1,1,1], "specs2":[1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1], "tp":"voxelStruct", "repeatL":[1, 1, 1, 4, 2, 2, 4, 5], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
@@ -531,7 +595,10 @@
     "medium shelter S": {"nm":"medium shelter S", "sz":{"x": 7, "y": 7}, "specs":[1,1,1,1,1,1,1, 1,0,0,0,0,0,0, 1,0,0,0,0,0,0, 1,0,0,0,0,0,0, 1,0,0,0,0,0,0, 1,0,0,0,0,0,0, 1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 8, 1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "medium shelter E": {"nm":"medium shelter E", "sz":{"x": 7, "y": 7}, "specs":[1,1,1,1,1,1,1, 1,0,0,0,0,0,1, 1,0,0,0,0,0,1, 1,0,0,0,0,0,1, 1,0,0,0,0,0,1, 1,0,0,0,0,0,1, 1,0,0,0,0,0,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 8, 1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Crawl Holes": {
+},
+{
+  name: "Crawl Holes",
+  tiles: {
     "Hatch Cover": {"nm":"Hatch Cover", "sz":{"x": 1, "y": 1}, "specs":[6], "specs2":0, "tp":"voxelStruct", "repeatL":[2,2,4,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "crawlHole": {"nm":"crawlHole", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 9], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "crawlHoleTall": {"nm":"crawlHoleTall", "sz":{"x": 1, "y": 2}, "specs":[0, 0], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 9], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
@@ -551,7 +618,10 @@
     "crawlHole EN": {"nm":"crawlHole EN", "sz":{"x": 2, "y": 2}, "specs":[0,0,-1,0], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 9], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "crawlHoleArc": {"nm":"crawlHoleArc", "sz":{"x": 2, "y": 2}, "specs":[0,0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 9], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]}
   },
-  "Gate Tiles": {
+},
+{
+  name: "Gate Tiles",
+  tiles: {
     "GateA": {"nm":"GateA", "sz":{"x": 4, "y": 9}, "specs":[-1,-1,-1,-1,-1,1,1,1,5,  1,1,1,1,1,1,1,1,1,  1,1,1,1,1,1,1,1,1,  -1,-1,-1,-1,-1,1,1,1,4], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,4], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "GateB": {"nm":"GateB", "sz":{"x": 4, "y": 9}, "specs":[3,1,1,1,-1,-1,-1,-1,-1,  1,1,1,1,1,1,1,1,1,  1,1,1,1,1,1,1,1,1,  2,1,1,1,-1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,4], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "GatePillar": {"nm":"GatePillar", "sz":{"x": 4, "y": 11}, "specs":[1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,4], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
@@ -564,7 +634,10 @@
     "Gate Scaffolding Lamp": {"nm":"Gate Scaffolding Lamp", "sz":{"x": 5, "y": 5}, "specs":[0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[5,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Gate Battery Meter": {"nm":"Gate Battery Meter", "sz":{"x": 22, "y": 2}, "specs":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Strip Farms": {
+},
+{
+  name: "Strip Farms",
+  tiles: {
     "Harvester A": {"nm":"Harvester A", "sz":{"x": 9, "y": 11}, "specs":[-1,-1,1,-1,-1,-1,-1,-1,1,-1,-1, -1,3,1,1,1,1,1,1,1,0,1, 3,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1, 2,1,1,1,1,1,1,1,1,1,1, -1,2,1,1,1,1,1,1,1,0,1, -1,-1,1,-1,-1,-1,-1,-1,1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":2, "rnd":1, "ptPos":0, "tags":["harvester"]},
     "Harvester Arm A": {"nm":"Harvester Arm A", "sz":{"x": 5, "y": 3}, "specs":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Hose Relay A": {"nm":"Hose Relay A", "sz":{"x": 2, "y": 5}, "specs":[1,1,1,1,1, 1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":2, "rnd":1, "ptPos":0, "tags":[]},
@@ -594,7 +667,10 @@
     "Thick Floor L": {"nm":"Thick Floor L", "sz":{"x": 5, "y": 2}, "specs":[1,1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,7], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Thick Floor R": {"nm":"Thick Floor R", "sz":{"x": 5, "y": 2}, "specs":[1,1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,7], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "The Wall": {
+},
+{
+  name: "The Wall",
+  tiles: {
     "Cooling Rod U": {"nm":"Cooling Rod U", "sz":{"x": 4, "y": 4}, "specs":[1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Cooling Rod D": {"nm":"Cooling Rod D", "sz":{"x": 4, "y": 4}, "specs":[1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Cooling Rod Tip U": {"nm":"Cooling Rod Tip U", "sz":{"x": 4, "y": 4}, "specs":[1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
@@ -626,14 +702,20 @@
     "Cooler Support A": {"nm":"Cooler Support A", "sz":{"x": 2, "y": 1}, "specs":[1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,7], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Cooler Support B": {"nm":"Cooler Support B", "sz":{"x": 3, "y": 2}, "specs":[-1,1,1,1,-1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,7], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Underhang": {
+},
+{
+  name: "Underhang",
+  tiles: {
     "SuperStructure Leg": {"nm":"SuperStructure Leg", "sz":{"x": 35, "y": 29}, "specs":[1,1,1,1,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,1,1,1,1,      1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,      1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,      1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,      1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,      1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,      1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,     1,1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,1,1,1,1,1,1,1,1,1,1,1,     1,1,1,1,1,1,1,1,1,1,1,5,-1,-1,-1,-1,-1,3,1,1,1,1,1,1,1,1,1,1,1,    -1,-1,-1,2,1,1,1,1,1,1,1,1,5,-1,-1,-1,3,1,1,1,1,1,1,1,1,4,-1,-1,-1,      -1,-1,-1,-1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,-1,-1,-1,-1,       -1,-1,-1,-1,-1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,-1,-1,-1,-1,-1,   -1,-1,-1,-1,-1,-1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,-1,-1,-1,-1,-1,-1,  -1,-1,-1,-1,-1,-1,-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,    -1,-1,-1,-1,-1,-1,-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,   -1,-1,-1,-1,-1,-1,-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,   -1,-1,-1,-1,-1,-1,-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,   -1,-1,-1,-1,-1,-1,-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,   -1,-1,-1,-1,-1,-1,-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,   -1,-1,-1,-1,-1,-1,-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,   -1,-1,-1,-1,-1,-1,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,-1,-1,-1,-1,-1,-1,   -1,-1,-1,-1,-1,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,-1,-1,-1,-1,-1,   -1,-1,-1,-1,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,-1,-1,-1,-1,    -1,-1,-1,3,1,1,1,1,1,1,1,1,4,-1,-1,-1,2,1,1,1,1,1,1,1,1,5,-1,-1,-1,        1,1,1,1,1,1,1,1,1,1,1,4,-1,-1,-1,-1,-1,2,1,1,1,1,1,1,1,1,1,1,1,     1,1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,1,1,1,1,1,1,1,1,1,1,1,    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,   1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,     1,1,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,2,1,1,1,1     ], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,3,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Pillar Beam Connection SE": {"nm":"Pillar Beam Connection SE", "sz":{"x": 3, "y": 4}, "specs":[1,1,1,1, -1,1,1,1, -1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Pillar Beam Connection SW": {"nm":"Pillar Beam Connection SW", "sz":{"x": 3, "y": 4}, "specs":[-1,1,1,1, -1,1,1,1, 1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Pillar Beam Connection NE": {"nm":"Pillar Beam Connection NE", "sz":{"x": 3, "y": 4}, "specs":[1,1,1,1, 1,1,1,-1, 1,1,1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Pillar Beam Connection NW": {"nm":"Pillar Beam Connection NW", "sz":{"x": 3, "y": 4}, "specs":[1,1,1,-1, 1,1,1,-1, 1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Crawl Spaces": {
+},
+{
+  name: "Crawl Spaces",
+  tiles: {
     "Vertical Crawl Space A": {"nm":"Vertical Crawl Space A", "sz":{"x": 3, "y": 1}, "specs":[1,0,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Vertical Crawl Space B": {"nm":"Vertical Crawl Space B", "sz":{"x": 3, "y": 1}, "specs":[1,0,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Horizontal Crawl Space A": {"nm":"Horizontal Crawl Space A", "sz":{"x": 1, "y": 3}, "specs":[1,0,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
@@ -664,7 +746,10 @@
     "Crawl Space Otr Corner NW": {"nm":"Crawl Space Otr Corner NW", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Crawl Space Otr Corner NE": {"nm":"Crawl Space Otr Corner NE", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Trains": {
+},
+{
+  name: "Trains",
+  tiles: {
     "Train Car NE": {"nm":"Train Car NE", "sz":{"x": 6, "y": 10}, "specs":[1,1,1,1,1,1,1,1,1,1,  1,1,1,1,1,1,1,1,1,1,   1,1,1,1,1,1,1,1,1,1,    1,1,1,1,1,1,1,-1,1,1,   2,1,1,1,1,1,1,-1,1,1,  -1,-1,-1,-1,1,-1,-1,-1,-1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,4], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["drawLast"]},
     "Train Car NW": {"nm":"Train Car NW", "sz":{"x": 6, "y": 10}, "specs":[-1,-1,-1,-1,1,-1,-1,-1,-1,1,   3,1,1,1,1,1,1,-1,1,1,   1,1,1,1,1,1,1,-1,1,1,  1,1,1,1,1,1,1,1,1,1,   1,1,1,1,1,1,1,1,1,1,    1,1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,4], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["drawLast"]},
     "Train Car N": {"nm":"Train Car N", "sz":{"x": 1, "y": 10}, "specs":[1,1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,4], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["drawLast"]},
@@ -683,14 +768,20 @@
     "TrainRailFront": {"nm":"TrainRailFront", "sz":{"x": 3, "y": 3}, "specs":[1,-1,1,1,1,1,1,-1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "TrainWheelN": {"nm":"TrainWheelN", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Flatbed Trains": {
+},
+{
+  name: "Flatbed Trains",
+  tiles: {
     "Flatbed Train NW": {"nm":"Flatbed Train NW", "sz":{"x": 6, "y": 1}, "specs":[1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,4], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["drawLast"]},
     "Flatbed Train Segment": {"nm":"Flatbed Train Segment", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,9], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["drawLast"]},
     "Flatbed Train NE": {"nm":"Flatbed Train NE", "sz":{"x": 6, "y": 1}, "specs":[1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,4], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["drawLast"]},
     "Flatbed Wheel N": {"nm":"Flatbed Wheel N", "sz":{"x": 6, "y": 2}, "specs":[1,5, 1,1, 1,1, 1,1, 1,1, 1,4], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,5], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["drawLast"]},
     "Flatbed Wheel S": {"nm":"Flatbed Wheel S", "sz":{"x": 6, "y": 2}, "specs":[3,1, 1,1, 1,1, 1,1, 1,1, 2,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,5], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["drawLast"]}
   },
-  "Temple Stone": {
+},
+{
+  name: "Temple Stone",
+  tiles: {
     "Big Temple Stone": {"nm":"Big Temple Stone", "sz":{"x": 4, "y": 3}, "specs":[3,1,5,1,1,1,1,1,1,2,1,4], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,7], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Big Temple Stone No Slopes": {"nm":"Big Temple Stone No Slopes", "sz":{"x": 4, "y": 3}, "specs":[-1,1,-1,1,1,1,1,1,1,-1,1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,7], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Wide Temple Stone": {"nm":"Wide Temple Stone", "sz":{"x": 2, "y": 1}, "specs":[1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
@@ -714,10 +805,16 @@
     "Temple Pillar ArchR": {"nm":"Temple Pillar ArchR", "sz":{"x": 14, "y": 6}, "specs":[1,-1,-1,-1,-1,-1, 1,-1,-1,-1,-1,-1, 1,5,-1,-1,-1,-1, 1,1,-1,-1,-1,-1, 1,1,1,-1,-1,-1, 1,1,1,5,-1,-1, 1,1,1,1,5,-1, 1,1,1,1,1,1, 1,1,1,1,1,1, 1,1,1,1,1,1, 1,1,1,1,1,1, 1,1,1,1,1,1, 1,1,1,1,1,1, 1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Temple Pillar ArchM": {"nm":"Temple Pillar ArchM", "sz":{"x": 21, "y": 6}, "specs":[1,-1,-1,-1,-1,-1, 1,-1,-1,-1,-1,-1, 1,5,-1,-1,-1,-1, 1,1,-1,-1,-1,-1, 1,1,1,-1,-1,-1, 1,1,1,5,-1,-1, 1,1,1,1,5,-1, 1,1,1,1,1,1, 1,1,1,1,1,1, 1,1,1,1,1,1, 1,1,1,1,1,1, 1,1,1,1,1,1, 1,1,1,1,1,1, 1,1,1,1,1,1, 1,1,1,1,1,1		, 1,1,1,1,4,-1, 1,1,1,4,-1,-1, 1,1,1,-1,-1,-1, 1,1,-1,-1,-1,-1, 1,4,-1,-1,-1,-1, 1,-1,-1,-1,-1,-1, 1,-1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Lights & Lanterns": {
+},
+{
+  name: "Lights & Lanterns",
+  tiles: {
     "Wall Mounted Fixture": {"nm":"Wall Mounted Fixture", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,2,1,4], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]}
   },
-  "Superstructure": {
+},
+{
+  name: "Superstructure",
+  tiles: {
     "Zap Coil Hub": {"nm":"Zap Coil Hub", "sz":{"x": 5, "y": 5}, "specs":[3,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,4], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Zap Coil Vert A": {"nm":"Zap Coil Vert A", "sz":{"x": 3, "y": 2}, "specs":[1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,5], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Zap Coil Vert B": {"nm":"Zap Coil Vert B", "sz":{"x": 3, "y": 2}, "specs":[1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,5], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
@@ -731,7 +828,10 @@
     "AI chamber screen": {"nm":"AI chamber screen", "sz":{"x": 29, "y": 29}, "specs":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,3], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "AI chamber border": {"nm":"AI chamber border", "sz":{"x": 33, "y": 33}, "specs":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,2], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Roof Houses": {
+},
+{
+  name: "Roof Houses",
+  tiles: {
     "Roof House A": {"nm":"Roof House A", "sz":{"x": 7, "y": 3}, "specs":[1,1,1,1,1,1,1, 1,1,1,1,1,1,1, 1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,5,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Roof House B": {"nm":"Roof House B", "sz":{"x": 7, "y": 3}, "specs":[1,1,1,1,1,1,1, 1,1,1,1,1,1,1, 1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,5,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Roof House C": {"nm":"Roof House C", "sz":{"x": 7, "y": 3}, "specs":[1,1,1,1,1,1,1, 1,1,1,1,1,1,1, 1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,5,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
@@ -744,10 +844,16 @@
     "Roof House Empty": {"nm":"Roof House Empty", "sz":{"x": 7, "y": 3}, "specs":[1,1,1,1,1,1,1, 1,1,1,1,1,1,1, 1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,5,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Roof House Holder": {"nm":"Roof House Holder", "sz":{"x": 7, "y": 3}, "specs":[1,1,1,1,1,1,1, 1,1,1,1,1,1,1, 1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[3,2,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Capsules": {
+},
+{
+  name: "Capsules",
+  tiles: {
     "TLCorner A 1": {"nm":"TLCorner A 1", "sz":{"x": 3, "y": 3}, "specs":[1,1,1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[5,5,10,6,10,10,6,10,10], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "Custom": {
+},
+{
+  name: "Custom",
+  tiles: {
     "empty": {"nm":"empty", "sz":{"x": 1, "y": 1},"sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0,"tp":"voxelStruct", "repeatL":[1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "emptySbl": {"nm":"emptySbl", "sz":{"x": 1, "y": 1},"sz":{"x": 1, "y": 1}, "specs":[5], "specs2":0,"tp":"voxelStruct", "repeatL":[1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "emptyStl": {"nm":"emptyStl", "sz":{"x": 1, "y": 1},"sz":{"x": 1, "y": 1}, "specs":[3], "specs2":0,"tp":"voxelStruct", "repeatL":[1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
@@ -767,7 +873,10 @@
     "City Brick Grates": {"nm":"City Brick Grates", "sz":{"x": 7, "y": 3}, "specs":[1,1,1,1,1,1,1, 1,1,1,1,1,1,1, 1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,7], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "City Brick": {"nm":"City Brick", "sz":{"x": 7, "y": 3}, "specs":[1,1,1,1,1,1,1, 1,1,1,1,1,1,1, 1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,7], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "DSMachines": {
+},
+{
+  name: "DSMachines",
+  tiles: {
     "DSCH N": {"nm":"DSCH N", "sz":{"x": 10, "y": 10}, "specs":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,5,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,1,-1,-1,-1,-1,-1,-1,-1,1,-1 ,1,1,5,-1,-1,-1,-1,3,1,5 ,1,1,1,-1,-1,-1,1,1,1,1 ,1,1,1,-1,-1,-1,1,1,1,1 ,1,1,4,-1,-1,-1,-1,2,1,4 ,1,-1,-1,-1,-1,-1,-1,-1,1,-1 ,4,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], "specs2":[5,-1,-1,-1,-1,-1,-1,3,1,5 ,1,5,-1,-1,-1,-1,-1,1,1,1 ,1,1,1,-1,-1,-1,-1,2,1,4 ,1,1,4,3,1,5,-1,3,1,-1 ,1,1,1,1,1,1,1,1,1,5 ,1,1,1,1,1,1,1,1,1,4 ,1,1,5,2,1,4,-1,2,1,-1 ,1,1,1,-1,-1,-1,-1,3,1,5 ,1,4,-1,-1,-1,-1,-1,1,1,1 ,4,-1,-1,-1,-1,-1,-1,2,1,4], "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "DSCH E": {"nm":"DSCH E", "sz":{"x": 10, "y": 10}, "specs":[-1,-1,-1,3,1,1,5,-1,-1,-1 ,-1,-1,1,1,1,1,1,1,-1,-1 ,-1,-1,-1,2,1,1,4,-1,-1,-1 ,-1,-1,-1,-1,1,1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,3,1,1,5,-1,-1,-1 ,-1,-1,-1,1,1,1,1,-1,-1,-1 ,-1,3,1,1,1,1,1,1,5,-1], "specs2":[3,1,5,-1,3,5,-1,3,1,5 ,1,1,1,1,1,1,1,1,1,1 ,2,1,4,2,1,1,4,2,1,4 ,-1,-1,-1,-1,1,1,-1,-1,-1,-1 ,-1,-1,-1,3,1,1,5,-1,-1,-1 ,-1,-1,-1,1,1,1,1,-1,-1,-1 ,-1,-1,-1,2,1,1,4,-1,-1,-1 ,-1,-1,1,5,1,1,3,1,-1,-1 ,-1,3,1,1,1,1,1,1,5,-1 ,3,1,1,1,1,1,1,1,1,5], "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "DSCH S": {"nm":"DSCH S", "sz":{"x": 10, "y": 10}, "specs":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,3 ,-1,1,-1,-1,-1,-1,-1,-1,-1,1 ,3,1,5,-1,-1,-1,-1,3,1,1 ,1,1,1,1,-1,-1,-1,1,1,1 ,1,1,1,1,-1,-1,-1,1,1,1 ,2,1,4,-1,-1,-1,-1,2,1,1 ,-1,1,-1,-1,-1,-1,-1,-1,-1,1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,2 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], "specs2":[3,1,5,-1,-1,-1,-1,-1,-1,3 ,1,1,1,-1,-1,-1,-1,-1,3,1 ,2,1,4,-1,-1,-1,-1,1,1,1 ,-1,1,5,-1,3,1,5,2,1,1 ,3,1,1,1,1,1,1,1,1,1 ,2,1,1,1,1,1,1,1,1,1 ,-1,1,4,-1,2,1,4,3,1,1 ,3,1,5,-1,-1,-1,-1,1,1,1 ,1,1,1,-1,-1,-1,-1,-1,2,1 ,2,1,4,-1,-1,-1,-1,-1,-1,2], "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
@@ -797,7 +906,10 @@
     "cls S": {"nm":"cls S", "sz":{"x": 5, "y": 4}, "specs":[-1,-1,1,-1 ,1,1,1,-1 ,-1,-1,1,1 ,1,1,1,-1 ,-1,-1,1,-1], "specs2":0,"tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "cls W": {"nm":"cls W", "sz":{"x": 4, "y": 5}, "specs":[-1,-1,1,-1,-1 ,1,1,1,1,1 ,-1,1,-1,1,-1 ,-1,1,-1,1,-1], "specs2":0,"tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "LB Forest Sanctuary": {
+},
+{
+  name: "LB Forest Sanctuary",
+  tiles: {
     "BrainTree": {"nm":"BrainTree", "sz":{"x": 52, "y": 40}, "specs":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,1,1,1,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,3,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,1,1,1,1,1,1,1,1,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,1,1,1,1,1,1,1,1,1,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,1,1,1,1,1,1,1,1,1,1,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,2,1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,2,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,1,1,1,1,1,1,1,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,1,1,1,1,1,1,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,1,1,1,1,1,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,2,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,2,1,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[2,2,2,2,2,2,2,2,2,2], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["notTrashProp"]},
     "Growers": {"nm":"Growers", "sz":{"x": 51, "y": 40}, "specs":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,-1,-1,-1,-1,-1,-1,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,-1,-1,0,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["notTrashProp"]},
     "TriangularFridge": {"nm":"TriangularFridge", "sz":{"x": 40, "y": 40}, "specs":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[3], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["notTrashProp"]},
@@ -808,7 +920,10 @@
     "Split Big Ball": {"nm":"Split Big Ball", "sz":{"x": 3, "y": 3}, "specs":[3,1,5,1,1,1,2,1,4], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 1, 1, 1, 1, 1, 1, 1, 2], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Pole Ornation": {"nm":"Pole Ornation", "sz":{"x": 5, "y": 4}, "specs":[0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[4,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]}
   },
-  "LB Communications Array": {
+},
+{
+  name: "LB Communications Array",
+  tiles: {
     "Spire": {"nm":"Spire", "sz":{"x": 34, "y": 38}, "specs":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,1,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,1,1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,2,1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,0,0,0,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,0,0,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,4,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,4,0,0,0,0,0,0,0,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,4,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1 ,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1 ,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,4,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1 ,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,4,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1 ,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,4,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1 ,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,4,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1 ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1 ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1 ,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,1,4,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1 ,0,0,0,0,0,0,0,0,0,0,3,1,1,1,1,4,0,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1 ,0,0,0,0,0,0,0,3,1,1,1,1,4,0,0,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1,-1 ,1,1,1,1,1,1,1,1,1,4,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,-1,-1,-1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[4,2,2,5], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["notTrashProp"]},
     "Spire Dish Only": {"nm":"Spire Dish Only", "sz":{"x": 34, "y": 38}, "specs":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,1,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,2,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,0,0,0,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,0,0,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,0,0,0,0,0,0,0,0,0,0,3,1,1,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,0,0,0,0,0,0,0,3,1,1,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,1,1,1,1,1,1,1,1,1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[4,2,2,5], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["notTrashProp"]},
     "Holes Antenna Divider N": {"nm":"Holes Antenna Divider N", "sz":{"x": 1, "y": 2}, "specs":[1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
@@ -821,7 +936,10 @@
     "PAntennaBigGrateL": {"nm":"PAntennaBigGrateL", "sz":{"x": 2, "y": 2}, "specs":[1,1, 1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":2, "rnd":2, "ptPos":0, "tags":["nonSolid"]},
     "PAntennaBigGrateR": {"nm":"PAntennaBigGrateR", "sz":{"x": 2, "y": 2}, "specs":[1,1, 1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":2, "rnd":2, "ptPos":0, "tags":["nonSolid"]}
   },
-  "LB Intake System": {
+},
+{
+  name: "LB Intake System",
+  tiles: {
     "Gravity Disc": {"nm":"Gravity Disc", "sz":{"x": 13, "y": 13}, "specs":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,0,0,0,0,0,-1,-1,-1,-1 ,-1,-1,-1,0,0,0,0,0,0,0,-1,-1,-1 ,-1,-1,0,0,0,0,0,0,0,0,0,-1,-1 ,-1,-1,0,0,0,0,0,0,0,0,0,-1,-1 ,-1,-1,0,0,0,0,0,0,0,0,0,-1,-1 ,-1,-1,0,0,0,0,0,0,0,0,0,-1,-1 ,-1,-1,0,0,0,0,0,0,0,0,0,-1,-1 ,-1,-1,-1,0,0,0,0,0,0,0,-1,-1,-1 ,-1,-1,-1,-1,0,0,0,0,0,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Filter Vertical": {"nm":"Filter Vertical", "sz":{"x": 4, "y": 4}, "specs":[1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,8,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Filter Vertical Border Top": {"nm":"Filter Vertical Border Top", "sz":{"x": 4, "y": 4}, "specs":[1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,8,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
@@ -833,13 +951,19 @@
     "Filter Horizontal Two Borders": {"nm":"Filter Horizontal Two Borders", "sz":{"x": 4, "y": 4}, "specs":[1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,8,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Inside Huge Pipe Horizontal": {"nm":"Inside Huge Pipe Horizontal", "sz":{"x": 2, "y": 12}, "specs":[1,0,0,0,0,0,0,0,0,0,0,1, 1,0,0,0,0,0,0,0,0,0,0,1], "specs2":[1,0,0,0,0,0,0,0,0,0,0,1, 1,0,0,0,0,0,0,0,0,0,0,1], "tp":"voxelStruct", "repeatL":[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "LB Vents and Fans": {
+},
+{
+  name: "LB Vents and Fans",
+  tiles: {
     "Fan Cage": {"nm":"Fan Cage", "sz":{"x": 6, "y": 6}, "specs":[-1,-1,-1,-1,-1,-1 ,-1,3,1,1,5,-1 ,-1,1,1,1,1,-1 ,-1,1,1,1,1,-1 ,-1,2,1,1,4,-1 ,-1,-1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,5,2], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "big wall vent open": {"nm":"big wall vent open", "sz":{"x": 6, "y": 6}, "specs":[-1,0,0,0,0,-1,  0,0,0,0,0,0,  0,0,0,0,0,0,  0,0,0,0,0,0,  0,0,0,0,0,0,  -1,0,0,0,0,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[6, 1, 1, 1, 1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Round Monster Fan": {"nm":"Round Monster Fan", "sz":{"x": 10, "y": 10}, "specs":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1,-1,-1,-1,-1, -1,-1,0,0,0,0,0,0,-1,-1, -1,-1,0,0,0,0,0,0,-1,-1, -1,-1,0,0,0,0,0,0,-1,-1, -1,-1,0,0,0,0,0,0,-1,-1, -1,-1,0,0,0,0,0,0,-1,-1, -1,-1,0,0,0,0,0,0,-1,-1, -1,-1,-1,-1,-1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,7], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Ceiling Fan": {"nm":"Ceiling Fan", "sz":{"x": 10, "y": 1}, "specs":[0, 0, 0, 0, 6, 6, 0, 0, 0, 0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]}
   },
-  "LB Misc": {
+},
+{
+  name: "LB Misc",
+  tiles: {
     "Background Tile": {"nm":"Background Tile", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[9,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Background Tile Slope NE": {"nm":"Background Tile Slope NE", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[9,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Background Tile Slope NW": {"nm":"Background Tile Slope NW", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[9,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
@@ -857,11 +981,14 @@
     "Disc Pipe Vertical": {"nm":"Disc Pipe Vertical", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,2,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Fat_0_Head": {"nm":"Fat_0_Head", "sz":{"x": 16, "y": 16}, "specs":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "specs2":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], "tp":"voxelStruct", "repeatL":[1,1,1,1,16], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "LB Machinery": {
+},
+{
+  name: "LB Machinery",
+  tiles: {
     "Piston Head No Cage": {"nm":"Piston Head No Cage", "sz":{"x": 4, "y": 5}, "specs":[0,0,0,0,0, 0,1,1,1,1, 0,1,1,1,1, 0,0,0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Piston Border Horizontal Right": {"nm":"Piston Border Horizontal Right", "sz":{"x": 1, "y": 4}, "specs":[1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Piston Border Horizontal Left": {"nm":"Piston Border Horizontal Left", "sz":{"x": 1, "y": 4}, "specs":[1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
-    "Small Box Screw": {"nm":"Small Box Screw", "sz":{"x": 2, "y": 2}, "specs":[1,1, 1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
+    "Small Box *****": {"nm":"Small Box *****", "sz":{"x": 2, "y": 2}, "specs":[1,1, 1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Conveyor Belt Holder Only": {"nm":"Conveyor Belt Holder Only", "sz":{"x": 4, "y": 3}, "specs":[0,0,0, 0,1,1, 0,1,1, 0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Conveyor Belt Wheel Only": {"nm":"Conveyor Belt Wheel Only", "sz":{"x": 4, "y": 3}, "specs":[-1,-1,-1, -1,1,-1, -1,1,-1, -1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Drill Valve": {"nm":"Drill Valve", "sz":{"x": 2, "y": 2}, "specs":[0,0, 0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,2], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
@@ -869,7 +996,10 @@
     "GateGrate Right": {"nm":"GateGrate Right", "sz":{"x": 2, "y": 3}, "specs":[1,1,1, 0,0,0], "specs2":[1,1,1, 1,1,1], "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,10,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "GateGrate Left": {"nm":"GateGrate Left", "sz":{"x": 2, "y": 3}, "specs":[0,0,0, 1,1,1], "specs2":[1,1,1, 1,1,1], "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,10,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "LB Roof Houses": {
+},
+{
+  name: "LB Roof Houses",
+  tiles: {
     "Roof House 1 Hole": {"nm":"Roof House 1 Hole", "sz":{"x": 7, "y": 3}, "specs":[1,1,1,1,1,1,1, 1,1,1,1,1,1,1, 1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,5,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Roof House 3 Holes": {"nm":"Roof House 3 Holes", "sz":{"x": 7, "y": 3}, "specs":[1,1,1,1,1,1,1, 1,1,1,1,1,1,1, 1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,5,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Roof House 1 Window Left": {"nm":"Roof House 1 Window Left", "sz":{"x": 7, "y": 3}, "specs":[1,1,1,1,1,1,1, 1,1,1,1,1,1,1, 1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,5,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
@@ -882,7 +1012,10 @@
     "Roof House Cage": {"nm":"Roof House Cage", "sz":{"x": 7, "y": 3}, "specs":[1,1,1,1,1,1,1, 1,1,1,1,1,1,1, 1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,5,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Roof House Nothing": {"nm":"Roof House Nothing", "sz":{"x": 7, "y": 3}, "specs":[1,1,1,1,1,1,1, 1,1,1,1,1,1,1, 1,1,1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,5,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "LB Crawl Space Boxes": {
+},
+{
+  name: "LB Crawl Space Boxes",
+  tiles: {
     "Crawl Space Box NW": {"nm":"Crawl Space Box NW", "sz":{"x": 5, "y": 5}, "specs":[-1,-1,-1,-1,-1, -1,1,0,1,-1, -1,0,0,1,-1, -1,1,1,1,-1, -1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[2,4,4], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Crawl Space Box NE": {"nm":"Crawl Space Box NE", "sz":{"x": 5, "y": 5}, "specs":[-1,-1,-1,-1,-1, -1,1,1,1,-1, -1,0,0,1,-1, -1,1,0,1,-1, -1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[2,4,4], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Crawl Space Box SE": {"nm":"Crawl Space Box SE", "sz":{"x": 5, "y": 5}, "specs":[-1,-1,-1,-1,-1, -1,1,1,1,-1, -1,1,0,0,-1, -1,1,0,1,-1, -1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[2,4,4], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
@@ -895,12 +1028,18 @@
     "Crawl Space Box NWE": {"nm":"Crawl Space Box NWE", "sz":{"x": 5, "y": 5}, "specs":[-1,-1,-1,-1,-1, -1,1,0,1,-1, -1,0,0,1,-1, -1,1,0,1,-1, -1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[2,4,4], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Crawl Space Box 4 Open Sides": {"nm":"Crawl Space Box 4 Open Sides", "sz":{"x": 5, "y": 5}, "specs":[-1,-1,-1,-1,-1, -1,1,0,1,-1, -1,0,0,0,-1, -1,1,0,1,-1, -1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[2,4,4], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "LB Alt Clamps": {
+},
+{
+  name: "LB Alt Clamps",
+  tiles: {
     "Horizontal Block Clamp": {"nm":"Horizontal Block Clamp", "sz":{"x": 2, "y": 1}, "specs":[1, 1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Horizontal Block Clamp S": {"nm":"Horizontal Block Clamp S", "sz":{"x": 2, "y": 1}, "specs":[1, 1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]},
     "Horizontal Block Clamp N": {"nm":"Horizontal Block Clamp N", "sz":{"x": 2, "y": 1}, "specs":[1, 1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,6], "bfTiles":1, "rnd":1, "ptPos":0, "tags":[]}
   },
-  "LB Signs": {
+},
+{
+  name: "LB Signs",
+  tiles: {
     "Big Sign B": {"nm":"Big Sign B", "sz":{"x": 3, "y": 3}, "specs":[1, 1, 1, 1, 1, 1, 1, 1, 1], "specs2":0, "tp":"box", "bfTiles":1, "rnd":1, "ptPos":0, "tags":["Big Sign B", "notTrashProp"]},
     "Small Asian Sign B": {"nm":"Small Asian Sign B", "sz":{"x": 1, "y": 1}, "specs":[1], "specs2":0, "tp":"box", "bfTiles":0, "rnd":1, "ptPos":0, "tags":["Small Asian Sign B", "notTrashProp"]},
     "Small Asian Sign on wall B": {"nm":"Small Asian Sign on wall B", "sz":{"x": 1, "y": 1}, "specs":[0], "specs2":0, "tp":"voxelStruct", "repeatL":[1, 9], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid", "small asian sign on wall B", "notTrashProp"]},
@@ -908,7 +1047,10 @@
     "Big Western Sign Tilted B": {"nm":"Big Western Sign Tilted B", "sz":{"x": 2, "y": 1}, "specs":[1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[10], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["Big Western Sign Tilted B", "notTrashProp"]},
     "Larger Sign B": {"nm":"Larger Sign B", "sz":{"x": 4, "y": 5}, "specs":[1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,7], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["Larger Sign B", "notTrashProp"]}
   },
-  "LB Metal B": {
+},
+{
+  name: "LB Metal B",
+  tiles: {
     "Metal Hub": {"nm":"Metal Hub", "sz":{"x": 10, "y": 10}, "specs":[-1,-1,1,1,-1,-1,1,1,-1,-1, -1,-1,1,1,-1,-1,1,1,-1,-1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, -1,-1,1,1,1,1,1,1,-1,-1, -1,-1,1,1,1,1,1,1,-1,-1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, -1,-1,1,1,-1,-1,1,1,-1,-1, -1,-1,1,1,-1,-1,1,1,-1,-1], "specs2":0, "tp":"box", "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Metal Hub Marked": {"nm":"Metal Hub Marked", "sz":{"x": 10, "y": 10}, "specs":[-1,-1,1,1,-1,-1,1,1,-1,-1, -1,-1,1,1,-1,-1,1,1,-1,-1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, -1,-1,1,1,1,1,1,1,-1,-1, -1,-1,1,1,1,1,1,1,-1,-1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, -1,-1,1,1,-1,-1,1,1,-1,-1, -1,-1,1,1,-1,-1,1,1,-1,-1], "specs2":0, "tp":"box", "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Metal Hub X": {"nm":"Metal Hub X", "sz":{"x": 10, "y": 10}, "specs":[-1,-1,1,1,-1,-1,1,1,-1,-1, -1,-1,1,1,-1,-1,1,1,-1,-1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, -1,-1,1,1,1,1,1,1,-1,-1, -1,-1,1,1,1,1,1,1,-1,-1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, -1,-1,1,1,-1,-1,1,1,-1,-1, -1,-1,1,1,-1,-1,1,1,-1,-1], "specs2":0, "tp":"box", "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
@@ -919,11 +1061,14 @@
     "Crane House Platform": {"nm":"Crane House Platform", "sz":{"x": 6, "y": 4}, "specs":[-1,1,1,-1, -1,1,1,-1, -1,1,1,-1, -1,1,1,-1, -1,1,1,-1, -1,1,1,-1], "specs2": 0, "tp":"voxelStruct", "repeatL":[1,1,2,2,2,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Very Large Beam Pillar": {"nm":"Very Large Beam Pillar", "sz":{"x": 12, "y": 12}, "specs":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, -1,-1,-1,1,1,1,1,1,1,-1,-1,-1, -1,-1,-1,1,1,1,1,1,1,-1,-1,-1, -1,-1,-1,1,1,1,1,1,1,-1,-1,-1, -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,4], "bfTiles":0, "rnd":1, "ptPos":0, "tags":["nonSolid"]}
   },
-  "Drought Dracentis": {
+},
+{
+  name: "Drought Dracentis",
+  tiles: {
     "Dish": {"nm":"Dish", "sz":{"x": 11, "y": 11}, "specs":[0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Dish R": {"nm":"Dish R", "sz":{"x": 11, "y": 11}, "specs":[0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":1, "rnd":1, "ptPos":0, "tags":["nonSolid"]},
     "Gravity Amplifier": {"nm":"Gravity Amplifier", "sz":{"x": 16, "y": 13}, "specs":[-1,-1,-1,-1,-1,3,1,5,-1,-1,-1,-1,-1, -1,-1,3,1,-1,1,1,1,-1,1,5,-1,-1, -1,3,1,1,1,1,1,1,1,1,1,5,-1, -1,1,1,1,1,1,1,1,1,1,1,1,-1, -1,-1,1,1,1,1,1,1,1,1,1,-1,-1, -1,-1,1,1,1,1,1,1,1,1,1,-1,-1, 3,1,1,1,1,1,1,1,1,1,1,1,5, 1,1,1,1,1,1,1,1,1,1,1,1,1, 2,1,1,1,1,1,1,1,1,1,1,1,4, -1,-1,1,1,1,1,1,1,1,1,1,-1,-1, -1,-1,1,1,1,1,1,1,1,1,1,-1,-1, -1,1,1,1,1,1,1,1,1,1,1,1,-1, -1,2,1,1,1,1,1,1,1,1,1,4,-1, -1,-1,2,1,-1,1,1,1,-1,1,4,-1,-1, -1,-1,-1,-1,-1,2,1,4,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], "specs2":0,"tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Holes Antenna N": {"nm":"Holes Antenna N", "sz":{"x": 1, "y": 2}, "specs":[1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]},
     "Holes Antenna S": {"nm":"Holes Antenna S", "sz":{"x": 1, "y": 2}, "specs":[1,1], "specs2":0, "tp":"voxelStruct", "repeatL":[1,1,1,1,1,1,1,1,1,1], "bfTiles":0, "rnd":1, "ptPos":0, "tags":[]}
   }
-}
+}]
