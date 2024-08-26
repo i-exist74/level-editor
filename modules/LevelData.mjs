@@ -88,7 +88,7 @@ export const Geometry = {
 };
 
 export const Tiles = (function() {
-    let a = "[\n";
+    /*let a = "[\n";
     
     const Tiles = Object.create(null);
     let lines = tileData.split(/[\r\n]/g);
@@ -133,12 +133,13 @@ export const Tiles = (function() {
     document.body.innerHTML = `
     <textarea style="font-size:5px;">${a}</textarea>
     `;
-    return Tiles;
-    return JSON.parse(tileData);
+    return Tiles;*/
+    let tiles = JSON.parse(tileData);
     return {
         getTile(categoryIndex, tileIndex) {
-            
-        }
+            return tiles[categoryIndex - 3][tileIndex];
+        },
+        categories: tiles
     };
 })();
 
