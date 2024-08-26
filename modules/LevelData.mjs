@@ -1,7 +1,5 @@
 import EventEmitter from "./EventEmitter.mjs";
 
-const blank1x1 = await fetch("leveltemplates/blank1x1.txt").then(res => res.text());
-
 /** LevelData - interface for storing and editing levels
 
 leditorProject.txt format as follows:
@@ -9,6 +7,33 @@ https://docs.google.com/document/d/1zcxeQGibkZORstwGQUovhQk71k00B69oYwkqFpGyOqs/
 posted by Bro in RW discord:
 https://discord.com/channels/291184728944410624/305139167300550666/1102298445441675284
 */
+
+const [blank1x1, tileData] = await Promise.all(
+    fetch("leveltemplates/blank1x1.txt").then(res => res.text()),
+    fetch("init.txt").then(res => res.text())
+);
+
+function replaceLeditorStringBrackets(str) {
+    str = str.replace(/\[(?=#)/g, "{");
+    
+    str = str.split("");
+    let bracketStack = [];
+    for (let i = 0; i < str.length; i++) {
+        let char = str[i];
+
+        if (char === "[" || char === "{") {
+            bracketStack.push(char);
+            continue;
+        }
+        if (char === "]" && bracketStack[bracketStack.length - 1] === "{") {
+            str[i] = "}";
+        }
+        if (char === "]" || char === "}") {
+            bracketStack.pop();
+        }
+    }
+    return str.join("");
+}
 
 /* Geometry data */
 const BLOCK_TYPE_MASK                  = 0b000000000000011111;
@@ -55,6 +80,33 @@ export const Geometry = {
     garbageWormHole: 1 << (STACKABLES_START_BIT + 9),
 };
 
+export const Tiles = (function() {
+    const Tiles = Object.create(null);
+    let lines = tileData.split(/[\r\n]/g);
+    
+    let currentCategory = "";
+    
+    for (let i = 0; i < lines.length; i++) {
+        let str = lines[i];
+        if (str === "") continue;
+        
+        let isCategory = str[0] === "-";
+        if (isCategory) {
+            let index1 = str.indexOf('"') + 1, index2 = str.indexOf('"', index1);
+            currentCategory = str.slice(index1, index2);
+            Tiles[currentCategory] = Object.create(null);
+            continue;
+        }
+        
+        str = str
+            .replace(/#([^\:]+)/g, '"$1"')
+            .replace(/point\((-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?)\)/g, '{"x": $1, "y": $2}')
+        str = replaceLeditorStringBrackets(str);
+        
+        Tiles[currentCategory] = JSON.parse(str);
+    }
+    return Tiles;
+})();
 
 /* File */
 const convertProjectData = {
@@ -210,33 +262,15 @@ export class LevelData extends EventEmitter {
         for (let i = 1; i < lines.length; i++) {
             let str = lines[i];
             str = str
-                .replace(/\[(?=#)/g, "{")
                 .replace(/#([^\:]+)/g, '"$1"')
                 // objects representing leditor points, rects, colors
                 .replace(/point\((-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?)\)/g, '{"x": $1, "y": $2, "isPoint": true}')
                 .replace(/rect\((-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?)\)/g, '{"x": $1, "y": $2, "w": $3, "h": $4, "isRect": true}')
                 .replace(/color\( ?(-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?) ?\)/g, `{"r": $1, "g": $2, "b": $3, "isColor": true}`);
-
-            str = str.split(""); // turn into char array for ease of modification
-
-            // rematch curly braces
-            let bracketStack = [];
-            for (let i = 0; i < str.length; i++) {
-                let char = str[i];
-
-                if (char === "[" || char === "{") {
-                    bracketStack.push(char);
-                    continue;
-                }
-                if (char === "]" && bracketStack[bracketStack.length - 1] === "{") {
-                    str[i] = "}";
-                }
-                if (char === "]" || char === "}") {
-                    bracketStack.pop();
-                }
-            }
-            lines[i] = str.join("");
+            str = replaceLeditorStringBrackets(str);
+            lines[i] = str;
         }
+        
         // Parse JSON
         this.#originalProjectData = lines.map((str, i) => {
             if (!str) str = "[]"; // delete this
