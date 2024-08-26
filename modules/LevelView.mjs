@@ -311,14 +311,11 @@ export default class LevelView {
         if (geo & Geometry.wormGrass) {
             let r = 0.1*s;
             this.#ctx.fillStyle = "rgb(178, 32, 32)";
-            for (let curX = (x + s / 6); curX <= (x + 5 * s / 6); curX += s / 3) {
+            for (let curX = (x + s / 6); curX <= x + s; curX += s / 3) {
+                this.#ctx.fillRect(curX - r, y + s, r * 2, Math.floor(s - r));
                 this.#ctx.beginPath();
-                this.#ctx.moveTo(curX + r, y + s);
-                this.#ctx.lineTo(curX - r, y + s);
-                this.#ctx.lineTo(curX - r, y + r);
-                this.#ctx.lineTo(curX + r, y + r);
-                this.#ctx.fill();
                 this.#ctx.ellipse(curX, y + r, r, r, 0, 0, Math.PI * 2);
+                this.#ctx.fill();
             }
         }
         if (geo & Geometry.waterfall) {
