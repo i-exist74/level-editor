@@ -298,6 +298,7 @@ export class LevelData extends EventEmitter {
             let str = lines[i];
             str = replaceLeditorStringBrackets(str);
             str = str
+                .replace(/#Data:/g, "#data:")
                 .replace(/#([^\:]+)/g, '"$1"')
                 // objects representing leditor points, rects, colors
                 .replace(/point\((-?\d+(?:\.\d+)?), ?(-?\d+(?:\.\d+)?)\)/g, '{"x": $1, "y": $2, "isPoint": true}')
