@@ -409,7 +409,7 @@ export default class LevelView {
                     break;
                 case Geometry.slopeSW:
                     this.#ctx.beginPath();
-                    this.#ctx.moveTo(x + s/3, y + s*/3);
+                    this.#ctx.moveTo(x + s/3, y + s/3);
                     this.#ctx.lineTo(x + s*2/3, y + s*2/3);
                     this.#ctx.lineTo(x + s*2/3, y + s/3);
                     this.#ctx.fill();
@@ -431,8 +431,19 @@ export default class LevelView {
             } else {
                 this.#ctx.fillStyle = "white";
                 this.#ctx.font = `${s}px monospace`;
-                
-                this.#ctx.fillText("?", x + s/2, y + s/2);
+                let startX = x - Math.floor(tile.sz.x/2) * s;
+                let startY = y - Math.floor(tile.sz.y/2) * s;
+                x = startX;
+                y = startY;
+                for (let i = 0; i < tile.specs.length; i++) {
+                    if (i % tile.sz.x === 0) {
+                        x = startX;
+                        y += s;
+                    } else {
+                        x += s;
+                    }
+                    this.#ctx.fillText("?", x + s/2, y + s/2);
+                }
             }
         }
     }
