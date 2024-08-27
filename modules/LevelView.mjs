@@ -379,6 +379,7 @@ export default class LevelView {
     
     #drawTileAt(x, y, l) {
         let tileData = this.levelData.tileAt(x, y, l);
+        let geometry = this.levelData.geometryAt(x, y, l);
         
         x = x * this.zoom + this.pan.x;
         y = y * this.zoom + this.pan.y;
@@ -386,7 +387,7 @@ export default class LevelView {
         
         if (tileData.tp === "material") {
             this.#ctx.fillStyle = "red";
-            switch (this.levelData.geometryAt(x, y, l) & Geometry.BLOCK_TYPE_MASK) {
+            switch (geometry & Geometry.BLOCK_TYPE_MASK) {
                 case Geometry.wall:
                     this.#ctx.fillRect(x + s/3, y + s/3, s/3, s/3);
                     break;
