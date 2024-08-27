@@ -201,13 +201,15 @@ export default class LevelView {
                 continue;
             }
             this.#drawGeometryTile(x, y, l, colors[l]);
-            if (this.#currentEditor === "tile") {
+            if (l === this.#workLayer && this.#currentEditor === "tile") {
                 this.#drawTileAt(x, y, l);
             }
         }
         if (this.#showWorkLayerOnTop) {
             this.#drawGeometryTile(x, y, this.#workLayer, colors[this.#workLayer]);
-            this.#drawTileAt(x, y, this.#workLayer);
+            if (l === this.#workLayer && this.#currentEditor === "tile") {
+                this.#drawTileAt(x, y, this.#workLayer);
+            }
         }
         
         } catch (e) {
@@ -437,13 +439,13 @@ export default class LevelView {
                 x = startX;
                 y = startY;
                 for (let i = 0; i < tile.specs.length; i++) {
+                    this.#ctx.fillText("?", x + s/2, y + s/2);
                     if (i % tile.sz.x === 0) {
                         x = startX;
                         y += s;
                     } else {
                         x += s;
                     }
-                    this.#ctx.fillText("?", x + s/2, y + s/2);
                 }
             }
         }
