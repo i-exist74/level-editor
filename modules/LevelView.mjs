@@ -440,7 +440,7 @@ export default class LevelView {
                 y = startY;
                 for (let i = 0; i < tile.specs.length; i++) {
                     this.#ctx.fillText("?", x + s/2, y + s/2);
-                    if (i % tile.sz.x === 0) {
+                    if ((i + 1) % tile.sz.x === 0) {
                         x = startX;
                         y += s;
                     } else {
