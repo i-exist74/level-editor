@@ -429,9 +429,9 @@ export default class LevelView {
             let headX = tileData.data[0].x;
             let headY = tileData.data[0].y;
             let headL = tileData.data[1];
-            const head = this.levelData.geometryAt(headX, headY, headL);
+            const head = this.levelData.tileAt(headX, headY, headL);
             
-            const tile = Tiles.getTile(head.data[0].x, tileData.data[0].y);
+            const tile = Tiles.getTile(head.data[0].x, head.data[0].y);
             this.#drawTileFragment(x, y, headX, headY, tile);
         } else if (tileData.tp === "tileHead") {
             const tile = Tiles.getTile(tileData.data[0].x, tileData.data[0].y);
@@ -440,7 +440,7 @@ export default class LevelView {
     }
     
     #drawTileFragment(x, y, headX, headY, tile) {
-        const s = this.#zoom;
+        const s = this.zoom;
         let displayX = x * this.zoom + this.pan.x;
         let displayY = y * this.zoom + this.pan.y;
         
