@@ -95,27 +95,27 @@ ul {
     outline: 1px solid black;
 }
 
-#edit-tool-select {
+#geometry-tool-select {
     display: grid;
     padding: 3px;
     grid-template-columns: repeat(auto-fit, minmax(1.25em, 1fr));
     grid-auto-rows: 1.25em;
     background-color: #AAA;
 }
-#edit-tool-select label {
+#geometry-tool-select label {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-#edit-tool-select label:has(input:checked) {
+#geometry-tool-select label:has(input:checked) {
     outline: 1px solid white;
 }
-#edit-tool-select label svg {
+#geometry-tool-select label svg {
     width: 1em;
     height: 1em;
 }
-#edit-tool-select label input {
+#geometry-tool-select label input {
     position: absolute;
     appearance: none;
 }
