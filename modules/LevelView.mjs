@@ -383,11 +383,11 @@ export default class LevelView {
         let tileData = this.levelData.tileAt(x, y, l);
         let geometry = this.levelData.geometryAt(x, y, l);
         
-        x = x * this.zoom + this.pan.x;
-        y = y * this.zoom + this.pan.y;
-        const s = this.zoom;
-        
         if (tileData.tp === "material") {
+            x = x * this.zoom + this.pan.x;
+            y = y * this.zoom + this.pan.y;
+            const s = this.zoom;
+            
             this.#ctx.fillStyle = "red";
             switch (geometry & Geometry.BLOCK_TYPE_MASK) {
                 case Geometry.wall:
@@ -426,28 +426,31 @@ export default class LevelView {
                     break;
             }
         } else if (tileData.tp === "tileBody") {
+            let headX = tileData.data[0].x;
+            let headY = tileData.data[0].y;
+            let headL = tileData.data[1];
+            const head = this.levelData.geometryAt(headX, headY, headL);
             
+            const tile = Tiles.getTile(head.data[0].x, tileData.data[0].y);
+            this.#drawTileFragment(x, y, headX, headY, tile);
         } else if (tileData.tp === "tileHead") {
             const tile = Tiles.getTile(tileData.data[0].x, tileData.data[0].y);
-            if (false) {
-                
-            } else {
-                this.#ctx.fillStyle = "white";
-                this.#ctx.font = `${s}px monospace`;
-                let startX = x - Math.floor(tile.sz.x/2) * s;
-                let startY = y - Math.floor(tile.sz.y/2) * s;
-                x = startX;
-                y = startY;
-                for (let i = 0; i < tile.specs.length; i++) {
-                    this.#ctx.fillText("?", x + s/2, y + s/2);
-                    if ((i + 1) % tile.sz.x === 0) {
-                        x = startX;
-                        y += s;
-                    } else {
-                        x += s;
-                    }
-                }
-            }
+            this.#drawTileFragment(x, y, x, y, tile);
+        }
+    }
+    
+    #drawTileFragment(x, y, headX, headY, tile) {
+        const s = this.#zoom;
+        let displayX = x * this.zoom + this.pan.x;
+        let displayY = y * this.zoom + this.pan.y;
+        
+        let xInTile, yInTile;
+        if (false) {
+            
+        } else {
+            this.#ctx.fillStyle = "white";
+            this.#ctx.font = `${s}px monospace`;
+            this.#ctx.fillText("?", displayX + s/2, displayY + s/2);
         }
     }
 
