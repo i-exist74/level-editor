@@ -426,9 +426,9 @@ export default class LevelView {
                     break;
             }
         } else if (tileData.tp === "tileBody") {
-            let headX = tileData.data[0].x;
-            let headY = tileData.data[0].y;
-            let headL = tileData.data[1];
+            let headX = tileData.data[0].x - 1;
+            let headY = tileData.data[0].y - 1;
+            let headL = tileData.data[1] - 1;
             const head = this.levelData.tileAt(headX, headY, headL);
             
             const tile = Tiles.getTile(head.data[0].x, head.data[0].y);
