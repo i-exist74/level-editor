@@ -75,9 +75,9 @@
                     <label for="editAction-clear">Clear All</label>
                 </span>
             </div>
-            <div class="editor-exclusive geometry-editor">
+            <div class="editor-exclusive geometry-editor tile-editor">
                 Tool:
-                <div id="edit-tool-select">
+                <div id="geometry-tool-select" class="editor-exclusive geometry-editor">
                     <!--I don't know what I am doing-->
                     <label>
                         <input type="radio" id="editTool-wall" name="editTool" value="wall" data-description="Wall" checked />
@@ -203,6 +203,9 @@
                             <text x="50%" y="50%" text-anchor="middle" alignment-baseline="central" fill="red" font-family="monospace">F</text>
                         </svg>
                     </label>
+                </div>
+                <div id="tile-tool-select" class="editor-exclusive tile-editor">
+                    
                 </div>
                 <span id="tool-info"></span>
             </div>
