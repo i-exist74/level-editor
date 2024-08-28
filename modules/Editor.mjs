@@ -29,7 +29,7 @@ levelView.setGeometryTool("wall");
 document.getElementById("edit-action-select").addEventListener("change", e => {
     levelView.setEditAction(e.target.value);
 });
-document.getElementById("edit-tool-select").addEventListener("change", e => {
+document.getElementById("geometry-tool-select").addEventListener("change", e => {
     levelView.setGeometryTool(e.target.value);
     toolInfoEl.textContent = e.target.dataset.description;
 });
