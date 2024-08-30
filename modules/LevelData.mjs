@@ -546,7 +546,7 @@ export class LevelData extends EventEmitter {
     }
     
     tileAt(x, y, l) {
-        return this.#tileData[x][y][l];
+        return this.#tileData[x]?.[y]?.[l] ?? { tp: "default", data: 0 };
     }
 
 
