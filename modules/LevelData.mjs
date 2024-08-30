@@ -470,7 +470,7 @@ export class LevelData extends EventEmitter {
                 this.#tileData[x] = new Array(this.levelHeight);
                 for (let y = 0; y < this.levelHeight; y++) {
                     this.#geometry[x][y] = new Array(this.layers).fill(0);
-                    this.#tileData[x][y] = new Array(this.layers).fill().map(_ => { tp: "default", data: 0 });
+                    this.#tileData[x][y] = new Array(this.layers).fill().map(_ => ({ tp: "default", data: 0 }));
                 }
             }
             return true;
@@ -486,7 +486,7 @@ export class LevelData extends EventEmitter {
                     this.#tileData[x] = new Array(this.levelHeight);
                     for (let y = 0; y < this.levelHeight; y++) {
                         this.#geometry[x][y] = new Array(this.layers).fill(0);
-                        this.#tileData[x][y] = new Array(this.layers).fill().map(_ => { tp: "default", data: 0 });
+                        this.#tileData[x][y] = new Array(this.layers).fill().map(_ => ({ tp: "default", data: 0 }));
                     }
                 }
             }
@@ -514,7 +514,7 @@ export class LevelData extends EventEmitter {
                 
                 for (let y = oldHeight; y < newHeight; y++) {
                     this.#geometry[x][y] = new Array(this.layers).fill(0);
-                    this.#tileData[x][y] = new Array(this.layers).fill().map(_ => { tp: "default", data: 0 });
+                    this.#tileData[x][y] = new Array(this.layers).fill().map(_ => ({ tp: "default", data: 0 }));
                 }
             } else if (newHeight > oldHeight) {
                 for (let y = newHeight - 1; y >= 0; y--) {
@@ -523,7 +523,7 @@ export class LevelData extends EventEmitter {
                         this.#tileData[x][y] = this.#tileData[x][y + oldHeight - newHeight];
                     } else {
                         this.#geometry[x][y] = new Array(this.layers).fill(0);
-                        this.#tileData[x][y] = new Array(this.layers).fill().map(_ => { tp: "default", data: 0 });
+                        this.#tileData[x][y] = new Array(this.layers).fill().map(_ => ({ tp: "default", data: 0 }));
                     }
                 }
             } else {
