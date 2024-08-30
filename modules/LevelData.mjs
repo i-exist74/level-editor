@@ -461,13 +461,16 @@ export class LevelData extends EventEmitter {
         
         if (rightBorder) {
             this.#geometry.length = newWidth;
+            this.#tileData.length = newWidth;
 
             if (newWidth < oldWidth) return true;
             // Fill in the added space with empty rows
             for (let x = oldWidth; x < newWidth; x++) {
                 this.#geometry[x] = new Array(this.levelHeight);
+                this.#tileData[x] = new Array(this.levelHeight);
                 for (let y = 0; y < this.levelHeight; y++) {
                     this.#geometry[x][y] = new Array(this.layers).fill(0);
+                    this.#tileData[x][y] = new Array(this.layers).fill().map(_ => { tp: "default", data: 0 });
                 }
             }
             return true;
@@ -477,18 +480,23 @@ export class LevelData extends EventEmitter {
             for (let x = newWidth - 1; x >= 0; x--) {
                 if (x >= newWidth - oldWidth) {
                     this.#geometry[x] = this.#geometry[x + oldWidth - newWidth];
+                    this.#tileData[x] = this.#tileData[x + oldWidth - newWidth];
                 } else {
                     this.#geometry[x] = new Array(this.levelHeight);
+                    this.#tileData[x] = new Array(this.levelHeight);
                     for (let y = 0; y < this.levelHeight; y++) {
                         this.#geometry[x][y] = new Array(this.layers).fill(0);
+                        this.#tileData[x][y] = new Array(this.layers).fill().map(_ => { tp: "default", data: 0 });
                     }
                 }
             }
         } else {
             for (let x = 0; x < newWidth; x++) {
                 this.#geometry[x] = this.#geometry[x + oldWidth - newWidth];
+                this.#tileData[x] = this.#tileData[x + oldWidth - newWidth];
             }
             this.#geometry.length = newWidth;
+            this.#tileData.length = newWidth;
         }
         return true;
     }
@@ -501,24 +509,30 @@ export class LevelData extends EventEmitter {
         for (let x = 0; x < this.levelWidth; x++) {
             if (bottomBorder) {
                 this.#geometry[x].length = newHeight;
+                this.#tileData[x].length = newHeight;
                 if (newHeight < oldHeight) continue;
                 
                 for (let y = oldHeight; y < newHeight; y++) {
                     this.#geometry[x][y] = new Array(this.layers).fill(0);
+                    this.#tileData[x][y] = new Array(this.layers).fill().map(_ => { tp: "default", data: 0 });
                 }
             } else if (newHeight > oldHeight) {
                 for (let y = newHeight - 1; y >= 0; y--) {
                     if (y >= newHeight - oldHeight) {
                         this.#geometry[x][y] = this.#geometry[x][y + oldHeight - newHeight];
+                        this.#tileData[x][y] = this.#tileData[x][y + oldHeight - newHeight];
                     } else {
                         this.#geometry[x][y] = new Array(this.layers).fill(0);
+                        this.#tileData[x][y] = new Array(this.layers).fill().map(_ => { tp: "default", data: 0 });
                     }
                 }
             } else {
                 for (let y = 0; y < newHeight; y++) {
                     this.#geometry[x][y] = this.#geometry[x][y + oldHeight - newHeight];
+                    this.#tileData[x][y] = this.#tileData[x][y + oldHeight - newHeight];
                 }
                 this.#geometry[x].length = newHeight;
+                this.#tileData[x].length = newHeight;
             }
         }
         return true;
