@@ -76,6 +76,8 @@ ul {
     padding: 1em;
     overflow-y: auto;
     color: white;
+    
+    z-index: 10;
 }
 
 #graphical-display {
@@ -123,7 +125,7 @@ ul {
 /* Dropdown behavior */
 .dropdown {
     user-select: none;
-    /*position: relative;*/
+    position: relative;
 }
 
 .dropdown__button {
