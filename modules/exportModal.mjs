@@ -9,6 +9,7 @@ const errorDisplay = document.getElementById("export-error-display");
 outputToTextareaButton.addEventListener("click", e => {
     try {
         outputEl.value = levelData.exportProjectData();
+        outputEl.focus();
         outputEl.select();
         //outputEl.setSelectionRange(0, outputEl.value.length);
     } catch (e) {
