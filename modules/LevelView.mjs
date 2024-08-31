@@ -222,8 +222,8 @@ export default class LevelView {
     #drawGeometryTile(x, y, l, defaultColor) {
         const geo = this.levelData.geometryAt(x, y, l);
         
-        x = x * this.zoom + this.pan.x;
-        y = y * this.zoom + this.pan.y;
+        x = Math.floor(x * this.zoom + this.pan.x);
+        y = Math.floor(y * this.zoom + this.pan.y);
         
         const s = this.zoom;
         
@@ -384,8 +384,8 @@ export default class LevelView {
         let geometry = this.levelData.geometryAt(x, y, l);
         
         if (tileData.tp === "material") {
-            x = x * this.zoom + this.pan.x;
-            y = y * this.zoom + this.pan.y;
+            x = Math.floor(x * this.zoom + this.pan.x);
+            y = Math.floor(y * this.zoom + this.pan.y);
             const s = this.zoom;
             
             this.#ctx.fillStyle = "red";
