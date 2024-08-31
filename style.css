@@ -75,6 +75,7 @@ ul {
     font-size: clamp(0.7rem, 3vh, 1rem);
     padding: 1em;
     overflow-y: auto;
+    overflow-x: visible;
     color: white;
 }
 
