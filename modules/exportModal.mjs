@@ -1,7 +1,7 @@
 import { levelData } from "./Editor.mjs";
 
 const modal = document.getElementById("export-modal");
-const outputEl = modal.querySelector("textarea");
+const outputEl = document.getElementById("export-text-output");
 const outputToTextareaButton = document.getElementById("output-project-to-textarea-button");
 const downloadButton = document.getElementById("download-project-button");
 const errorDisplay = document.getElementById("export-error-display");
