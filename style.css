@@ -20,7 +20,7 @@ input[type=checkbox] {
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 /* Page Layout */
