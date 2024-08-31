@@ -123,6 +123,7 @@ ul {
 /* Dropdown behavior */
 .dropdown {
     user-select: none;
+    position: relative;
 }
 
 .dropdown__button {
