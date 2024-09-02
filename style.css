@@ -31,7 +31,7 @@ body {
         "side-ui graphical-display" 1fr
         "bottom-ui bottom-ui" clamp(1.5rem, 2vh, 2rem) /
         fit-content(30%) 1fr;
-
+    max-height: 100vh;
     background-color: rgb(35, 42, 100);
 }
 
@@ -81,7 +81,6 @@ ul {
     padding: 1em;
     overflow-y: auto;
     width: min-content;
-    max-height: 100%;
 }
 
 #graphical-display {
