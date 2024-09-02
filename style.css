@@ -81,6 +81,7 @@ ul {
     padding: 1em;
     overflow-y: auto;
     width: min-content;
+    height: 100%;
 }
 
 #graphical-display {
