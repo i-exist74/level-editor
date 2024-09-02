@@ -73,9 +73,14 @@ ul {
     background-color: rgb(28, 34, 79);
     
     font-size: clamp(0.7rem, 3vh, 1rem);
+    /*padding: 1em;*/
+    /*overflow-y: auto;*/
+    color: white;
+}
+#side-ui > div {
     padding: 1em;
     overflow-y: auto;
-    color: white;
+    width: min-content;
 }
 
 #graphical-display {
@@ -123,6 +128,7 @@ ul {
 /* Dropdown behavior */
 .dropdown {
     user-select: none;
+    position: relative;
 }
 
 .dropdown__button {
