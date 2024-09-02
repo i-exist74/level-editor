@@ -31,7 +31,6 @@ body {
         "side-ui graphical-display" 1fr
         "bottom-ui bottom-ui" clamp(1.5rem, 2vh, 2rem) /
         fit-content(30%) 1fr;
-    max-height: 100vh;
     background-color: rgb(35, 42, 100);
 }
 
@@ -73,14 +72,12 @@ ul {
     background-color: rgb(28, 34, 79);
     
     font-size: clamp(0.7rem, 3vh, 1rem);
-    /*padding: 1em;*/
-    /*overflow-y: auto;*/
+    padding: 1em;
+    overflow-y: auto;
     color: white;
 }
 #side-ui > div {
-    padding: 1em;
-    overflow-y: auto;
-    width: min-content;
+    
 }
 
 #graphical-display {
