@@ -75,7 +75,7 @@ ul {
     padding: 1em;
     color: white;
     
-    position: absolute;
+    position: relative;
 }
 #side-ui > div {
     
