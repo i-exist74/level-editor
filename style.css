@@ -72,13 +72,12 @@ ul {
     background-color: rgb(28, 34, 79);
     
     font-size: clamp(0.7rem, 3vh, 1rem);
-    padding: 1em;
     color: white;
     
     position: relative;
 }
 #side-ui > div {
-    
+    padding: 1em;
     overflow-y: auto;
 }
 
@@ -122,10 +121,6 @@ ul {
 #geometry-tool-select label input {
     position: absolute;
     appearance: none;
-}
-
-#tile-tool-select {
-    /*position: relative;*/
 }
 
 /* Dropdown behavior */
