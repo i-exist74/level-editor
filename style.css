@@ -75,6 +75,7 @@ ul {
     color: white;
     
     position: relative;
+    height: calc(100vh - clamp(1.5rem, 2vh, 2rem) - clamp(1.5rem, 2vh, 2rem));
 }
 #side-ui > div {
     padding: 1em;
