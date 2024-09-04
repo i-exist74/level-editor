@@ -73,11 +73,13 @@ ul {
     
     font-size: clamp(0.7rem, 3vh, 1rem);
     padding: 1em;
-    overflow-y: auto;
     color: white;
+    
+    position: absolute;
 }
 #side-ui > div {
     
+    overflow-y: auto;
 }
 
 #graphical-display {
@@ -123,7 +125,7 @@ ul {
 }
 
 #tile-tool-select {
-    position: relative;
+    /*position: relative;*/
 }
 
 /* Dropdown behavior */
