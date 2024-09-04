@@ -122,10 +122,13 @@ ul {
     appearance: none;
 }
 
+#tile-tool-select {
+    position: relative;
+}
+
 /* Dropdown behavior */
 .dropdown {
     user-select: none;
-    position: relative;
 }
 
 .dropdown__button {
