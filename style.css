@@ -74,7 +74,7 @@ ul {
     font-size: clamp(0.7rem, 3vh, 1rem);
     color: white;
     
-    position: relative;
+    /*position: relative;*/
     height: calc(100vh - clamp(1.5rem, 2vh, 2rem) - clamp(1.5rem, 2vh, 2rem));
     overflow-y: clip;
 }
@@ -124,6 +124,10 @@ ul {
 #geometry-tool-select label input {
     position: absolute;
     appearance: none;
+}
+
+#tile-tool-select {
+    position: relative;
 }
 
 /* Dropdown behavior */
